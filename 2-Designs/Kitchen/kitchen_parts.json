@@ -1,0 +1,1400 @@
+{
+ "parts": [
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    0,
+    2790.0,
+    0,
+    560.0,
+    560.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    560.0,
+    2790.0,
+    0,
+    110.0,
+    560.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    2750.0,
+    2790.0,
+    0,
+    110.0,
+    560.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    2860.0,
+    2790.0,
+    0,
+    560.0,
+    560.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "slab",
+   "box": [
+    0,
+    2790.0,
+    710.0,
+    3420.0,
+    560.0,
+    110.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "granite",
+   "name": "granite",
+   "box": [
+    0.0,
+    2750.0,
+    820.0,
+    3420.0,
+    600.0,
+    27.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    672.0,
+    2810.0,
+    2.0,
+    18.0,
+    540.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    2730.0,
+    2810.0,
+    2.0,
+    18.0,
+    540.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "bottom",
+   "box": [
+    690.0,
+    2810.0,
+    2.0,
+    2040.0,
+    540.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    690.0,
+    3344.0,
+    20.0,
+    2040.0,
+    6.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "partition",
+   "box": [
+    1247.0,
+    2810.0,
+    20.0,
+    18.0,
+    534.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "partition",
+   "box": [
+    1822.0,
+    2810.0,
+    20.0,
+    18.0,
+    534.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "shelf",
+   "name": "shelf",
+   "box": [
+    1840.0,
+    2810.0,
+    355.0,
+    890,
+    514.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    673.0,
+    2792.0,
+    3.0,
+    582.0,
+    18.0,
+    266.8181818181818
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    673.0,
+    2788.0,
+    269.8181818181818,
+    582.0,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    673.0,
+    2792.0,
+    291.8181818181818,
+    582.0,
+    18.0,
+    212.98826979472142
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    673.0,
+    2788.0,
+    504.80645161290323,
+    582.0,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    673.0,
+    2792.0,
+    526.8064516129032,
+    582.0,
+    18.0,
+    160.19354838709677
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    673.0,
+    2788.0,
+    687.0,
+    582.0,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    1257.0,
+    2792.0,
+    3.0,
+    573.0,
+    18.0,
+    331.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    1257.0,
+    2788.0,
+    334.0,
+    573.0,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    1257.0,
+    2792.0,
+    356.0,
+    573.0,
+    18.0,
+    331.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    1257.0,
+    2788.0,
+    687.0,
+    573.0,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "door",
+   "box": [
+    1832.0,
+    2792.0,
+    3.0,
+    456.5,
+    18.0,
+    684.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    1832.0,
+    2788.0,
+    687.0,
+    456.5,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "door",
+   "box": [
+    2290.5,
+    2792.0,
+    3.0,
+    456.5,
+    18.0,
+    684.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    2290.5,
+    2788.0,
+    687.0,
+    456.5,
+    22.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    2860.0,
+    2680.0,
+    0,
+    560.0,
+    110.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    2860.0,
+    1902.0,
+    0,
+    560.0,
+    110.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "slab",
+   "box": [
+    2860.0,
+    1902.0,
+    710.0,
+    560.0,
+    888.0,
+    110.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "granite",
+   "name": "granite",
+   "box": [
+    2820.0,
+    1902.0,
+    820.0,
+    600.0,
+    848.0,
+    27.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "sink door",
+   "box": [
+    2860.0,
+    2347.0,
+    1,
+    18.0,
+    332.0,
+    688.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    2856.0,
+    2347.0,
+    689.0,
+    22.0,
+    332.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "sink door",
+   "box": [
+    2860.0,
+    2013.0,
+    1,
+    18.0,
+    332.0,
+    688.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    2856.0,
+    2013.0,
+    689.0,
+    22.0,
+    332.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    0,
+    2680.0,
+    0,
+    560.0,
+    110.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    0,
+    1520.0,
+    0,
+    560.0,
+    110.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "slab",
+   "box": [
+    0,
+    1520.0,
+    710.0,
+    560.0,
+    1270.0,
+    110.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "granite",
+   "name": "granite",
+   "box": [
+    0,
+    1520.0,
+    820.0,
+    600.0,
+    1230.0,
+    27.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    2660.0,
+    2.0,
+    540.0,
+    18.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    1632.0,
+    2.0,
+    540.0,
+    18.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "bottom",
+   "box": [
+    0,
+    1650.0,
+    2.0,
+    540.0,
+    1010.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    0,
+    1650.0,
+    20.0,
+    6.0,
+    1010.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "partition",
+   "box": [
+    6.0,
+    2085.0,
+    20.0,
+    534.0,
+    18.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "shelf",
+   "name": "shelf",
+   "box": [
+    26.0,
+    1650.0,
+    355.0,
+    514.0,
+    435,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    540.0,
+    2095.0,
+    3.0,
+    18.0,
+    582.0,
+    266.8181818181818
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    540.0,
+    2095.0,
+    269.8181818181818,
+    22.0,
+    582.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    540.0,
+    2095.0,
+    291.8181818181818,
+    18.0,
+    582.0,
+    212.98826979472142
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    540.0,
+    2095.0,
+    504.80645161290323,
+    22.0,
+    582.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "basket front",
+   "box": [
+    540.0,
+    2095.0,
+    526.8064516129032,
+    18.0,
+    582.0,
+    160.19354838709677
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    540.0,
+    2095.0,
+    687.0,
+    22.0,
+    582.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "door",
+   "box": [
+    540.0,
+    1633.0,
+    3.0,
+    18.0,
+    460.0,
+    684.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "profile",
+   "name": "profile",
+   "box": [
+    540.0,
+    1633.0,
+    687.0,
+    22.0,
+    460.0,
+    20.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "slab",
+   "box": [
+    0,
+    600.0,
+    710.0,
+    560.0,
+    920.0,
+    110.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "granite",
+   "name": "granite",
+   "box": [
+    0,
+    600.0,
+    820.0,
+    600.0,
+    920.0,
+    27.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "pillar",
+   "box": [
+    1490,
+    0,
+    0,
+    110.0,
+    560.0,
+    710.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "masonry",
+   "name": "slab",
+   "box": [
+    0,
+    0,
+    710.0,
+    1600.0,
+    560.0,
+    110.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "granite",
+   "name": "granite",
+   "box": [
+    0.0,
+    0,
+    820.0,
+    1600.0,
+    600.0,
+    27.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    2,
+    0,
+    2.0,
+    18.0,
+    540.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    1470.0,
+    0,
+    2.0,
+    18.0,
+    540.0,
+    706.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "bottom",
+   "box": [
+    20.0,
+    0,
+    2.0,
+    1450.0,
+    540.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    20.0,
+    0,
+    20.0,
+    1450.0,
+    6.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "partition",
+   "box": [
+    916.0,
+    6.0,
+    20.0,
+    18.0,
+    534.0,
+    670.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "blind",
+   "box": [
+    3,
+    540.0,
+    3.0,
+    469.0,
+    18.0,
+    704.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "front",
+   "name": "magic door",
+   "box": [
+    474.0,
+    540.0,
+    3.0,
+    450,
+    18.0,
+    704.0
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "front",
+   "name": "wicker front",
+   "box": [
+    926.0,
+    540.0,
+    3.0,
+    561.0,
+    18.0,
+    233.33333333333334
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "front",
+   "name": "wicker front",
+   "box": [
+    926.0,
+    540.0,
+    238.33333333333334,
+    561.0,
+    18.0,
+    233.33333333333334
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "front",
+   "name": "wicker front",
+   "box": [
+    926.0,
+    540.0,
+    473.6666666666667,
+    561.0,
+    18.0,
+    233.33333333333334
+   ],
+   "colour": "27183 LV Camouflage"
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    3070.0,
+    3332.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    3070.0,
+    1930.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    3070.0,
+    1948.0,
+    1447.0,
+    350.0,
+    1384.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    3070.0,
+    1948.0,
+    2839.0,
+    350.0,
+    1384.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    3414.0,
+    1948.0,
+    1465.0,
+    6.0,
+    1384.0,
+    1374.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    3052.0,
+    2877.6666666666665,
+    1423.0,
+    18.0,
+    471.3333333333333,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    3052.0,
+    2404.333333333333,
+    1423.0,
+    18.0,
+    471.3333333333333,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    3052.0,
+    1931.0000000000002,
+    1423.0,
+    18.0,
+    471.3333333333333,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    3332.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    1850.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    0,
+    1868.0,
+    1447.0,
+    350.0,
+    1464.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    0,
+    1868.0,
+    2839.0,
+    350.0,
+    1464.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    0,
+    1868.0,
+    1465.0,
+    6.0,
+    1464.0,
+    1374.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    2851.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    2351.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    1851.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    1832.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    350.0,
+    1447.0,
+    350.0,
+    18.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    0,
+    368.0,
+    1447.0,
+    350.0,
+    1464.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    0,
+    368.0,
+    2839.0,
+    350.0,
+    1464.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    0,
+    368.0,
+    1465.0,
+    6.0,
+    1464.0,
+    1374.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    1351.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    851.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    350.0,
+    351.0,
+    1423.0,
+    18.0,
+    498.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    600,
+    0,
+    1447.0,
+    18.0,
+    350.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    1702.0,
+    0,
+    1447.0,
+    18.0,
+    350.0,
+    1410.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    618.0,
+    0,
+    1447.0,
+    1084.0,
+    350.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    618.0,
+    0,
+    2839.0,
+    1084.0,
+    350.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    618.0,
+    0,
+    1465.0,
+    1084.0,
+    6.0,
+    1374.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    601.0,
+    350.0,
+    1423.0,
+    558.0,
+    18.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "front",
+   "name": "top door",
+   "box": [
+    1161.0,
+    350.0,
+    1423.0,
+    558.0,
+    18.0,
+    1433.0
+   ],
+   "colour": "27111 LV Ivory White"
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    0,
+    0,
+    847.0,
+    18.0,
+    350.0,
+    2010.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "side",
+   "box": [
+    582.0,
+    0,
+    847.0,
+    18.0,
+    350.0,
+    2010.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "carcass",
+   "name": "tb",
+   "box": [
+    18.0,
+    0,
+    2839.0,
+    564.0,
+    350.0,
+    18.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "back",
+   "name": "back",
+   "box": [
+    18.0,
+    0,
+    847.0,
+    564.0,
+    6.0,
+    2010.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "rolling",
+   "name": "rolling shutter",
+   "box": [
+    2,
+    350.0,
+    849.0,
+    596,
+    20,
+    2006.0
+   ],
+   "colour": null
+  },
+  {
+   "kind": "hob",
+   "name": "hob",
+   "box": [
+    1970.0,
+    2830.0,
+    847.0,
+    700,
+    400,
+    8
+   ],
+   "colour": null
+  },
+  {
+   "kind": "sink",
+   "name": "sink",
+   "box": [
+    2900.0,
+    2080.0,
+    846.0,
+    420,
+    540,
+    3
+   ],
+   "colour": null
+  },
+  {
+   "kind": "window",
+   "name": "window",
+   "box": [
+    910.0,
+    3345.0,
+    967.0,
+    1700,
+    10,
+    900
+   ],
+   "colour": null
+  }
+ ],
+ "room": [
+  3420.0,
+  3350.0,
+  3000.0
+ ]
+}

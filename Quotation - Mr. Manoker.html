@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quotation - Mr. Manoker | Astra Interiors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f1a17; --ink-2: #3a322c; --muted: #857a70; --cream: #f7f2eb; --sand: #efe6da;
+    --gold: #c9a46a; --gold-dark: #a9834a; --line: #e4dacd;
+    --serif: "Cormorant Garamond", Georgia, serif; --sans: "Poppins", system-ui, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e4dd; font-family: var(--sans); color: var(--ink-2); font-size: 13px; line-height: 1.5; }
+  .toolbar {
+    position: sticky; top: 0; z-index: 5; background: var(--ink); color: #e9e1d8; padding: 10px 16px;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center;
+  }
+  .toolbar span { font-size: 12px; opacity: .8; margin-right: auto; }
+  .btn { font: inherit; font-size: 13px; border: 0; border-radius: 999px; padding: 8px 18px; cursor: pointer; font-weight: 500; }
+  .btn--gold { background: var(--gold); color: var(--ink); }
+  .btn--light { background: #3a322c; color: #fff; }
+  .btn--small { padding: 4px 12px; font-size: 12px; background: var(--cream); color: var(--gold-dark); border: 1px dashed var(--gold); }
+  .page { width: min(210mm, 100% - 24px); margin: 20px auto; background: #fff; padding: 14mm 14mm 12mm; box-shadow: 0 10px 40px -15px rgba(0,0,0,.3); }
+
+  header { display: flex; justify-content: space-between; gap: 20px; border-bottom: 2px solid var(--gold); padding-bottom: 14px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo svg { width: 42px; height: 42px; fill: var(--gold); }
+  .logo strong { font-family: var(--serif); font-size: 30px; letter-spacing: .14em; color: var(--ink); line-height: 1; display: block; }
+  .logo small { font-size: 9px; letter-spacing: .48em; color: var(--gold-dark); }
+  .company { text-align: right; font-size: 11.5px; color: var(--muted); }
+  .company b { color: var(--ink); }
+  h1 { font-family: var(--serif); font-size: 30px; color: var(--ink); margin: 18px 0 10px; letter-spacing: .04em; }
+
+  .meta { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .box { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .box h3 { margin: 0 0 6px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .14em; color: var(--gold-dark); font-weight: 600; }
+  .field { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 6px; margin: 3px 0; }
+  .field label { color: var(--muted); font-size: 11.5px; }
+
+  input, select, textarea {
+    font: inherit; color: var(--ink); border: 1px solid transparent; background: #fbf8f4; border-radius: 4px; padding: 3px 6px; width: 100%;
+  }
+  input:hover, select:hover, textarea:hover { border-color: var(--line); }
+  input:focus, select:focus, textarea:focus { outline: 0; border-color: var(--gold); background: #fff; }
+  input.num { text-align: right; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  th { background: var(--ink); color: #fff; font-weight: 500; font-size: 11px; text-align: left; padding: 7px 6px; }
+  th.r, td.r { text-align: right; }
+  td { border-bottom: 1px solid var(--line); padding: 3px 4px; vertical-align: middle; }
+  tr.section td { background: var(--cream); font-weight: 600; color: var(--ink); padding: 7px 6px; border-bottom: 1px solid var(--sand); }
+  tr.section td .sec-title { font-family: var(--serif); font-size: 17px; }
+  tr.subtotal td { font-weight: 600; color: var(--ink); background: #fcfaf7; }
+  td.sn { width: 26px; color: var(--muted); text-align: center; }
+  td.amt { width: 90px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .col-finish { width: 108px; } .col-qty { width: 56px; } .col-unit { width: 84px; } .col-rate { width: 76px; }
+  select { padding-right: 2px; }
+  .del { border: 0; background: none; color: #c0533a; cursor: pointer; font-size: 15px; line-height: 1; padding: 0 4px; }
+  td.add { padding: 6px 4px 10px; }
+
+  .bottom { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; margin-top: 16px; align-items: start; }
+  .totals { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .totals div { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-bottom: 1px solid var(--line); gap: 8px; }
+  .totals div:last-child { border-bottom: 0; }
+  .totals input { width: 60px; text-align: right; }
+  .totals .grand { background: var(--ink); color: #fff; font-size: 15px; font-weight: 600; }
+  .words { font-size: 11.5px; color: var(--muted); margin-top: 8px; font-style: italic; }
+  textarea { resize: vertical; min-height: 130px; font-size: 11.5px; line-height: 1.6; }
+
+  .sign { display: flex; justify-content: space-between; margin-top: 34px; font-size: 11.5px; color: var(--muted); }
+  .sign div { text-align: center; min-width: 180px; border-top: 1px solid var(--ink-2); padding-top: 6px; }
+  .sign b { display: block; color: var(--ink); }
+  footer { margin-top: 18px; text-align: center; font-size: 10.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px; }
+    header, .meta, .bottom { display: block; }
+    .company { text-align: left; margin-top: 8px; }
+    .meta .box, .bottom > * { margin-bottom: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 620px; }
+  }
+  @media print {
+    @page { size: A4; margin: 9mm; }
+    body { background: #fff; }
+    .toolbar, .del, td.add, .no-print { display: none !important; }
+    .page { width: auto; margin: 0; padding: 0; box-shadow: none; }
+    input, select, textarea { border: 0 !important; background: none !important; padding: 0; appearance: none; -webkit-appearance: none; }
+    textarea { min-height: 0; overflow: hidden; resize: none; }
+    th, tr.section td, .totals .grand { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    tr { break-inside: avoid; }
+    ::placeholder { color: transparent; }
+    ::-webkit-calendar-picker-indicator { display: none; }
+    tr.is-empty, tbody.hide-empty tr.sec-empty { display: none; }
+    textarea[data-k="terms"] { display: none; }
+    .terms-print { display: block !important; white-space: pre-wrap; font-size: 11px; line-height: 1.55; }
+    .sign { margin-top: 22px; }
+    body { font-size: 12px; }
+    td { padding: 2px 4px; }
+    tr.section td { padding: 4px 6px; }
+    .meta { margin-bottom: 10px; }
+    .bottom { margin-top: 10px; }
+    footer { margin-top: 12px; }
+    h1 { margin: 12px 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span>Click any value to edit. Your changes save automatically on this computer.</span>
+  <button class="btn btn--light" id="reset">Reset to blank</button>
+  <button class="btn btn--light" id="whatsapp">Send summary on WhatsApp</button>
+  <button class="btn btn--gold" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 64 64"><path d="M32 6l6.4 17.6L57 25.4 42.6 36.8l5 18.2L32 44.8 16.4 55l5-18.2L7 25.4l18.6-1.8z"/></svg>
+      <div><strong>ASTRA</strong><small>INTERIORS</small></div>
+    </div>
+    <div class="company">
+      <b>Astra Interiors</b><br>
+      No 2, KVK Nagar, IAF Road, Selaiyur, Chennai 600073<br>
+      Mob: +91 97911 82789 · chennaistyle1@gmail.com
+    </div>
+  </header>
+
+  <h1>QUOTATION</h1>
+
+  <div class="meta">
+    <div class="box">
+      <h3>Customer</h3>
+      <div class="field"><label>Name</label><input data-k="c_name" value="Mr. Manoker"></div>
+      <div class="field"><label>Mobile</label><input data-k="c_phone" placeholder="Customer mobile number"></div>
+      <div class="field"><label>Site address</label><input data-k="c_addr" placeholder="Flat / house no, street, area"></div>
+      <div class="field"><label>Area</label><input data-k="c_area" placeholder="e.g. Tambaram, Chennai"></div>
+    </div>
+    <div class="box">
+      <h3>Quotation details</h3>
+      <div class="field"><label>Quote no.</label><input data-k="q_no" value="AI/2026/001"></div>
+      <div class="field"><label>Date</label><input data-k="q_date" type="date"></div>
+      <div class="field"><label>Valid for</label><input data-k="q_valid" value="15 days"></div>
+      <div class="field"><label>Prepared by</label><input data-k="q_by" value="Vengatachalam"></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Description</th><th class="col-finish">Finish</th><th class="col-qty r">Qty</th>
+          <th class="col-unit">Unit</th><th class="col-rate r">Rate (₹)</th><th class="r">Amount (₹)</th><th class="no-print"></th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <div class="box">
+        <h3>Terms &amp; conditions</h3>
+        <textarea data-k="terms">1. Payment: 50% advance with order, 40% before installation, 10% after completion.
+2. Delivery: within 30 working days from advance and final design approval.
+3. Electrical, plumbing, civil and painting work are not included unless listed above.
+4. Hardware: soft-close hinges and channels included in the quoted rates.
+5. Final amount is based on actual site measurement.
+6. Warranty as per manufacturer for boards and hardware.</textarea>
+        <div class="terms-print" id="termsPrint" style="display:none"></div>
+      </div>
+    </div>
+    <div>
+      <div class="totals">
+        <div><span>Sub total</span><b id="sub">₹0</b></div>
+        <div><span>Discount (₹)</span><input class="num" data-k="discount" value="0"></div>
+        <div><span>GST (%)</span><input class="num" data-k="gst" value="0"></div>
+        <div><span>GST amount</span><span id="gstAmt">₹0</span></div>
+        <div class="grand"><span>Grand total</span><span id="grand">₹0</span></div>
+      </div>
+      <div class="words" id="words"></div>
+    </div>
+  </div>
+
+  <div class="sign">
+    <div><b>Customer signature</b>Mr. Manoker</div>
+    <div><b>For Astra Interiors</b>Authorised signatory</div>
+  </div>
+  <footer>Thank you for choosing Astra Interiors · Modular Kitchens · Wardrobes · Pooja · TV Units · False Ceiling · Mosquito Nets · Aluminium &amp; UPVC</footer>
+</div>
+
+<script>
+(function () {
+  const KEY = "astra-quote-manoker-v1";
+  const FINISHES = ["Laminate", "MR Plus", "Acrylic", "-"];
+  const UNITS = ["sq.ft", "r.ft", "nos", "set", "lump sum"];
+
+  // Default scope for Mr. Manoker: rates left blank on purpose, to be filled after site measurement.
+  const DEFAULT = [
+    { title: "Modular Kitchen", rows: [
+      ["Base units (bottom cabinets) with shutters", "Acrylic", "", "r.ft"],
+      ["Wall units (overhead cabinets)", "Acrylic", "", "r.ft"],
+      ["Loft units", "Laminate", "", "r.ft"],
+      ["Tall unit / pantry unit", "Acrylic", "", "nos"],
+      ["Pull-out baskets & cutlery tray", "-", "", "set"],
+      ["Bottle pull-out / corner carousel", "-", "", "nos"],
+    ]},
+    { title: "Wardrobe", rows: [
+      ["Wardrobe with hinged / sliding shutters", "Laminate", "", "sq.ft"],
+      ["Loft above wardrobe", "Laminate", "", "sq.ft"],
+      ["Internal drawers", "-", "", "nos"],
+      ["Mirror / dresser unit", "-", "", "nos"],
+    ]},
+    { title: "Pooja Unit", rows: [
+      ["Pooja unit with temple-arch top", "Laminate", "", "sq.ft"],
+      ["CNC jaali doors", "-", "", "nos"],
+      ["Backlit panel with LED", "-", "", "nos"],
+      ["Bell hangers & drawers for pooja items", "-", "", "set"],
+    ]},
+    { title: "TV Unit", rows: [
+      ["TV back panel", "Laminate", "", "sq.ft"],
+      ["TV base / floating unit with drawers", "Laminate", "", "r.ft"],
+      ["Display shelves", "Laminate", "", "nos"],
+      ["Profile / cove LED lighting", "-", "", "r.ft"],
+    ]},
+  ];
+
+  const body = document.getElementById("body");
+  const inr = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
+  const num = (v) => parseFloat(String(v).replace(/,/g, "")) || 0;
+
+  let state;
+  try { state = JSON.parse(localStorage.getItem(KEY)); } catch (e) { state = null; }
+  if (!state) state = fresh();
+
+  function fresh() {
+    return {
+      fields: {},
+      sections: DEFAULT.map((s) => ({ title: s.title, rows: s.rows.map(([d, f, q, u]) => ({ d, f, q, u, r: "" })) })),
+    };
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function opt(list, val) { return list.map((o) => `<option${o === val ? " selected" : ""}>${o}</option>`).join(""); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
+
+  function render() {
+    let html = "";
+    state.sections.forEach((sec, si) => {
+      html += `<tr class="section" data-sec="${si}"><td colspan="7"><input class="sec-title" data-s="${si}" data-f="title" value="${esc(sec.title)}"></td><td class="no-print"><button class="del" data-delsec="${si}" title="Remove this section">×</button></td></tr>`;
+      sec.rows.forEach((r, ri) => {
+        html += `<tr>
+          <td class="sn">${ri + 1}</td>
+          <td><input data-s="${si}" data-r="${ri}" data-f="d" value="${esc(r.d)}"></td>
+          <td class="col-finish"><select data-s="${si}" data-r="${ri}" data-f="f">${opt(FINISHES, r.f)}</select></td>
+          <td class="col-qty"><input class="num" data-s="${si}" data-r="${ri}" data-f="q" value="${esc(r.q)}" placeholder="0"></td>
+          <td class="col-unit"><select data-s="${si}" data-r="${ri}" data-f="u">${opt(UNITS, r.u)}</select></td>
+          <td class="col-rate"><input class="num" data-s="${si}" data-r="${ri}" data-f="r" value="${esc(r.r)}" placeholder="0"></td>
+          <td class="amt r" id="a-${si}-${ri}"></td>
+          <td class="no-print"><button class="del" data-s="${si}" data-delrow="${ri}" title="Remove this line">×</button></td>
+        </tr>`;
+      });
+      html += `<tr class="subtotal" data-sec="${si}"><td></td><td colspan="5">${esc(sec.title)} total</td><td class="amt r" id="st-${si}"></td><td class="no-print"></td></tr>`;
+      html += `<tr class="no-print"><td></td><td class="add" colspan="7"><button class="btn btn--small" data-addrow="${si}">+ Add line to ${esc(sec.title)}</button></td></tr>`;
+    });
+    html += `<tr class="no-print"><td></td><td class="add" colspan="7"><button class="btn btn--small" id="addsec">+ Add new section (e.g. False Ceiling, Study Table)</button></td></tr>`;
+    body.innerHTML = html;
+    calc();
+  }
+
+  function calc() {
+    let sub = 0;
+    state.sections.forEach((sec, si) => {
+      let st = 0;
+      sec.rows.forEach((r, ri) => {
+        const a = num(r.q) * num(r.r);
+        st += a;
+        const el = document.getElementById(`a-${si}-${ri}`);
+        if (el) { el.textContent = a ? inr(a) : "-"; el.parentElement.classList.toggle("is-empty", !a); }
+      });
+      const se = document.getElementById(`st-${si}`);
+      if (se) se.textContent = inr(st);
+      body.querySelectorAll(`[data-sec="${si}"]`).forEach((r) => r.classList.toggle("sec-empty", !st));
+      sub += st;
+    });
+    const f = state.fields;
+    const discount = num(f.discount ?? 0);
+    const gstPct = num(f.gst ?? 0);
+    const taxable = Math.max(sub - discount, 0);
+    const gst = taxable * gstPct / 100;
+    const grand = taxable + gst;
+    document.getElementById("sub").textContent = inr(sub);
+    document.getElementById("gstAmt").textContent = inr(gst);
+    document.getElementById("grand").textContent = inr(grand);
+    document.getElementById("words").textContent = grand ? "Rupees " + words(Math.round(grand)) + " only" : "";
+    return { sub, grand };
+  }
+
+  // Indian numbering words (lakh / crore)
+  function words(n) {
+    const a = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+    const b = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+    const two = (x) => x < 20 ? a[x] : b[Math.floor(x / 10)] + (x % 10 ? " " + a[x % 10] : "");
+    const three = (x) => (x >= 100 ? a[Math.floor(x / 100)] + " Hundred" + (x % 100 ? " " : "") : "") + (x % 100 ? two(x % 100) : "");
+    if (n === 0) return "Zero";
+    let out = [];
+    const crore = Math.floor(n / 10000000); n %= 10000000;
+    const lakh = Math.floor(n / 100000); n %= 100000;
+    const thousand = Math.floor(n / 1000); n %= 1000;
+    if (crore) out.push(three(crore) + " Crore");
+    if (lakh) out.push(two(lakh) + " Lakh");
+    if (thousand) out.push(two(thousand) + " Thousand");
+    if (n) out.push(three(n));
+    return out.join(" ");
+  }
+
+  // Simple fields (customer, quote details, totals, terms)
+  document.querySelectorAll("[data-k]").forEach((el) => {
+    const k = el.dataset.k;
+    if (state.fields[k] !== undefined) el.value = state.fields[k];
+    else state.fields[k] = el.value;
+    el.addEventListener("input", () => { state.fields[k] = el.value; calc(); save(); });
+  });
+  const dateEl = document.querySelector('[data-k="q_date"]');
+  if (!dateEl.value) { dateEl.value = new Date().toISOString().slice(0, 10); state.fields.q_date = dateEl.value; }
+
+  // Table edits
+  body.addEventListener("input", (e) => {
+    const t = e.target, si = t.dataset.s, ri = t.dataset.r, f = t.dataset.f;
+    if (si === undefined || !f) return;
+    if (ri === undefined) state.sections[si][f] = t.value;
+    else state.sections[si].rows[ri][f] = t.value;
+    calc(); save();
+  });
+  body.addEventListener("click", (e) => {
+    const t = e.target;
+    if (t.dataset.addrow !== undefined) {
+      state.sections[t.dataset.addrow].rows.push({ d: "", f: "Laminate", q: "", u: "sq.ft", r: "" });
+    } else if (t.dataset.delrow !== undefined) {
+      state.sections[t.dataset.s].rows.splice(t.dataset.delrow, 1);
+    } else if (t.dataset.delsec !== undefined) {
+      if (!confirm("Remove the whole \"" + state.sections[t.dataset.delsec].title + "\" section?")) return;
+      state.sections.splice(t.dataset.delsec, 1);
+    } else if (t.id === "addsec") {
+      state.sections.push({ title: "New Section", rows: [{ d: "", f: "Laminate", q: "", u: "sq.ft", r: "" }] });
+    } else return;
+    save(); render();
+  });
+  // selects fire "change", not always "input"
+  body.addEventListener("change", (e) => {
+    const t = e.target;
+    if (t.tagName !== "SELECT") return;
+    state.sections[t.dataset.s].rows[t.dataset.r][t.dataset.f] = t.value;
+    save();
+  });
+
+  document.getElementById("reset").addEventListener("click", () => {
+    if (!confirm("Clear all quantities and rates and go back to the original quotation?")) return;
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    location.reload();
+  });
+
+  document.getElementById("whatsapp").addEventListener("click", () => {
+    const { grand } = calc();
+    const f = state.fields;
+    let msg = `*Astra Interiors - Quotation ${f.q_no || ""}*\nCustomer: ${f.c_name || ""}\n\n`;
+    state.sections.forEach((sec) => {
+      const st = sec.rows.reduce((t, r) => t + num(r.q) * num(r.r), 0);
+      msg += `${sec.title}: ${inr(st)}\n`;
+    });
+    msg += `\n*Grand total: ${inr(grand)}*\nValid for ${f.q_valid || "15 days"}.\n\nAstra Interiors, Selaiyur · +91 97911 82789`;
+    const phone = (f.c_phone || "").replace(/\D/g, "");
+    const to = phone.length === 10 ? "91" + phone : phone;
+    window.open("https://wa.me/" + to + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+  });
+
+  // Terms box grows with its text so the whole thing prints
+  const terms = document.querySelector('[data-k="terms"]');
+  const fit = () => {
+    terms.style.height = "auto"; terms.style.height = terms.scrollHeight + 4 + "px";
+    document.getElementById("termsPrint").textContent = terms.value;
+  };
+  terms.addEventListener("input", fit);
+  window.addEventListener("beforeprint", fit);
+
+  render();
+  body.classList.add("hide-empty");
+  fit();
+  save();
+})();
+</script>
+</body>
+</html>

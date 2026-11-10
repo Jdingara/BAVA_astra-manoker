@@ -1,0 +1,946 @@
+{
+ "name": "1F Master Bedroom Wardrobe",
+ "title": "1F Master Bedroom",
+ "colours": {
+  "A": "27292 LV Mink",
+  "B": "27262 LV Peacock"
+ },
+ "shades": {
+  "A": "#d9cdd2",
+  "B": "#075f7f"
+ },
+ "cut": [
+  [
+   "Loft carcass",
+   "Side panel L/R",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   500.0,
+   432.0,
+   500.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Top & bottom",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2374.0,
+   432.0,
+   2374.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Partition",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   464.0,
+   426.0,
+   464.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 1",
+   "6 mm back ply",
+   1,
+   476.0,
+   794.3,
+   476.0,
+   794.3,
+   "-"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 2",
+   "6 mm back ply",
+   1,
+   476.0,
+   785.3,
+   476.0,
+   785.3,
+   "-"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 3",
+   "6 mm back ply",
+   1,
+   476.0,
+   794.3,
+   476.0,
+   794.3,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Side panel L/R",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2285.0,
+   432.0,
+   2285.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Top & bottom",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2374.0,
+   432.0,
+   2374.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Partition (full height)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2249.0,
+   426.0,
+   2249.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 1",
+   "6 mm back ply",
+   1,
+   2261.0,
+   794.3,
+   2261.0,
+   794.3,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 2",
+   "6 mm back ply",
+   1,
+   2261.0,
+   785.3,
+   2261.0,
+   785.3,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 3",
+   "6 mm back ply",
+   1,
+   2261.0,
+   794.3,
+   2261.0,
+   794.3,
+   "-"
+  ],
+  [
+   "Base",
+   "Base front (115 high)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   2374.0,
+   115.0,
+   2374.0,
+   114.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Base",
+   "Base support / cross rail",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   5,
+   372.0,
+   115.0,
+   372.0,
+   115.0,
+   "-"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Bangle/perfume column partition",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   2249.0,
+   426.0,
+   2249.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf 300 wide (200 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   10,
+   300.0,
+   402.0,
+   300.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Partition beside drawers",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   400.0,
+   426.0,
+   400.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Drawer top shelf",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   464.3,
+   402.0,
+   464.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Inside drawer front",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   458.3,
+   194.0,
+   454.3,
+   190.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Dressing table top",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   464.3,
+   402.0,
+   464.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf under slim drawer",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   464.3,
+   402.0,
+   464.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Slim drawer front",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   458.3,
+   144.0,
+   454.3,
+   140.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Dressing mirror (on back panel)",
+   "5 mm mirror",
+   1,
+   1000.0,
+   384.3,
+   1000.0,
+   384.3,
+   "polished"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf over dressing (LED below)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   464.3,
+   402.0,
+   464.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Glass shelf",
+   "8 mm toughened glass",
+   1,
+   460.3,
+   392.0,
+   460.3,
+   392.0,
+   "polished"
+  ],
+  [
+   "Section 2 (col_hang)",
+   "Drawer top shelf",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   773.3,
+   402.0,
+   773.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 2 (col_hang)",
+   "Shelf under hanging",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   773.3,
+   402.0,
+   773.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 2 (col_hang)",
+   "Shelf 773 wide (305 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   773.3,
+   402.0,
+   773.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 3 (col_shelves)",
+   "Shelf 782 wide (305 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   6,
+   782.3,
+   402.0,
+   782.3,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Loft door A",
+   "18 mm door - A 27292 LV Mink",
+   6,
+   497.0,
+   392.7,
+   493.0,
+   388.7,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Main door A",
+   "18 mm door - A 27292 LV Mink",
+   2,
+   2282.0,
+   392.7,
+   2278.0,
+   388.7,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Main door B",
+   "18 mm door - B 27262 LV Peacock",
+   2,
+   2282.0,
+   392.7,
+   2278.0,
+   388.7,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Main door A",
+   "18 mm door - A 27292 LV Mink",
+   2,
+   1882.0,
+   392.7,
+   1878.0,
+   388.7,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Drawer front B",
+   "18 mm door - B 27262 LV Peacock",
+   2,
+   788.3,
+   197.0,
+   784.3,
+   193.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   386.0,
+   130.0,
+   386.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   402.3,
+   130.0,
+   402.3,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   2,
+   386.0,
+   438.3,
+   386.0,
+   438.3,
+   "-"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   386.0,
+   120.0,
+   386.0,
+   119.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   402.3,
+   120.0,
+   402.3,
+   119.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   1,
+   386.0,
+   438.3,
+   386.0,
+   438.3,
+   "-"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   386.0,
+   130.0,
+   386.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   711.3,
+   130.0,
+   711.3,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   2,
+   386.0,
+   747.3,
+   386.0,
+   747.3,
+   "-"
+  ]
+ ],
+ "sqft": [
+  4.7,
+  22.1,
+  4.3,
+  4.1,
+  4.0,
+  4.1,
+  21.3,
+  22.1,
+  20.6,
+  19.3,
+  19.1,
+  19.3,
+  2.9,
+  2.3,
+  10.3,
+  13.0,
+  1.8,
+  2.0,
+  1.9,
+  2.0,
+  2.0,
+  0.7,
+  4.1,
+  2.0,
+  1.9,
+  3.3,
+  3.3,
+  6.7,
+  20.3,
+  12.6,
+  19.3,
+  19.3,
+  15.9,
+  3.3,
+  2.2,
+  2.3,
+  3.6,
+  1.0,
+  1.0,
+  1.8,
+  2.2,
+  4.0,
+  6.2
+ ],
+ "mats": [
+  [
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   182.3,
+   7
+  ],
+  [
+   "6 mm back ply",
+   81.6,
+   3
+  ],
+  [
+   "18 mm door - A 27292 LV Mink",
+   47.8,
+   2
+  ],
+  [
+   "18 mm door - B 27262 LV Peacock",
+   22.6,
+   1
+  ],
+  [
+   "Inner liner laminate (door backs)",
+   70.4,
+   3
+  ],
+  [
+   "8 mm toughened glass",
+   1.9,
+   "-"
+  ],
+  [
+   "5 mm mirror",
+   4.1,
+   "-"
+  ],
+  [
+   "Edge band 2 mm (doors, drawer fronts)",
+   "54 m",
+   ""
+  ],
+  [
+   "Edge tape 0.5 mm (carcass fronts)",
+   "53 m",
+   ""
+  ]
+ ],
+ "hardware": [
+  [
+   "Soft-close hinges",
+   36
+  ],
+  [
+   "Soft-close telescopic channels 350 mm (pairs)",
+   5
+  ],
+  [
+   "Bar handles gold, long vertical (main doors)",
+   6
+  ],
+  [
+   "Bar handles gold, short vertical (loft & bottom doors)",
+   6
+  ],
+  [
+   "Bar handles gold, horizontal (outside drawers)",
+   2
+  ],
+  [
+   "Finger-pull / profile handle (inside drawers)",
+   3
+  ],
+  [
+   "Wardrobe rod + 2 end supports",
+   1
+  ],
+  [
+   "Glass shelf supports (studs)",
+   4
+  ],
+  [
+   "LED profile light over dressing mirror (0.4 m) + driver + door sensor switch",
+   1
+  ],
+  [
+   "Mirror fixing clips / adhesive",
+   "1 set"
+  ],
+  [
+   "Shelf pins / minifix",
+   "as required"
+  ]
+ ],
+ "geom": {
+  "W": 2410,
+  "H": 2900,
+  "DT": 450,
+  "D": 432.0,
+  "L": 500.0,
+  "P": 115.0,
+  "T": 18.0,
+  "SH": 18.0,
+  "GAP": 3.0,
+  "SW": 395.6666666666667,
+  "modules": 6,
+  "part_x": [
+   800.3333333333334,
+   1591.6666666666667
+  ],
+  "loft_doors": [
+   [
+    0,
+    1,
+    "L"
+   ],
+   [
+    1,
+    2,
+    "R"
+   ],
+   [
+    2,
+    3,
+    "L"
+   ],
+   [
+    3,
+    4,
+    "R"
+   ],
+   [
+    4,
+    5,
+    "L"
+   ],
+   [
+    5,
+    6,
+    "R"
+   ]
+  ],
+  "main_doors": [
+   [
+    0,
+    "A",
+    "L",
+    "R"
+   ],
+   [
+    1,
+    "B",
+    "R",
+    "L"
+   ],
+   [
+    2,
+    "A",
+    "L",
+    "R"
+   ],
+   [
+    3,
+    "A",
+    "R",
+    "L"
+   ],
+   [
+    4,
+    "B",
+    "L",
+    "R"
+   ],
+   [
+    5,
+    "A",
+    "R",
+    "L"
+   ]
+  ],
+  "drawers": [
+   [
+    2,
+    4,
+    "B",
+    2,
+    400
+   ]
+  ],
+  "bottom_doors": [],
+  "loft_colour": "A",
+  "shelves": [
+   [
+    18.0,
+    318.0,
+    333.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    551.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    769.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    987.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1205.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1423.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1641.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1859.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    2077.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    2295.0,
+    "board"
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    533.0,
+    "board"
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    782.0,
+    "board"
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    614.0,
+    "board"
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    1920.0,
+    "board"
+   ],
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    533.0,
+    "board"
+   ],
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    1314.0,
+    "board"
+   ],
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    856.0,
+    "board"
+   ],
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    1179.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    438.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    761.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    1084.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    1407.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    1730.0,
+    "board"
+   ],
+   [
+    1609.6666666666667,
+    2392.0,
+    2053.0,
+    "board"
+   ]
+  ],
+  "rods": [
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    2322.0
+   ]
+  ],
+  "glass": [
+   [
+    336.0,
+    800.3333333333334,
+    2156.0
+   ]
+  ],
+  "vparts": [
+   [
+    318.0,
+    133.0,
+    2382.0
+   ],
+   [
+    318.0,
+    133.0,
+    533.0
+   ]
+  ],
+  "drawer_boxes": [
+   [
+    336.0,
+    800.3333333333334,
+    2,
+    400.0
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    1,
+    190.0
+   ],
+   [
+    818.3333333333334,
+    1591.6666666666667,
+    2,
+    400
+   ]
+  ],
+  "int_drawers": [
+   [
+    336.0,
+    800.3333333333334,
+    2,
+    400.0,
+    133.0
+   ],
+   [
+    336.0,
+    800.3333333333334,
+    1,
+    150.0,
+    632.0
+   ]
+  ],
+  "mirrors": [
+   [
+    376.0,
+    760.3333333333334,
+    860.0,
+    1860.0
+   ]
+  ],
+  "leds": [
+   [
+    356.0,
+    780.3333333333334,
+    1920.0
+   ]
+  ]
+ }
+}

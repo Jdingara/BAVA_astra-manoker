@@ -1,0 +1,15 @@
+# Python / temp
+__pycache__/
+*.pyc
+~$*
+*.tmp
+# Manufacturer catalogues (not ours to publish, large)
+Merino*.pdf
+MerinoLam*.pdf
+# Older duplicate copies of the carpenter list (keep the latest only)
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List.xlsx
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List (updated).xlsx
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List (123512).xlsx
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List (123543).xlsx
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List (123605).xlsx
+2-Designs/Owner Drawings/Mr. Manoker - CARPENTER List (123634).xlsx

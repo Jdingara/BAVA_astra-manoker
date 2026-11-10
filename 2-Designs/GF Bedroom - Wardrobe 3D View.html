@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GF Bedroom Wardrobe 3D - Mr. Manoker | Astra Interiors</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #1f1a17; font-family: "Segoe UI", system-ui, sans-serif; color: #eee; overflow: hidden; }
+  #view { position: fixed; inset: 0; }
+  .bar {
+    position: fixed; left: 12px; right: 12px; top: 12px; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center;
+    background: rgba(31, 26, 23, .88); border-radius: 12px; padding: 10px 14px; font-size: 13px; backdrop-filter: blur(6px);
+  }
+  .bar b { color: #c9a46a; letter-spacing: .1em; }
+  .bar label { display: flex; align-items: center; gap: 6px; }
+  .bar input[type=color] { width: 34px; height: 26px; border: 0; padding: 0; background: none; cursor: pointer; }
+  .bar input[type=text] { width: 110px; padding: 4px 6px; border-radius: 4px; border: 0; font: inherit; font-size: 12px; }
+  .sp { flex: 1; }
+  .btn { font: inherit; font-size: 13px; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; font-weight: 600; background: #3a322c; color: #fff; }
+  .btn--gold { background: #c9a46a; color: #1f1a17; }
+  .info { position: fixed; left: 12px; bottom: 12px; z-index: 2; background: rgba(31, 26, 23, .85); padding: 8px 12px; border-radius: 10px; font-size: 12px; line-height: 1.5; max-width: 520px; }
+  .info a { color: #c9a46a; }
+  #msg { position: fixed; inset: 0; display: grid; place-items: center; font-size: 15px; z-index: 1; }
+</style>
+</head>
+<body>
+<div id="msg">Loading 3D view…</div>
+<div id="view"></div>
+
+<div class="bar">
+  <b>ASTRA · 3D</b>
+  <button class="btn btn--gold" id="open">Open shutters</button>
+  <button class="btn" id="front">Front view</button>
+  <button class="btn" id="angle">Angle view</button>
+  <label>A <input type="color" id="colA" value="#8fb2a6"><input type="text" id="codeA" placeholder="Merino code A"></label>
+  <label>B <input type="color" id="colB" value="#8c4f28"><input type="text" id="codeB" placeholder="Merino code B"></label>
+  <span class="sp"></span>
+  <button class="btn btn--gold" id="save">Save image</button>
+</div>
+
+<div class="info" id="info"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function () {
+  if (!window.THREE) { document.getElementById("msg").textContent = "The 3D view needs an internet connection to load. Please connect and reopen this file."; return; }
+  document.getElementById("msg").remove();
+
+  // ---------- sizes: shared with the 2D drawing ----------
+  const KEY2D = "astra-manoker-gf-bed-wardrobe", KEY3D = "astra-manoker-gf-bed-3d";
+  let S = { W: 2564, H: 2879, D: 450, L: 500, DZ: 400, P: 75 };
+  try { Object.assign(S, JSON.parse(localStorage.getItem(KEY2D) || "{}")); } catch (e) {}
+  let prefs = {};
+  try { prefs = JSON.parse(localStorage.getItem(KEY3D) || "{}"); } catch (e) {}
+  ["colA", "colB", "codeA", "codeB"].forEach((k) => { if (prefs[k]) document.getElementById(k).value = prefs[k]; });
+
+  const mm = (v) => v / 1000;
+  const { W, H, L, DZ, P } = S;
+  const T = 18, GAP = 3, SH = 18;          // 18 mm overall: 16 ply + 1 lam + 0.8 backer
+  const D = S.D - SH;                       // carcass depth; overall depth includes the shutter
+  const ND = 2;
+  const sw = (W - 2 * T) / 6;
+  document.getElementById("info").innerHTML =
+    `GF Bedroom wardrobe · Mr. Manoker · ${W} W × ${H} H × ${S.D} D mm (sizes from the 2D drawing). ` +
+    `Drag to rotate, scroll to zoom, right-drag to move. <a href="GF Bedroom - Wardrobe 2D Drawing.html">Open 2D drawing</a>`;
+
+  // ---------- renderer / scene ----------
+  const view = document.getElementById("view");
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.78;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  view.append(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color("#efe9e1");
+  const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.05, 50);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.target.set(0, mm(H) * 0.5, 0);
+  controls.maxPolarAngle = Math.PI * 0.55;
+
+  // ---------- environment for reflections ----------
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const envScene = new THREE.Scene();
+  envScene.background = new THREE.Color("#6e655c");
+  const envLight = new THREE.Mesh(new THREE.PlaneGeometry(6, 3), new THREE.MeshBasicMaterial({ color: "#cfc6ba" }));
+  envLight.position.set(0, 3, 4); envLight.lookAt(0, 1, 0); envScene.add(envLight);
+  const envWin = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.MeshBasicMaterial({ color: "#f4fbff" }));
+  envWin.position.set(4, 1.5, 1); envWin.lookAt(0, 1.5, 0); envScene.add(envWin);
+  scene.environment = pmrem.fromScene(envScene, 0.04).texture;
+
+  // ---------- lights ----------
+  scene.add(new THREE.HemisphereLight("#fffaf2", "#9c8b76", 0.38));
+  const key = new THREE.DirectionalLight("#fff3e2", 0.75);
+  key.position.set(2.5, 3.5, 4); key.castShadow = true;
+  key.shadow.mapSize.set(2048, 2048);
+  Object.assign(key.shadow.camera, { left: -4, right: 4, top: 4, bottom: -1, near: 0.5, far: 12 });
+  scene.add(key);
+  const fill = new THREE.DirectionalLight("#e8f2ff", 0.35);
+  fill.position.set(-3, 2, 3); scene.add(fill);
+
+  // ---------- room ----------
+  const roomW = mm(W) + 2.4, roomH = mm(H) + 0.25;
+  const floorTex = (() => {
+    const c = document.createElement("canvas"); c.width = c.height = 512;
+    const g = c.getContext("2d");
+    g.fillStyle = "#e9dfd0"; g.fillRect(0, 0, 512, 512);
+    for (let i = 0; i < 40; i++) { g.strokeStyle = `rgba(160,140,115,${Math.random() * 0.12})`; g.lineWidth = Math.random() * 3; g.beginPath(); g.moveTo(Math.random() * 512, 0); g.bezierCurveTo(Math.random() * 512, 200, Math.random() * 512, 300, Math.random() * 512, 512); g.stroke(); }
+    g.strokeStyle = "rgba(150,135,115,.35)"; g.lineWidth = 2; g.strokeRect(0, 0, 512, 512);
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(roomW / 0.8, 5); t.encoding = THREE.sRGBEncoding; return t;
+  })();
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(roomW, 4), new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.25, metalness: 0 }));
+  floor.rotation.x = -Math.PI / 2; floor.position.set(0, 0, 2 - mm(D) - 0.01); floor.receiveShadow = true; scene.add(floor);
+  const wallMat = new THREE.MeshStandardMaterial({ color: "#f3ece1", roughness: 0.95 });
+  const back = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomH), wallMat);
+  back.position.set(0, roomH / 2, -mm(D) - 0.01); back.receiveShadow = true; scene.add(back);
+  [-1, 1].forEach((sgn) => {
+    const side = new THREE.Mesh(new THREE.PlaneGeometry(4, roomH), wallMat);
+    side.rotation.y = -sgn * Math.PI / 2; side.position.set(sgn * roomW / 2, roomH / 2, 2 - mm(D)); side.receiveShadow = true; scene.add(side);
+  });
+  const ceil = new THREE.Mesh(new THREE.PlaneGeometry(roomW, 4), new THREE.MeshStandardMaterial({ color: "#fbf8f3" }));
+  ceil.rotation.x = Math.PI / 2; ceil.position.set(0, roomH, 2 - mm(D)); scene.add(ceil);
+  // skirting on walls
+  const skirt = new THREE.Mesh(new THREE.BoxGeometry(roomW, 0.08, 0.012), new THREE.MeshStandardMaterial({ color: "#d9c8ad" }));
+  skirt.position.set(0, 0.04, -mm(D) - 0.004); scene.add(skirt);
+
+  // ---------- materials ----------
+  const fluteTexture = (color) => {
+    const c = document.createElement("canvas"); c.width = 64; c.height = 8;
+    const g = c.getContext("2d");
+    const grd = g.createLinearGradient(0, 0, 64, 0);
+    const base = new THREE.Color(color), dark = base.clone().multiplyScalar(0.62), light = base.clone().lerp(new THREE.Color("#ffffff"), 0.12);
+    grd.addColorStop(0, "#" + dark.getHexString()); grd.addColorStop(0.18, "#" + base.getHexString());
+    grd.addColorStop(0.5, "#" + light.getHexString()); grd.addColorStop(0.82, "#" + base.getHexString()); grd.addColorStop(1, "#" + dark.getHexString());
+    g.fillStyle = grd; g.fillRect(0, 0, 64, 8);
+    const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.encoding = THREE.sRGBEncoding; return t;
+  };
+  const M = {
+    A: new THREE.MeshStandardMaterial({ color: document.getElementById("colA").value, roughness: 0.22, metalness: 0.05, envMapIntensity: 0.35 }),
+    carcass: new THREE.MeshStandardMaterial({ color: "#efe7da", roughness: 0.7 }),
+    edge: new THREE.MeshStandardMaterial({ color: "#d7c7ae", roughness: 0.6 }),
+    mirror: new THREE.MeshStandardMaterial({ color: "#dfe9ec", metalness: 1, roughness: 0.03, envMapIntensity: 1.4 }),
+    gold: new THREE.MeshStandardMaterial({ color: "#c9a46a", metalness: 1, roughness: 0.28 }),
+    rod: new THREE.MeshStandardMaterial({ color: "#c8c8c8", metalness: 1, roughness: 0.3 }),
+    spot: new THREE.MeshBasicMaterial({ color: "#fff3d6" }),
+  };
+  const fluteMats = []; // one per B surface so repeat can match its width
+  function fluteMat(widthMM) {
+    const t = fluteTexture(document.getElementById("colB").value);
+    t.repeat.set(Math.max(1, Math.round(widthMM / 24)), 1);
+    const m = new THREE.MeshStandardMaterial({ map: t, bumpMap: t, bumpScale: 0.004, roughness: 0.6, envMapIntensity: 0.4 });
+    m.userData.width = widthMM; fluteMats.push(m); return m;
+  }
+
+  function box(w, h, d, mat, x, y, z, parent) {
+    const geo = new THREE.BoxGeometry(mm(w), mm(h), mm(d));
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(mm(x), mm(y), mm(z)); mesh.castShadow = mesh.receiveShadow = true;
+    (parent || scene).add(mesh); return mesh;
+  }
+
+  // ---------- carcass (x: left->right, y: floor up, z: front face at 0, back at -D) ----------
+  const wr = new THREE.Group(); scene.add(wr);
+  const X = (v) => v - W / 2;
+  const mainB = P, mainT = H - L, cz = -D / 2;
+  // outer sides painted A (visible ends)
+  box(T, H - P, D, M.A, X(T / 2), P + (H - P) / 2, cz, wr);
+  box(T, H - P, D, M.A, X(W - T / 2), P + (H - P) / 2, cz, wr);
+  // horizontals
+  [[mainB + T / 2], [mainT - T / 2], [mainT + T / 2], [H - T / 2]].forEach(([y]) => box(W - 2 * T, T, D, M.carcass, 0, y, cz, wr));
+  // partitions
+  [1, 2, 4, 5].forEach((i) => {
+    const x = X(T + i * sw);
+    box(T, mainT - mainB - 2 * T, D - 6, M.carcass, x, (mainB + mainT) / 2, cz + 3, wr);
+    box(T, L - 2 * T, D - 6, M.carcass, x, (mainT + H) / 2, cz + 3, wr);
+  });
+  box(W - 2 * T, H - P - 2 * T, 6, M.carcass, 0, (P + H) / 2, -D + 3, wr); // back
+  box(W - 2 * T, P, T, new THREE.MeshStandardMaterial({ color: "#6f9488", roughness: 0.4 }), 0, P / 2, -40, wr); // plinth
+  // internals
+  const clearH = mainT - mainB - 2 * T, top = mainT - T, bot = mainB + T, sd = D - 30, sz = -sd / 2 - 24;
+  const secX = (s0, n) => [X(T + s0 * sw + (s0 ? T / 2 : 0)), X(T + (s0 + n) * sw - (s0 + n === 6 ? 0 : T / 2))];
+  const shelf = (x1, x2, y) => box(x2 - x1 + 0, T, sd, M.carcass, (x1 + x2) / 2, y, sz, wr);
+  [[0, 1], [5, 1]].forEach(([s0, n]) => { const [a, b] = secX(s0, n).map((v) => v + W / 2); for (let k = 1; k <= 4; k++) shelf(X(a), X(b), bot + (clearH * k) / 5); });
+  [[1, 1], [4, 1]].forEach(([s0, n]) => {
+    const [a, b] = secX(s0, n).map((v) => v + W / 2);
+    shelf(X(a), X(b), top - 300);
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(mm(12), mm(12), mm(b - a - 20), 16), M.rod);
+    rod.rotation.z = Math.PI / 2; rod.position.set(mm(X((a + b) / 2)), mm(top - 380), mm(-D / 2)); wr.add(rod);
+  });
+  {
+    const [a, b] = secX(2, 2).map((v) => v + W / 2);
+    const dTop = bot + DZ;
+    shelf(X(a), X(b), dTop);
+    const upper = top - dTop;
+    shelf(X(a), X(b), dTop + upper / 3); shelf(X(a), X(b), dTop + (2 * upper) / 3);
+  }
+
+  // ---------- shutters & drawers ----------
+  const doors = [], drawers = [];
+  function shutter(mod, y1, y2, finish, hingeLeft, opts = {}) {
+    const x1 = T + mod * sw + GAP / 2, x2 = T + (mod + 1) * sw - GAP / 2, w = x2 - x1, h = y2 - y1;
+    const pivot = new THREE.Group();
+    const hx = hingeLeft ? x1 : x2;
+    pivot.position.set(mm(X(hx)), 0, mm(SH / 2)); wr.add(pivot);
+    const panel = new THREE.Group(); pivot.add(panel);
+    const cx = (hingeLeft ? 1 : -1) * w / 2;
+    const mat = finish === "B" ? fluteMat(w) : M.A;
+    const p = new THREE.Mesh(new THREE.BoxGeometry(mm(w), mm(h), mm(SH)), [M.edge, M.edge, M.edge, M.edge, mat, M.carcass]);
+    p.position.set(mm(cx), mm((y1 + y2) / 2), 0); p.castShadow = p.receiveShadow = true; panel.add(p);
+    if (opts.mirror) {
+      const fr = Math.min(w * 0.12, 80);
+      const mir = new THREE.Mesh(new THREE.PlaneGeometry(mm(w - 2 * fr), mm(h - 2 * fr)), M.mirror);
+      mir.position.set(mm(cx), mm((y1 + y2) / 2), mm(SH / 2 + 0.6)); panel.add(mir);
+    }
+    if (opts.handle) {
+      const len = Math.min(h * 0.28, 600);
+      const hxPos = (hingeLeft ? 1 : -1) * (w - 40);
+      const bar = new THREE.Mesh(new THREE.BoxGeometry(mm(12), mm(len), mm(14)), M.gold);
+      bar.position.set(mm(hxPos), mm(y1 + opts.handleAt * h), mm(SH / 2 + 16)); panel.add(bar);
+      [-1, 1].forEach((sgn) => { const leg = new THREE.Mesh(new THREE.BoxGeometry(mm(10), mm(10), mm(18)), M.gold); leg.position.set(mm(hxPos), mm(y1 + opts.handleAt * h + sgn * (len / 2 - 15)), mm(SH / 2 + 8)); panel.add(leg); });
+    }
+    doors.push({ pivot, dir: hingeLeft ? -1 : 1 });
+  }
+  const loftF = ["A", "B", "A", "A", "B", "A"];
+  for (let i = 0; i < 6; i++) shutter(i, mainT + GAP / 2, H - GAP / 2, loftF[i], i < 3);
+  const y1 = mainB + GAP / 2, y2 = mainT - GAP / 2, hTopY = mainB + DZ;
+  shutter(0, y1, y2, "A", true, { handle: true, handleAt: 0.55 });
+  shutter(1, y1, y2, "B", true, { handle: true, handleAt: 0.55 });
+  shutter(2, hTopY + GAP / 2, y2, "A", true, { handle: true, handleAt: 0.45 });
+  shutter(3, hTopY + GAP / 2, y2, "A", false, { handle: true, handleAt: 0.45 });
+  shutter(4, y1, y2, "B", false, { handle: true, handleAt: 0.55 });
+  shutter(5, y1, y2, "A", false, { handle: true, handleAt: 0.55 });
+  const dx1 = T + 2 * sw + GAP / 2, dx2 = T + 4 * sw - GAP / 2, dw = dx2 - dx1, dh = DZ / ND;
+  for (let k = 0; k < ND; k++) {
+    const g = new THREE.Group(); wr.add(g);
+    const yy = mainB + k * dh + GAP / 2, hh = dh - GAP;
+    const front = new THREE.Mesh(new THREE.BoxGeometry(mm(dw), mm(hh), mm(SH)), [M.edge, M.edge, M.edge, M.edge, fluteMat(dw), M.carcass]);
+    front.position.set(mm(X(dx1 + dw / 2)), mm(yy + hh / 2), mm(SH / 2)); front.castShadow = true; g.add(front);
+    const bx = new THREE.Mesh(new THREE.BoxGeometry(mm(dw - 60), mm(hh - 60), mm(D - 80)), M.carcass);
+    bx.position.set(mm(X(dx1 + dw / 2)), mm(yy + hh / 2 - 10), mm(-(D - 80) / 2)); g.add(bx);
+    const bar = new THREE.Mesh(new THREE.BoxGeometry(mm(Math.min(dw * 0.35, 450)), mm(12), mm(14)), M.gold);
+    bar.position.set(mm(X(dx1 + dw / 2)), mm(yy + hh / 2), mm(SH + 16)); g.add(bar);
+    drawers.push(g);
+  }
+  // ceiling spotlights above fluted modules
+  [1, 4].forEach((i) => {
+    const x = mm(X(T + i * sw + sw / 2));
+    const disc = new THREE.Mesh(new THREE.CircleGeometry(0.035, 24), M.spot);
+    disc.rotation.x = Math.PI / 2; disc.position.set(x, roomH - 0.002, 0.25); scene.add(disc);
+    const sp = new THREE.SpotLight("#ffe2b0", 1.0, 4, Math.PI / 7, 0.6, 1.5);
+    sp.position.set(x, roomH - 0.01, 0.25); sp.target.position.set(x, mm(H) * 0.55, 0); scene.add(sp, sp.target);
+  });
+
+  // ---------- views ----------
+  const centerY = mm(H) * 0.5;
+  const fitDist = () => { const t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)); return Math.max(mm(H) / (2 * t), (mm(W) + 0.4) / (2 * t * camera.aspect)) * 1.28 + 0.2; };
+  function setView(kind) {
+    const dist = fitDist();
+    if (kind === "front") camera.position.set(0, centerY + 0.05, dist);
+    else camera.position.set(mm(W) * 0.45, centerY + 0.3, dist * 1.0);
+    controls.target.set(0, centerY, 0); controls.update();
+  }
+  setView("angle");
+  document.getElementById("front").onclick = () => setView("front");
+  document.getElementById("angle").onclick = () => setView("angle");
+
+  let open = false, openT = 0;
+  document.getElementById("open").onclick = (e) => { open = !open; e.target.textContent = open ? "Close shutters" : "Open shutters"; };
+
+  function recolor() {
+    M.A.color.set(document.getElementById("colA").value);
+    fluteMats.forEach((m) => { const t = fluteTexture(document.getElementById("colB").value); t.repeat.set(Math.max(1, Math.round(m.userData.width / 24)), 1); m.map = t; m.bumpMap = t; m.needsUpdate = true; });
+  }
+  ["colA", "colB", "codeA", "codeB"].forEach((k) => document.getElementById(k).addEventListener("input", () => {
+    prefs[k] = document.getElementById(k).value;
+    try { localStorage.setItem(KEY3D, JSON.stringify(prefs)); } catch (e) {}
+    if (k.startsWith("col")) recolor();
+  }));
+
+  document.getElementById("save").onclick = () => {
+    renderer.render(scene, camera);
+    const shot = renderer.domElement;
+    const c = document.createElement("canvas"); c.width = shot.width; c.height = shot.height;
+    const g = c.getContext("2d"); g.drawImage(shot, 0, 0);
+    const s = c.height / 900;
+    g.fillStyle = "rgba(31,26,23,.82)"; g.fillRect(0, c.height - 70 * s, c.width, 70 * s);
+    g.fillStyle = "#c9a46a"; g.font = `600 ${22 * s}px Segoe UI, sans-serif`; g.fillText("ASTRA INTERIORS", 24 * s, c.height - 40 * s);
+    g.fillStyle = "#eee"; g.font = `${15 * s}px Segoe UI, sans-serif`;
+    const a = document.getElementById("codeA").value, b = document.getElementById("codeB").value;
+    g.fillText(`GF Bedroom wardrobe · Mr. Manoker · ${W}×${H}×${S.D} mm` + (a || b ? ` · Merino A: ${a || "-"}  B: ${b || "-"}` : "") + " · +91 97911 82789", 24 * s, c.height - 16 * s);
+    const link = document.createElement("a");
+    link.href = c.toDataURL("image/jpeg", 0.92); link.download = "GF Bedroom Wardrobe - 3D " + (open ? "open" : "closed") + ".jpg"; link.click();
+  };
+
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // ---------- loop ----------
+  function tick() {
+    openT += ((open ? 1 : 0) - openT) * 0.08;
+    doors.forEach((d) => { d.pivot.rotation.y = d.dir * openT * 1.75; });
+    drawers.forEach((g, k) => { g.position.z = mm(openT * (k === 0 ? 300 : 0)); });
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  tick();
+  window.__astra3d = { setOpen: (v) => { open = v; openT = v ? 1 : 0; }, setView };
+})();
+</script>
+</body>
+</html>

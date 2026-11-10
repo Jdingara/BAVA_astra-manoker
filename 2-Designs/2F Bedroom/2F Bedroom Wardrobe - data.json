@@ -1,0 +1,893 @@
+{
+ "name": "2F Bedroom Wardrobe",
+ "title": "2F Bedroom",
+ "colours": {
+  "A": "21462 SF Lavendura",
+  "B": "21452 SF Prism Violet"
+ },
+ "shades": {
+  "A": "#a994c7",
+  "B": "#5c2568"
+ },
+ "cut": [
+  [
+   "Loft carcass",
+   "Side panel L/R",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   500.0,
+   432.0,
+   500.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Top & bottom",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2364.0,
+   432.0,
+   2364.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Partition",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   464.0,
+   426.0,
+   464.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 1",
+   "6 mm back ply",
+   1,
+   476.0,
+   791.0,
+   476.0,
+   791.0,
+   "-"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 2",
+   "6 mm back ply",
+   1,
+   476.0,
+   782.0,
+   476.0,
+   782.0,
+   "-"
+  ],
+  [
+   "Loft carcass",
+   "Back panel loft 3",
+   "6 mm back ply",
+   1,
+   476.0,
+   791.0,
+   476.0,
+   791.0,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Side panel L/R",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2213.0,
+   432.0,
+   2213.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Top & bottom",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2364.0,
+   432.0,
+   2364.0,
+   431.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Partition (full height)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   2177.0,
+   426.0,
+   2177.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 1",
+   "6 mm back ply",
+   1,
+   2189.0,
+   791.0,
+   2189.0,
+   791.0,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 2",
+   "6 mm back ply",
+   1,
+   2189.0,
+   782.0,
+   2189.0,
+   782.0,
+   "-"
+  ],
+  [
+   "Main carcass",
+   "Back panel section 3",
+   "6 mm back ply",
+   1,
+   2189.0,
+   791.0,
+   2189.0,
+   791.0,
+   "-"
+  ],
+  [
+   "Base",
+   "Base front (115 high)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   2364.0,
+   115.0,
+   2364.0,
+   114.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Base",
+   "Base support / cross rail",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   5,
+   372.0,
+   115.0,
+   372.0,
+   115.0,
+   "-"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Drawer top shelf",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   779.0,
+   402.0,
+   779.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Bangle/perfume column partition",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   1759.0,
+   426.0,
+   1759.0,
+   425.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf 300 wide (200 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   8,
+   300.0,
+   402.0,
+   300.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Dressing table top",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   461.0,
+   402.0,
+   461.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf under slim drawer",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   461.0,
+   402.0,
+   461.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Slim drawer front",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   455.0,
+   144.0,
+   451.0,
+   140.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Dressing mirror (on back panel)",
+   "5 mm mirror",
+   1,
+   1000.0,
+   381.0,
+   1000.0,
+   381.0,
+   "polished"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Shelf over dressing (LED below)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   461.0,
+   402.0,
+   461.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 1 (col_dressing)",
+   "Glass shelf",
+   "8 mm toughened glass",
+   1,
+   457.0,
+   392.0,
+   457.0,
+   392.0,
+   "polished"
+  ],
+  [
+   "Section 2 (col_shelves)",
+   "Shelf 770 wide (305 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   6,
+   770.0,
+   402.0,
+   770.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 3 (col_hang)",
+   "Drawer top shelf",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   779.0,
+   402.0,
+   779.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 3 (col_hang)",
+   "Shelf under hanging",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   1,
+   779.0,
+   402.0,
+   779.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Section 3 (col_hang)",
+   "Shelf 779 wide (305 spacing)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   779.0,
+   402.0,
+   779.0,
+   401.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Loft door A",
+   "18 mm door - A 21462 SF Lavendura",
+   6,
+   497.0,
+   391.0,
+   493.0,
+   387.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Main door B",
+   "18 mm door - B 21452 SF Prism Violet",
+   4,
+   1810.0,
+   391.0,
+   1806.0,
+   387.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Main door A",
+   "18 mm door - A 21462 SF Lavendura",
+   2,
+   2210.0,
+   391.0,
+   2206.0,
+   387.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Doors & drawer fronts",
+   "Drawer front B",
+   "18 mm door - B 21452 SF Prism Violet",
+   4,
+   785.0,
+   197.0,
+   781.0,
+   193.0,
+   "2 mm, 4 sides"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   386.0,
+   130.0,
+   386.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   717.0,
+   130.0,
+   717.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   2,
+   386.0,
+   753.0,
+   386.0,
+   753.0,
+   "-"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   386.0,
+   120.0,
+   386.0,
+   119.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   2,
+   399.0,
+   120.0,
+   399.0,
+   119.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   1,
+   386.0,
+   435.0,
+   386.0,
+   435.0,
+   "-"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer side",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   386.0,
+   130.0,
+   386.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer front/back (inner)",
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   4,
+   717.0,
+   130.0,
+   717.0,
+   129.5,
+   "0.5 mm, 1 long"
+  ],
+  [
+   "Drawer boxes",
+   "Drawer bottom",
+   "6 mm back ply",
+   2,
+   386.0,
+   753.0,
+   386.0,
+   753.0,
+   "-"
+  ]
+ ],
+ "sqft": [
+  4.7,
+  22.0,
+  4.3,
+  4.1,
+  4.0,
+  4.1,
+  20.6,
+  22.0,
+  20.0,
+  18.6,
+  18.4,
+  18.6,
+  2.9,
+  2.3,
+  3.4,
+  8.1,
+  10.4,
+  2.0,
+  2.0,
+  0.7,
+  4.1,
+  2.0,
+  1.9,
+  20.0,
+  3.4,
+  3.4,
+  6.7,
+  12.6,
+  30.5,
+  18.6,
+  6.7,
+  2.2,
+  4.0,
+  6.3,
+  1.0,
+  1.0,
+  1.8,
+  2.2,
+  4.0,
+  6.3
+ ],
+ "mats": [
+  [
+   "18 mm ply (16 + 1 lam + 0.8 backer)",
+   175.0,
+   7
+  ],
+  [
+   "6 mm back ply",
+   82.1,
+   3
+  ],
+  [
+   "18 mm door - A 21462 SF Lavendura",
+   31.2,
+   2
+  ],
+  [
+   "18 mm door - B 21452 SF Prism Violet",
+   37.1,
+   2
+  ],
+  [
+   "Inner liner laminate (door backs)",
+   68.3,
+   3
+  ],
+  [
+   "8 mm toughened glass",
+   1.9,
+   "-"
+  ],
+  [
+   "5 mm mirror",
+   4.1,
+   "-"
+  ],
+  [
+   "Edge band 2 mm (doors, drawer fronts)",
+   "53 m",
+   ""
+  ],
+  [
+   "Edge tape 0.5 mm (carcass fronts)",
+   "52 m",
+   ""
+  ]
+ ],
+ "hardware": [
+  [
+   "Soft-close hinges",
+   36
+  ],
+  [
+   "Soft-close telescopic channels 350 mm (pairs)",
+   5
+  ],
+  [
+   "Bar handles gold, long vertical (main doors)",
+   6
+  ],
+  [
+   "Bar handles gold, short vertical (loft & bottom doors)",
+   6
+  ],
+  [
+   "Bar handles gold, horizontal (outside drawers)",
+   4
+  ],
+  [
+   "Finger-pull / profile handle (inside drawers)",
+   1
+  ],
+  [
+   "Wardrobe rod + 2 end supports",
+   1
+  ],
+  [
+   "Glass shelf supports (studs)",
+   4
+  ],
+  [
+   "LED profile light over dressing mirror (0.4 m) + driver + door sensor switch",
+   1
+  ],
+  [
+   "Mirror fixing clips / adhesive",
+   "1 set"
+  ],
+  [
+   "Shelf pins / minifix",
+   "as required"
+  ]
+ ],
+ "geom": {
+  "W": 2400,
+  "H": 2828,
+  "DT": 450,
+  "D": 432.0,
+  "L": 500.0,
+  "P": 115.0,
+  "T": 18.0,
+  "SH": 18.0,
+  "GAP": 3.0,
+  "SW": 394.0,
+  "modules": 6,
+  "part_x": [
+   797.0,
+   1585.0
+  ],
+  "loft_doors": [
+   [
+    0,
+    1,
+    "L"
+   ],
+   [
+    1,
+    2,
+    "R"
+   ],
+   [
+    2,
+    3,
+    "L"
+   ],
+   [
+    3,
+    4,
+    "R"
+   ],
+   [
+    4,
+    5,
+    "L"
+   ],
+   [
+    5,
+    6,
+    "R"
+   ]
+  ],
+  "main_doors": [
+   [
+    0,
+    "B",
+    "L",
+    "R"
+   ],
+   [
+    1,
+    "B",
+    "R",
+    "L"
+   ],
+   [
+    2,
+    "A",
+    "L",
+    "R"
+   ],
+   [
+    3,
+    "A",
+    "R",
+    "L"
+   ],
+   [
+    4,
+    "B",
+    "L",
+    "R"
+   ],
+   [
+    5,
+    "B",
+    "R",
+    "L"
+   ]
+  ],
+  "drawers": [
+   [
+    0,
+    2,
+    "B",
+    2,
+    400
+   ],
+   [
+    4,
+    6,
+    "B",
+    2,
+    400
+   ]
+  ],
+  "bottom_doors": [],
+  "loft_colour": "A",
+  "shelves": [
+   [
+    18.0,
+    797.0,
+    533.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    751.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    969.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1187.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1405.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1623.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    1841.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    2059.0,
+    "board"
+   ],
+   [
+    18.0,
+    318.0,
+    2277.0,
+    "board"
+   ],
+   [
+    336.0,
+    797.0,
+    782.0,
+    "board"
+   ],
+   [
+    336.0,
+    797.0,
+    614.0,
+    "board"
+   ],
+   [
+    336.0,
+    797.0,
+    1920.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    438.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    761.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    1084.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    1407.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    1730.0,
+    "board"
+   ],
+   [
+    815.0,
+    1585.0,
+    2053.0,
+    "board"
+   ],
+   [
+    1603.0,
+    2382.0,
+    533.0,
+    "board"
+   ],
+   [
+    1603.0,
+    2382.0,
+    1242.0,
+    "board"
+   ],
+   [
+    1603.0,
+    2382.0,
+    856.0,
+    "board"
+   ],
+   [
+    1603.0,
+    2382.0,
+    1179.0,
+    "board"
+   ]
+  ],
+  "rods": [
+   [
+    1603.0,
+    2382.0,
+    2250.0
+   ]
+  ],
+  "glass": [
+   [
+    336.0,
+    797.0,
+    2120.0
+   ]
+  ],
+  "vparts": [
+   [
+    318.0,
+    551.0,
+    2310.0
+   ]
+  ],
+  "drawer_boxes": [
+   [
+    18.0,
+    797.0,
+    2,
+    400
+   ],
+   [
+    336.0,
+    797.0,
+    1,
+    190.0
+   ],
+   [
+    1603.0,
+    2382.0,
+    2,
+    400
+   ]
+  ],
+  "int_drawers": [
+   [
+    336.0,
+    797.0,
+    1,
+    150.0,
+    632.0
+   ]
+  ],
+  "mirrors": [
+   [
+    376.0,
+    757.0,
+    860.0,
+    1860.0
+   ]
+  ],
+  "leds": [
+   [
+    356.0,
+    777.0,
+    1920.0
+   ]
+  ]
+ }
+}

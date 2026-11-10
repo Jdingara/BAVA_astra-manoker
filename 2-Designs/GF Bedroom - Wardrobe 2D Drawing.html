@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GF Bedroom Wardrobe - Mr. Manoker | Astra Interiors</title>
+<style>
+  :root { --ink: #1f1a17; --muted: #6f655c; --gold: #c9a46a; --gold-dark: #a9834a; --line: #d9cfc2; --cream: #f7f2eb; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #e9e4dd; font-family: "Segoe UI", system-ui, sans-serif; color: var(--ink); font-size: 12px; }
+  .toolbar { position: sticky; top: 0; z-index: 5; background: var(--ink); color: #eee; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+  .toolbar label { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+  .toolbar input { width: 76px; padding: 4px 6px; border-radius: 4px; border: 0; font: inherit; }
+  .toolbar .sp { flex: 1; }
+  .btn { font: inherit; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer; font-weight: 600; background: var(--gold); color: var(--ink); }
+  .sheet { width: min(297mm, 100% - 20px); margin: 16px auto; background: #fff; padding: 10mm; box-shadow: 0 10px 40px -15px rgba(0,0,0,.3); }
+  .head { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--gold); padding-bottom: 8px; margin-bottom: 10px; }
+  .head h1 { margin: 0; font-size: 20px; letter-spacing: .04em; }
+  .head p { margin: 2px 0 0; color: var(--muted); }
+  .brand { text-align: right; color: var(--muted); font-size: 11px; }
+  .brand b { color: var(--ink); font-size: 15px; letter-spacing: .12em; }
+  .grid { display: grid; grid-template-columns: 1.75fr 1fr; gap: 12px; }
+  .panel { border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+  .panel h2 { margin: 0 0 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); }
+  svg { width: 100%; height: auto; display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  th, td { border: 1px solid var(--line); padding: 4px 6px; text-align: left; vertical-align: top; }
+  th { background: var(--cream); font-weight: 600; }
+  td input { width: 100%; border: 1px dashed var(--gold); border-radius: 3px; padding: 2px 4px; font: inherit; background: #fffdf8; }
+  .sw { display: inline-block; width: 26px; height: 16px; border: 1px solid #999; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+  .notes { margin: 6px 0 0; padding-left: 16px; color: var(--muted); line-height: 1.55; }
+  .warn { background: #fff4e0; border: 1px solid #f0c987; color: #7a5212; padding: 6px 10px; border-radius: 6px; margin-bottom: 10px; }
+  .titleblock { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--ink); margin-top: 10px; font-size: 10.5px; }
+  .titleblock div { padding: 4px 6px; border-right: 1px solid var(--ink); }
+  .titleblock div:last-child { border-right: 0; }
+  .titleblock small { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .btn--dark { background: #3a322c; color: #fff; }
+  table.cut td.n, table.cut th.n { text-align: right; white-space: nowrap; }
+  table.cut tr.grp td { background: var(--cream); font-weight: 700; color: var(--gold-dark); letter-spacing: .04em; }
+  table.cut tr.tot td { font-weight: 700; background: #fcfaf7; }
+  body.exporting .warn { display: none; }
+  body.exporting td input { border: 0; background: none; }
+  body.exporting ::placeholder { color: transparent; }
+  @media print {
+    @page { size: A4 landscape; margin: 7mm; }
+    body { background: #fff; }
+    .toolbar, .warn { display: none; }
+    .sheet { width: 1180px; margin: 0; padding: 0; box-shadow: none; zoom: .62; }
+    #sheet2 { break-before: page; zoom: .4; }
+    td input { border: 0; background: none; padding: 0; }
+    ::placeholder { color: transparent; }
+    th, .sw { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <b>Enter actual site sizes (mm):</b>
+  <label>Width <input type="number" id="W" value="2564" step="1"></label>
+  <label>Height <input type="number" id="H" value="2879" step="1"></label>
+  <label>Depth (incl. back &amp; door) <input type="number" id="D" value="450" step="1"></label>
+  <label>Loft <input type="number" id="L" value="500" step="10"></label>
+  <label>Drawer zone (2 drawers) <input type="number" id="DZ" value="400" step="10"></label>
+  <label>Skirting <input type="number" id="P" value="75" step="5"></label>
+  <span class="sp"></span>
+  <button class="btn btn--dark" id="imgDraw">Save drawing image</button>
+  <button class="btn btn--dark" id="imgCut">Save cut list image</button>
+  <button class="btn btn--dark" id="csv">Cut list for Excel</button>
+  <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="sheet" id="sheet1">
+  <div class="warn" id="warn">Sizes from site: <b>2564 W × 2879 H × 450 D</b> (depth includes back board and shutter). Loft height, drawer zone and skirting are suggested; change them in the bar above if needed.</div>
+
+  <div class="head">
+    <div>
+      <h1>GF BEDROOM: WARDROBE 2D DRAWING</h1>
+      <p>Customer: Mr. Manoker · Design: two-tone wardrobe with loft, fluted wood shutters and 2 drawers</p>
+    </div>
+    <div class="brand"><b>ASTRA INTERIORS</b><br>Selaiyur, Chennai · +91 97911 82789</div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Front elevation</h2>
+      <svg id="elev"></svg>
+    </div>
+    <div>
+      <div class="panel">
+        <h2>Top plan</h2>
+        <svg id="plan"></svg>
+      </div>
+      <div class="panel" style="margin-top:10px">
+        <h2>Finish schedule (Merino)</h2>
+        <table>
+          <tr><th>Key</th><th>Finish</th><th>Merino code</th></tr>
+          <tr><td><span class="sw" style="background:#8fb2a6"></span>A</td><td>Sage / mint green, high-gloss acrylic shutters</td><td><input placeholder="e.g. code from shade card"></td></tr>
+          <tr><td><span class="sw" style="background:repeating-linear-gradient(90deg,#9a5a2e 0 3px,#7d4522 3px 5px)"></span>B</td><td>Fluted (louvered) walnut-teak wood finish shutters &amp; drawer fronts</td><td><input placeholder="e.g. code from shade card"></td></tr>
+          <tr><td>P</td><td>Board: 18 mm overall (16 mm ply + 1 mm front laminate + 0.8 mm backer)</td><td>-</td></tr>
+          <tr><td><span class="sw" style="background:#8fb2a6"></span>C</td><td>Carcass outer sides, plinth &amp; edge bands to match A</td><td><input placeholder="matching edge band"></td></tr>
+          <tr><td>H</td><td>Long bar handles, gold / champagne finish (vertical on shutters, horizontal on drawers)</td><td><input placeholder="handle model"></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <ul class="notes">
+    <li>All sizes in mm. Overall sizes to be confirmed by site measurement before production. Full cut list on sheet 2.</li>
+    <li>Recessed spotlights / profile LED above fluted shutters as in the reference design (electrical by others unless quoted).</li>
+    <li>Depth 450: clear inside depth is about 410 mm, which is tight for hangers. Hanging rods may need a pull-out (front-facing) hanger. Confirm with customer.</li>
+  </ul>
+
+  <div class="titleblock">
+    <div><small>Project</small>Mr. Manoker residence</div>
+    <div><small>Drawing</small>GF Bedroom wardrobe elevation &amp; plan</div>
+    <div><small>Scale</small>Not to scale (dimensions govern)</div>
+    <div><small>Date</small><span id="today"></span></div>
+    <div><small>Drawn by</small>Astra Interiors</div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet2">
+  <div class="head">
+    <div>
+      <h1>GF BEDROOM: WARDROBE CUT LIST</h1>
+      <p>Customer: Mr. Manoker · <span id="sizeLine"></span></p>
+    </div>
+    <div class="brand"><b>ASTRA INTERIORS</b><br>Selaiyur, Chennai · +91 97911 82789</div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Internal layout (shutters removed)</h2>
+      <svg id="inner"></svg>
+    </div>
+    <div>
+      <div class="panel">
+        <h2>Board &amp; laminate required (8 ft × 4 ft sheets)</h2>
+        <table id="mat"></table>
+      </div>
+      <div class="panel" style="margin-top:10px">
+        <h2>Hardware</h2>
+        <table id="hw"></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:10px">
+    <h2>Cutting list (finished sizes in mm)</h2>
+    <table id="cut" class="cut"></table>
+    <ul class="notes">
+      <li>Finished = size after edge banding. <b>Cut = panel saw size</b> (doors &amp; drawer fronts minus 2 mm edge band each side; carcass minus 0.5 mm tape on the front edge). Add saw kerf when marking out.</li>
+      <li>Board: 18 mm overall (16 mm ply + 1 mm laminate + 0.8 mm backer) for carcass and shutters. 6 mm back ply set in groove. Overall depth 450 = 432 carcass + 18 mm shutter. Shelves set back 30 mm.</li>
+      <li>Drawer boxes: 18 mm sides, 6 mm bottom, 13 mm clearance each side for telescopic channels.</li>
+      <li>Sheet counts include about 15% wastage. Check the internal layout with the customer before cutting.</li>
+    </ul>
+  </div>
+
+  <div class="titleblock">
+    <div><small>Project</small>Mr. Manoker residence</div>
+    <div><small>Drawing</small>GF Bedroom wardrobe cut list</div>
+    <div><small>Board</small>18 mm (16 ply + 1 lam + 0.8 backer)</div>
+    <div><small>Date</small><span id="today2"></span></div>
+    <div><small>Prepared by</small>Astra Interiors</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const ids = ["W", "H", "D", "L", "DZ", "P"];
+  const KEY = "astra-manoker-gf-bed-wardrobe";
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || "{}");
+    ids.forEach((k) => { if (saved[k]) $(k).value = saved[k]; });
+    if (saved._touched) $("warn").style.display = "none";
+  } catch (e) {}
+
+  const GREEN = "#8fb2a6", GREEN_D = "#6f9488", WOOD = "#8c4f28", MIRROR = "#dfe8eb", GOLD = "#c9a46a";
+  const PLY = 16, LAM = 1, BACKER = 0.8;
+  const T = 18, GAP = 3; // overall board thickness 18 mm (16 ply + 1 lam + 0.8 backer), shutter gap
+  const ftin = (mm) => { const inch = mm / 25.4; const f = Math.floor(inch / 12); const i = Math.round(inch - f * 12); return i === 12 ? `${f + 1}'0"` : `${f}'${i}"`; };
+  const label = (mm) => `${Math.round(mm)} (${ftin(mm)})`;
+
+  function el(tag, attrs, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  // Horizontal / vertical dimension line with arrows-ticks and centred text
+  function dimH(g, x1, x2, y, txt, fs) {
+    g.append(el("line", { x1, y1: y, x2, y2: y, stroke: "#333", "stroke-width": fs / 9 }));
+    [x1, x2].forEach((x) => g.append(el("line", { x1: x - fs / 3, y1: y + fs / 3, x2: x + fs / 3, y2: y - fs / 3, stroke: "#333", "stroke-width": fs / 7 })));
+    g.append(el("text", { x: (x1 + x2) / 2, y: y - fs / 3, "font-size": fs, "text-anchor": "middle", fill: "#222" }, txt));
+  }
+  function dimV(g, y1, y2, x, txt, fs) {
+    g.append(el("line", { x1: x, y1, x2: x, y2, stroke: "#333", "stroke-width": fs / 9 }));
+    [y1, y2].forEach((y) => g.append(el("line", { x1: x - fs / 3, y1: y + fs / 3, x2: x + fs / 3, y2: y - fs / 3, stroke: "#333", "stroke-width": fs / 7 })));
+    const t = el("text", { x, y: (y1 + y2) / 2, "font-size": fs, "text-anchor": "middle", fill: "#222", transform: `rotate(-90 ${x} ${(y1 + y2) / 2}) translate(0 ${-fs / 3})` }, txt);
+    g.append(t);
+  }
+
+  function fluted(g, x, y, w, h, id) {
+    const p = el("pattern", { id, width: 22, height: 10, patternUnits: "userSpaceOnUse" });
+    p.append(el("rect", { width: 22, height: 10, fill: WOOD }));
+    p.append(el("rect", { width: 9, height: 10, fill: "#a5653a" }));
+    g.append(p);
+    g.append(el("rect", { x, y, width: w, height: h, fill: `url(#${id})`, stroke: "#3b2412", "stroke-width": 3 }));
+  }
+  function gloss(g, x, y, w, h) {
+    g.append(el("rect", { x, y, width: w, height: h, fill: GREEN, stroke: GREEN_D, "stroke-width": 3 }));
+    g.append(el("line", { x1: x + w * 0.15, y1: y + h * 0.9, x2: x + w * 0.85, y2: y + h * 0.1, stroke: "#fff", "stroke-opacity": .18, "stroke-width": w * 0.06 }));
+  }
+  function handleV(g, x, yMid, len) { g.append(el("rect", { x: x - 6, y: yMid - len / 2, width: 12, height: len, rx: 6, fill: GOLD, stroke: "#8a6a35", "stroke-width": 2 })); }
+  function handleH(g, xMid, y, len) { g.append(el("rect", { x: xMid - len / 2, y: y - 6, width: len, height: 12, rx: 6, fill: GOLD, stroke: "#8a6a35", "stroke-width": 2 })); }
+  function key(g, x, y, k, fs) {
+    g.append(el("circle", { cx: x, cy: y, r: fs * 0.75, fill: "#fff", stroke: "#222", "stroke-width": 3 }));
+    g.append(el("text", { x, y: y + fs * 0.35, "font-size": fs, "text-anchor": "middle", "font-weight": 700 }, k));
+  }
+
+  function draw() {
+    const v = Object.fromEntries(ids.map((k) => [k, Math.max(parseFloat($(k).value) || 0, 0)]));
+    const { W, H, D, L, DZ, P } = v;
+    const Dc = D - T;                     // carcass depth incl. back board (shutter sits in front)
+    const ND = 2;                         // number of drawers
+    try { const prev = JSON.parse(localStorage.getItem(KEY) || "{}"); localStorage.setItem(KEY, JSON.stringify({ ...prev, ...v })); } catch (e) {}
+
+    const inner = W - 2 * T;
+    const sw = inner / 6;                 // 6 equal shutter modules
+    const mainTop = L;                    // loft occupies top
+    const mainBot = H - P;                // above skirting
+    const mainH = mainBot - mainTop;
+    const fs = Math.max(W, H) / 48;
+    const m = fs * 7;                     // margin for dimensions
+
+    // ---------- Elevation ----------
+    const svg = $("elev");
+    svg.innerHTML = "";
+    svg.setAttribute("viewBox", `${-m} ${-m} ${W + 2 * m} ${H + 2 * m}`);
+    const g = el("g", {});
+    svg.append(g);
+    // carcass outline
+    g.append(el("rect", { x: 0, y: 0, width: W, height: H, fill: GREEN, stroke: "#222", "stroke-width": 6 }));
+    g.append(el("rect", { x: T, y: mainBot, width: inner, height: P, fill: GREEN_D }));
+    // loft line
+    g.append(el("line", { x1: 0, y1: L, x2: W, y2: L, stroke: "#222", "stroke-width": 5 }));
+
+    const loftFinish = ["A", "B", "A", "A", "B", "A"];
+    for (let i = 0; i < 6; i++) {
+      const x = T + i * sw + GAP / 2, w = sw - GAP;
+      const y = T + GAP / 2, h = L - T - GAP;
+      loftFinish[i] === "B" ? fluted(g, x, y, w, h, "fl" + i) : gloss(g, x, y, w, h);
+      key(g, x + w / 2, y + h / 2, loftFinish[i], fs);
+    }
+    // main zone shutters
+    const x0 = (i) => T + i * sw + GAP / 2, w1 = sw - GAP;
+    const yM = mainTop + GAP / 2, hM = mainH - GAP;
+    // 1: plain gloss shutter (no mirror)
+    gloss(g, x0(0), yM, w1, hM); handleV(g, x0(0) + w1 - 40, yM + hM * 0.45, Math.min(hM * 0.28, 600)); key(g, x0(0) + w1 / 2, yM + hM * 0.2, "A", fs);
+    // 2: fluted full height
+    fluted(g, x0(1), yM, w1, hM, "f2"); handleV(g, x0(1) + w1 - 40, yM + hM * 0.45, Math.min(hM * 0.28, 600)); key(g, x0(1) + w1 / 2, yM + hM * 0.2, "B", fs);
+    // 3-4: pair of gloss shutters above drawer zone
+    const hTop = hM - DZ;
+    gloss(g, x0(2), yM, w1, hTop - GAP); gloss(g, x0(3), yM, w1, hTop - GAP);
+    handleV(g, x0(2) + w1 - 40, yM + hTop * 0.55, Math.min(hTop * 0.3, 600)); handleV(g, x0(3) + 40, yM + hTop * 0.55, Math.min(hTop * 0.3, 600));
+    key(g, x0(2) + w1 / 2, yM + hTop * 0.3, "A", fs); key(g, x0(3) + w1 / 2, yM + hTop * 0.3, "A", fs);
+    // drawers (span 2 modules)
+    const dW = 2 * sw - GAP, dX = T + 2 * sw + GAP / 2, dh = DZ / ND;
+    for (let k = 0; k < ND; k++) {
+      const y = yM + hTop + k * dh;
+      fluted(g, dX, y, dW, dh - GAP, "dr" + k);
+      handleH(g, dX + dW / 2, y + dh / 2, Math.min(dW * 0.35, 450));
+    }
+    key(g, dX + dW * 0.15, yM + hTop + dh / 2, "B", fs);
+    // 5: fluted, 6: gloss
+    fluted(g, x0(4), yM, w1, hM, "f5"); handleV(g, x0(4) + 40, yM + hM * 0.45, Math.min(hM * 0.28, 600)); key(g, x0(4) + w1 / 2, yM + hM * 0.2, "B", fs);
+    gloss(g, x0(5), yM, w1, hM); handleV(g, x0(5) + 40, yM + hM * 0.45, Math.min(hM * 0.28, 600)); key(g, x0(5) + w1 / 2, yM + hM * 0.2, "A", fs);
+    // spotlights above fluted modules
+    [1, 4].forEach((i) => g.append(el("circle", { cx: T + i * sw + sw / 2, cy: -fs * 0.6, r: fs * 0.45, fill: "#ffd77a", stroke: "#a07d2c", "stroke-width": 3 })));
+
+    // dimensions
+    dimH(g, 0, W, H + m * 0.55, "Overall width " + label(W), fs);
+    for (let i = 0; i < 6; i++) dimH(g, T + i * sw, T + (i + 1) * sw, -m * 0.45, Math.round(sw), fs * 0.8);
+    dimV(g, 0, H, -m * 0.55, "Overall height " + label(H), fs);
+    dimV(g, 0, L, W + m * 0.3, "Loft " + Math.round(L), fs * 0.8);
+    dimV(g, L, mainBot, W + m * 0.3, "Main " + Math.round(mainH), fs * 0.8);
+    dimV(g, mainBot, H, W + m * 0.65, "Skirting " + Math.round(P), fs * 0.7);
+    dimV(g, mainBot - DZ, mainBot, W + m * 0.65, "2 drawers " + Math.round(DZ), fs * 0.7);
+
+    // ---------- Plan ----------
+    const pv = $("plan");
+    pv.innerHTML = "";
+    const pm = fs * 4;
+    const swing = sw;
+    pv.setAttribute("viewBox", `${-pm} ${-pm} ${W + 2 * pm} ${D + swing + 2 * pm}`);
+    const pg = el("g", {});
+    pv.append(pg);
+    pg.append(el("rect", { x: 0, y: 0, width: W, height: Dc, fill: "#f6f1ea", stroke: "#222", "stroke-width": 6 }));
+    pg.append(el("rect", { x: T, y: Dc, width: W - 2 * T, height: T, fill: GREEN, stroke: "#444", "stroke-width": 2 }));
+    pg.append(el("rect", { x: 0, y: -12, width: W, height: 12, fill: "#999" })); // wall line
+    // partitions: sections [1][1][2][1][1]
+    [1, 2, 4, 5].forEach((i) => pg.append(el("line", { x1: T + i * sw, y1: 0, x2: T + i * sw, y2: Dc, stroke: "#555", "stroke-width": 4 })));
+    // shutter swings (dashed quarter arcs); drawer module shown with arrow
+    const hinge = [["L", 0], ["L", 1], ["L", 2], ["R", 3], ["R", 4], ["R", 5]];
+    hinge.forEach(([side, i]) => {
+      const xa = T + i * sw, xb = xa + sw;
+      const hx = side === "L" ? xa : xb, tx = side === "L" ? xb : xa;
+      pg.append(el("line", { x1: hx, y1: D, x2: hx, y2: D + sw * 0.95, stroke: "#777", "stroke-width": 3 }));
+      pg.append(el("path", { d: `M ${tx} ${D} A ${sw} ${sw} 0 0 ${side === "L" ? 1 : 0} ${hx} ${D + sw}`, fill: "none", stroke: "#999", "stroke-width": 3, "stroke-dasharray": "14 10" }));
+    });
+    dimH(pg, 0, W, D + swing + pm * 0.6, "Width " + label(W), fs * 0.9);
+    dimV(pg, 0, D, -pm * 0.5, "Depth " + Math.round(D) + " (carcass " + Math.round(Dc) + " + shutter " + T + ")", fs * 0.7);
+
+    // ---------- Internal layout ----------
+    const hm = mainBot - mainTop;            // main carcass outer height
+    const cw1 = sw - T, cw2 = 2 * sw - T;    // clear widths: single / double section
+    const sec = [                            // [start module, modules, layout]
+      [0, 1, "shelves4"], [1, 1, "hanging"], [2, 2, "double"], [4, 1, "hanging"], [5, 1, "shelves4"],
+    ];
+    const iv = $("inner");
+    iv.innerHTML = "";
+    iv.setAttribute("viewBox", `${-m} ${-m * 0.6} ${W + 2 * m} ${H + m * 1.4}`);
+    const ig = el("g", {});
+    iv.append(ig);
+    const board = (x, y, w, h) => ig.append(el("rect", { x, y, width: w, height: h, fill: "#e9d9bf", stroke: "#6b5236", "stroke-width": 2.5 }));
+    ig.append(el("rect", { x: 0, y: 0, width: W, height: H - P, fill: "#fbf8f3", stroke: "#222", "stroke-width": 5 }));
+    // loft box
+    board(0, 0, T, L); board(W - T, 0, T, L); board(T, 0, W - 2 * T, T); board(T, L - T, W - 2 * T, T);
+    // main box
+    board(0, L, T, hm); board(W - T, L, T, hm); board(T, L, W - 2 * T, T); board(T, mainBot - T, W - 2 * T, T);
+    ig.append(el("rect", { x: T, y: mainBot, width: W - 2 * T, height: P, fill: "#cbb89c", stroke: "#6b5236", "stroke-width": 2.5 }));
+    [1, 2, 4, 5].forEach((i) => {
+      const x = T + i * sw - T / 2;
+      board(x, T, T, L - 2 * T);
+      board(x, L + T, T, hm - 2 * T);
+    });
+    const clearH = hm - 2 * T;
+    const lbl = (x, y, t, size) => ig.append(el("text", { x, y, "font-size": size || fs * 0.75, "text-anchor": "middle", fill: "#5a4630" }, t));
+    let shelfCount = 0, hangShelves = 0, dblShelves = 0, rods = 0;
+    sec.forEach(([s0, n, kind]) => {
+      const x1 = T + s0 * sw + (s0 === 0 ? 0 : T / 2);
+      const x2 = T + (s0 + n) * sw - (s0 + n === 6 ? 0 : T / 2);
+      const top = L + T, bot = mainBot - T;
+      if (kind === "shelves4") {
+        for (let k = 1; k <= 4; k++) board(x1, top + (clearH * k) / 5 - T / 2, x2 - x1, T);
+        shelfCount += 4;
+        lbl((x1 + x2) / 2, top + clearH / 10 + fs * 0.3, `5 × ${Math.round((clearH - 4 * T) / 5)}`);
+      } else if (kind === "hanging") {
+        board(x1, top + 300, x2 - x1, T);
+        hangShelves += 1; rods += 1;
+        ig.append(el("line", { x1: x1 + 10, y1: top + 380, x2: x2 - 10, y2: top + 380, stroke: "#777", "stroke-width": 14, "stroke-linecap": "round" }));
+        lbl((x1 + x2) / 2, top + 380 + fs * 1.6, "Hanging");
+        lbl((x1 + x2) / 2, top + 380 + fs * 2.6, `${Math.round(clearH - 300 - T)} clear`);
+      } else {
+        const drawerTop = bot - DZ;
+        board(x1, drawerTop - T, x2 - x1, T);
+        const upper = drawerTop - T - top;
+        board(x1, top + upper / 3 - T / 2, x2 - x1, T);
+        board(x1, top + (2 * upper) / 3 - T / 2, x2 - x1, T);
+        dblShelves += 3;
+        lbl((x1 + x2) / 2, top + upper / 6 + fs * 0.3, `3 × ${Math.round((upper - 2 * T) / 3)}`);
+        for (let k = 0; k < ND; k++) {
+          ig.append(el("rect", { x: x1 + 13, y: drawerTop + k * (DZ / ND) + 8, width: x2 - x1 - 26, height: DZ / ND - 16, fill: "#f3ead9", stroke: "#8a6a35", "stroke-width": 2.5, "stroke-dasharray": "10 6" }));
+        }
+        lbl((x1 + x2) / 2, drawerTop + DZ / 2 + fs * 0.3, "2 drawers");
+      }
+    });
+    lbl(W / 2, L / 2 + fs * 0.3, "Loft (open, no shelves)");
+    dimH(ig, 0, W, H + m * 0.45, "Width " + label(W), fs);
+    dimV(ig, 0, L, -m * 0.35, "Loft " + Math.round(L), fs * 0.8);
+    dimV(ig, L, mainBot, -m * 0.35, "Main " + Math.round(hm), fs * 0.8);
+
+    // ---------- Cut list ----------
+    const C18 = "18 mm ply (16 + 1 lam + 0.8 backer)", B6 = "6 mm back ply", SA = "18 mm shutter, A laminate (sage gloss)",
+      SB = "18 mm shutter, B laminate (fluted wood)", MIR = "-";
+    const cut = [];
+    const MAXL = 2400; // 8 ft board is 2440 mm; longer panels are cut in 2 and joined at a partition
+    const add = (group, part, mat, qty, Lmm, Wmm, edge) => {
+      if (qty <= 0) return;
+      if (Lmm > MAXL && mat !== MIR) { qty *= 2; Lmm = Lmm / 2; part += " (2 pcs, joint at partition)"; }
+      const eb = edge === "4 sides" ? 2 : edge === "1 long" ? 0.5 : 0;
+      const cL = edge === "4 sides" ? Lmm - 2 * eb : Lmm;
+      const cW = edge === "4 sides" ? Wmm - 2 * eb : Wmm - eb;
+      const edgeTxt = edge === "4 sides" ? "2 mm, 4 sides" : edge === "1 long" ? "0.5 mm, 1 long" : edge;
+      const r1 = (x) => Math.round(x * 10) / 10;
+      cut.push({ group, part, mat, qty, L: r1(Lmm), W: r1(Wmm), cL: r1(cL), cW: r1(cW), edge: edgeTxt, eb, rawEdge: edge });
+    };
+    const sh = Dc - 30;                        // shelf depth
+    const backD = Dc - 6;                      // partition depth (back groove)
+    // Loft carcass
+    add("Loft carcass", "Side panel (L/R)", C18, 2, L, Dc, "1 long");
+    add("Loft carcass", "Top & bottom", C18, 2, W - 2 * T, Dc, "1 long");
+    add("Loft carcass", "Partition", C18, 4, L - 2 * T, backD, "1 long");
+    add("Loft carcass", "Back panel (single bay)", B6, 4, L - 2 * T + 12, cw1 + 12, "-");
+    add("Loft carcass", "Back panel (double bay)", B6, 1, L - 2 * T + 12, cw2 + 12, "-");
+    // Main carcass
+    add("Main carcass", "Side panel (L/R)", C18, 2, hm, Dc, "1 long");
+    add("Main carcass", "Top & bottom", C18, 2, W - 2 * T, Dc, "1 long");
+    add("Main carcass", "Partition", C18, 4, hm - 2 * T, backD, "1 long");
+    add("Main carcass", "Shelf (single bay, 4 + 4)", C18, shelfCount, cw1, sh, "1 long");
+    add("Main carcass", "Shelf above hanging rod", C18, hangShelves, cw1, sh, "1 long");
+    add("Main carcass", "Shelf / drawer top (double bay)", C18, dblShelves, cw2, sh, "1 long");
+    add("Main carcass", "Back panel (single bay)", B6, 4, hm - 2 * T + 12, cw1 + 12, "-");
+    add("Main carcass", "Back panel (double bay)", B6, 1, hm - 2 * T + 12, cw2 + 12, "-");
+    add("Main carcass", "Skirting / plinth front", C18, 1, W - 2 * T, P, "1 long");
+    add("Main carcass", "Plinth support (back + cross)", C18, 7, Dc - 60, P, "-");
+    // Shutters
+    add("Shutters", "Loft shutter A", SA, 4, L - T - GAP, sw - GAP, "4 sides");
+    add("Shutters", "Loft shutter B", SB, 2, L - T - GAP, sw - GAP, "4 sides");
+    add("Shutters", "Full-height shutter B", SB, 2, hM, w1, "4 sides");
+    add("Shutters", "Full-height shutter A", SA, 2, hM, w1, "4 sides");
+    add("Shutters", "Shutter above drawers A", SA, 2, hTop - GAP, w1, "4 sides");
+    add("Shutters", "Drawer front B", SB, ND, dW, dh - GAP, "4 sides");
+    // Drawer boxes
+    const dbH = dh - 70, dbL = Math.min(Dc - 6 - 40, 550), dbW = cw2 - 26;
+    add("Drawer boxes (×2)", "Drawer side", C18, 2 * ND, dbL, dbH, "1 long");
+    add("Drawer boxes (×2)", "Drawer front & back (inner)", C18, 2 * ND, dbW - 2 * T, dbH, "1 long");
+    add("Drawer boxes (×2)", "Drawer bottom", B6, ND, dbL, dbW, "-");
+
+    const sqft = (r) => (r.qty * r.L * r.W) / 92903;
+    let html = '<tr><th>#</th><th>Part</th><th>Material</th><th class="n">Qty</th><th class="n">Finished L</th><th class="n">Finished W</th><th class="n">Cut L</th><th class="n">Cut W</th><th>Edge band</th><th class="n">Sq.ft</th></tr>';
+    let lastG = "", n = 0;
+    cut.forEach((r) => {
+      if (r.group !== lastG) { html += `<tr class="grp"><td colspan="10">${r.group}</td></tr>`; lastG = r.group; }
+      html += `<tr><td>${++n}</td><td>${r.part}</td><td>${r.mat}</td><td class="n">${r.qty}</td><td class="n">${r.L}</td><td class="n">${r.W}</td><td class="n"><b>${r.cL}</b></td><td class="n"><b>${r.cW}</b></td><td>${r.edge}</td><td class="n">${sqft(r).toFixed(1)}</td></tr>`;
+    });
+    const pieces = cut.reduce((t, r) => t + r.qty, 0);
+    html += `<tr class="tot"><td></td><td colspan="2">Total pieces</td><td class="n">${pieces}</td><td colspan="5"></td><td class="n">${cut.reduce((t, r) => t + sqft(r), 0).toFixed(1)}</td></tr>`;
+    $("cut").innerHTML = html;
+    window.__cutList = cut;
+
+    // Materials (8x4 ft sheet = 2440 x 1220 mm = 32 sq.ft), 15% wastage
+    const SHEET = 32, WASTE = 1.15;
+    const byMat = {};
+    cut.forEach((r) => { byMat[r.mat] = (byMat[r.mat] || 0) + sqft(r); });
+    const order = [C18, B6, SA, SB];
+    let mh = '<tr><th>Material</th><th class="n">Area sq.ft</th><th class="n">Sheets</th></tr>';
+    order.forEach((k) => {
+      if (!byMat[k]) return;
+      const sheets = k === MIR ? "-" : Math.ceil((byMat[k] * WASTE) / SHEET);
+      mh += `<tr><td>${k}</td><td class="n">${byMat[k].toFixed(1)}</td><td class="n">${sheets}</td></tr>`;
+    });
+    const shutterArea = (byMat[SA] || 0) + (byMat[SB] || 0);
+    mh += `<tr><td>Inner liner laminate (shutter backs)</td><td class="n">${shutterArea.toFixed(1)}</td><td class="n">${Math.ceil((shutterArea * WASTE) / SHEET)}</td></tr>`;
+    const edge2 = cut.reduce((t, r) => t + (r.rawEdge === "4 sides" ? r.qty * 2 * (r.L + r.W) : 0), 0) / 1000;
+    const edge05 = cut.reduce((t, r) => t + (r.rawEdge === "1 long" ? r.qty * r.L : 0), 0) / 1000;
+    mh += `<tr><td>Edge band 2 mm (doors &amp; drawer fronts)</td><td class="n" colspan="2">${Math.ceil(edge2 * 1.1)} m</td></tr>`;
+    mh += `<tr><td>Edge tape 0.5 mm (carcass front edges)</td><td class="n" colspan="2">${Math.ceil(edge05 * 1.1)} m</td></tr>`;
+    $("mat").innerHTML = mh;
+
+    // Hardware
+    const hinges = (h) => (h > 1800 ? 4 : h > 1200 ? 3 : 2);
+    const hingeCount = 6 * hinges(L - T) + 4 * hinges(hM) + 2 * hinges(hTop);
+    const channel = [550, 500, 450, 400, 350, 300, 250].find((c) => c <= dbL) || 250;
+    $("hw").innerHTML = '<tr><th>Item</th><th class="n">Qty</th></tr>' + [
+      ["Soft-close hinges (loft 6 shutters + main 6 shutters)", hingeCount],
+      [`Telescopic soft-close drawer channels, ${channel} mm (pairs)`, ND],
+      ["Long bar handles, gold, vertical (shutters)", 6],
+      ["Bar handles, gold, horizontal (drawers)", ND],
+      ["Push-to-open latches or profile handles (loft)", 6],
+      ["Wardrobe hanging rods with end supports", rods],
+      ["Shelf supports / minifix connectors", "as required"],
+      ["Recessed spotlights above fluted shutters", 2],
+    ].map(([a, b]) => `<tr><td>${a}</td><td class="n">${b}</td></tr>`).join("");
+
+    $("sizeLine").textContent = `Wardrobe ${label(W)} W × ${label(H)} H × ${Math.round(D)} D mm (carcass ${Math.round(Dc)} + shutter ${T}) · loft ${Math.round(L)} · 2 drawers · GF Bedroom`;
+  }
+
+  ids.forEach((k) => $(k).addEventListener("input", () => {
+    $("warn").style.display = "none";
+    try { const s = JSON.parse(localStorage.getItem(KEY) || "{}"); s._touched = 1; localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
+    draw();
+  }));
+  $("today").textContent = $("today2").textContent = new Date().toLocaleDateString("en-IN");
+
+  async function saveImage(sheetId, name) {
+    if (!window.html2canvas) { alert("Image export needs an internet connection. Use Print / Save as PDF instead."); return; }
+    document.body.classList.add("exporting");
+    const canvas = await html2canvas(document.getElementById(sheetId), { scale: 2, backgroundColor: "#ffffff" });
+    document.body.classList.remove("exporting");
+    const a = document.createElement("a");
+    a.href = canvas.toDataURL("image/png");
+    a.download = name;
+    a.click();
+  }
+  $("imgDraw").addEventListener("click", () => saveImage("sheet1", "GF Bedroom Wardrobe - 2D Drawing.png"));
+  $("imgCut").addEventListener("click", () => saveImage("sheet2", "GF Bedroom Wardrobe - Cut List.png"));
+  $("csv").addEventListener("click", () => {
+    const rows = [["Group", "Part", "Material", "Qty", "Finished L (mm)", "Finished W (mm)", "Cut L (mm)", "Cut W (mm)", "Edge band"]]
+      .concat(window.__cutList.map((r) => [r.group, r.part, r.mat, r.qty, r.L, r.W, r.cL, r.cW, r.edge]));
+    const csv = rows.map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(",")).join(String.fromCharCode(13, 10));
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([String.fromCharCode(0xfeff) + csv], { type: "text/csv" }));
+    a.download = "GF Bedroom Wardrobe - Cut List.csv";
+    a.click();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>
