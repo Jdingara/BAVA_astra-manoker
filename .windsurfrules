@@ -1,0 +1,5 @@
+Read AGENTS.md (rules, pipeline, decisions, pending items) and PROJECT_HISTORY.md (history) before acting.
+- Wardrobe rules live in 2-Designs/Owner Drawings/owner_cutlist.py. Run check_all.py after changes (FAILED 0).
+- Cut sizes: whole mm, rounded down. Pieces ≤ 2400. Never invent laminate codes or shades.
+- Never modify the owner's AutoCAD drawing. Keep the repo private.
+- The user writes Tanglish. Reply simply with tables, and ask when a request is ambiguous.
