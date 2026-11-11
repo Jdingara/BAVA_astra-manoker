@@ -26,8 +26,35 @@ for b in rows:
     rows[b].sort(key=lambda r: (-r[2], -r[3], r[0]))
 
 
+_src = open(os.path.join(HERE, "make_laminate_cutlist.py")).read()
+_ns = {}
+exec(_src[_src.index("SW, SH, TRIM, KERF"):_src.index("rows, need = [], {}")], _ns)   # reuse the MaxRects packer
+
+
 def sheets(rs):
-    return math.ceil(sum(r[2] * r[3] * r[4] for r in rs) / (2440 * 1220) * 1.15)
+    """real 8x4 sheet count by packing the cut sizes (4 mm saw kerf), not by area"""
+    return _ns["pack"]([(r[2], r[3]) for r in rs for _ in range(r[4])])
+
+
+# 6 mm cutting plan: each wide back (>610) on its own sheet; 2 narrow backs share a sheet; offcuts -> drawer bottoms
+backs6 = [(r[0], r[2], r[3]) for b, rs in rows.items() if b.startswith("6 mm") for r in rs for _ in range(r[4])]
+dbots = [(ROOM[room], row[6], row[7]) for room, v in D.items() for row in v["rows"] if "drawer bottom" in row[1] for _ in range(row[3])]
+wide = sorted([b for b in backs6 if b[2] > 610], key=lambda b: -b[2])
+narrow = sorted([b for b in backs6 if b[2] <= 610], key=lambda b: -b[2])
+plan = []
+for rm, L, W in wide:
+    plan.append([f"{rm}: back {L} x {W}", f"{2440 - L - 4} x 1220 strip + {1220 - W - 4} x {L} strip"])
+for k in range(0, len(narrow), 2):
+    pr = narrow[k:k + 2]
+    plan.append([" + ".join(f"{rm}: back {L} x {W}" for rm, L, W in pr), f"{2440 - pr[0][1] - 4} x 1220 strip"])
+room_left = {i: 1220.0 for i, pl in enumerate(plan) if pl[1].startswith("436")}   # 436 x 1220 strip on every sheet
+for rm, L, W in sorted(dbots, key=lambda d: -max(d[1], d[2])):  # drawer bottom: short side <= 436, long side along the strip
+    run = max(L, W) + 4
+    i = next((k for k, left in room_left.items() if left >= run), None)
+    if i is None:
+        plan.append([f"drawer bottom {L} x {W} ({rm})", "extra sheet"]); continue
+    room_left[i] -= run
+    plan[i][1] += f"; drawer bottom {L} x {W} ({rm})"
 
 
 title = f"Mr. Manoker - 4 wardrobes - CARCASS ONLY cut list | Astra Interiors | {time.strftime('%d-%m-%Y')}"
@@ -51,6 +78,11 @@ for b, rs in rows.items():
     ws.append([b, "", sum(r[4] for r in rs), sheets(rs)])
 ws.append(["TOTAL", "", sum(r[4] for rs in rows.values() for r in rs), sum(sheets(rs) for rs in rows.values())])
 ws[ws.max_row][0].font = Font(bold=True)
+ws.append([])
+ws.append(["6 mm CUTTING PLAN (least waste): 1 sheet per line, sheet 2440 x 1220, piece length along the 2440 side"]); ws[ws.max_row][0].font = Font(bold=True, size=11)
+ws.append(["Sheet", "Cut", "", "", "", "", "", "Offcut / use"])
+for i, (a, b) in enumerate(plan, 1):
+    ws.append([i, a, "", "", "", "", "", b])
 for b, rs in rows.items():
     ws.append([])
     ws.append([f"BOARD: {b}"]); ws[ws.max_row][0].font = Font(bold=True, size=11)
@@ -81,6 +113,10 @@ for b, rs in rows.items():
     h.append("<table border='1' cellpadding='2' style='border-collapse: collapse; width:100%;'>" + th(COLS))
     h += [td([i] + r) for i, r in enumerate(rs, 1)]
     h.append("</table>")
+h.append("<p style='font-weight:bold; font-size:10pt; color:#7a5a30;'>6 mm CUTTING PLAN (least waste) - one sheet per line, 2440 x 1220, piece length along the 2440 side</p>")
+h.append("<table border='1' cellpadding='2' style='border-collapse: collapse; width:100%;'>" + th(["Sheet", "Cut", "Offcut / use"]))
+h += [td([i, a, b]) for i, (a, b) in enumerate(plan, 1)]
+h.append("</table><p>6 mm total: " + str(len(plan)) + " sheets (drawer bottoms come from the offcuts, no extra sheet).</p>")
 h.append("</body>")
 story = pymupdf.Story("".join(h))
 rect = pymupdf.paper_rect("a4-l")

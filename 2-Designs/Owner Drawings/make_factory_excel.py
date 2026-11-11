@@ -61,14 +61,17 @@ ss.append(["Mr. Manoker - 4 wardrobes - FACTORY CUT LIST | Astra Interiors | " +
 ss.append(["Sizes are CUT sizes (edge band already deducted). L = grain/length direction. Edge L1 = front edge for carcass parts. Shutters 2 mm on 4 sides; side cover / 100 strip 2 mm front edge only; skirting 0.5 mm top edge."])
 ss.append(["Board 8 x 4 (2440 x 1220). Max piece length 2400."])
 ss.append([])
-ss.append(["Board type", "Pieces", "Area sq.ft", "Sheets (15% waste)"])
+ss.append(["Board type", "Pieces", "Area sq.ft", "Sheets (packed)"])
 for c in ss[5]: c.font, c.fill = Font(bold=True, color="FFFFFF"), gold
 import math
+_src = open(os.path.join(HERE, "make_laminate_cutlist.py")).read(); _ns = {}
+exec(_src[_src.index("SW, SH, TRIM, KERF"):_src.index("rows, need = [], {}")], _ns)   # MaxRects packer
+nsheets = lambda b: _ns["pack"]([(r[2], r[3]) for r in rows[b] for _ in range(r[4])])   # real sheet count (4 mm kerf), not area
 order = sorted(rows, key=lambda b: (not b.endswith("both sides"), b.startswith("6 mm"), b))
 for b in order:
     pcs = sum(r[4] for r in rows[b]); a = sum(r[2] * r[3] * r[4] for r in rows[b]) / 92903.04
-    ss.append([b, pcs, round(a, 1), math.ceil(a * 1.15 / 32)])
-ss.append(["TOTAL", sum(sum(r[4] for r in rows[b]) for b in order), "", sum(math.ceil(sum(r[2] * r[3] * r[4] for r in rows[b]) / 92903.04 * 1.15 / 32) for b in order)])
+    ss.append([b, pcs, round(a, 1), nsheets(b)])
+ss.append(["TOTAL", sum(sum(r[4] for r in rows[b]) for b in order), "", sum(nsheets(b) for b in order)])
 for c in ss[ss.max_row]: c.font = Font(bold=True)
 ss.column_dimensions["A"].width = 52
 for col in "BCD": ss.column_dimensions[col].width = 16
@@ -96,9 +99,9 @@ one.append(["", "Board type", "", "", "", "Pieces", "Sheets 8x4"])
 for c in one[one.max_row]: c.font, c.fill = Font(bold=True, color="FFFFFF"), gold
 for b in order:
     a_ = sum(r[2] * r[3] * r[4] for r in rows[b]) / 92903.04
-    one.append(["", b, "", "", "", sum(r[4] for r in rows[b]), math.ceil(a_ * 1.15 / 32)])
+    one.append(["", b, "", "", "", sum(r[4] for r in rows[b]), nsheets(b)])
 one.append(["", "TOTAL", "", "", "", sum(sum(r[4] for r in rows[b]) for b in order),
-            sum(math.ceil(sum(r[2] * r[3] * r[4] for r in rows[b]) / 92903.04 * 1.15 / 32) for b in order)])
+            sum(nsheets(b) for b in order)])
 for c in one[one.max_row]: c.font = Font(bold=True)
 n_ = 0
 band = PatternFill("solid", fgColor="EFE6DA")
