@@ -16,15 +16,15 @@ dark = PatternFill("solid", fgColor="1F1A17"); band = PatternFill("solid", fgCol
 
 
 def where(g, part, note, room):
-    if "Side panel (cupboard" in part: return "box ends; 6 mm back groove inner face; LED groove (see below)"
-    if "full height, doors fixed" in part: return "between sections, doors hinge here; back groove both faces"
+    if "Side panel (cupboard" in part: return "box ends; 6 mm back screwed on back edge; LED groove (see below)"
+    if "full height, doors fixed" in part: return "between sections, doors hinge here; back panel joint on its back edge"
     if "Partition (inside)" in part: return "dressing / bangle column (stands on shelf, in front of back panel)"
     if part in ("Bottom panel", "Top panel"): return "box " + part.split()[0].lower()
     if "Frame upright" in part: return "loft frame - at ends and partitions"
     if "Top rail" in part: return "loft frame top, fix to ceiling"
     if "Bottom rail" in part: return "loft frame bottom, on cupboard top"
     if part == "Shelf": return "set back 20 mm from front (left section: coat stand shelves at 441 + 1659 from floor, rod at 1609)"
-    if "back panel" in part: return "slides in 6 mm groove (sides / partitions / top / bottom)"
+    if "back panel" in part: return "outer to outer, screw on back edges; joint on partition centre"
     if "drawer side" in part or "front/back inner" in part: return "groove for bottom: leave 12, 8 W x 10 D"
     if "drawer bottom" in part: return "slides in the 10 mm groove"
     if "Drawer outside front" in part: return "screw to drawer box front; handle"

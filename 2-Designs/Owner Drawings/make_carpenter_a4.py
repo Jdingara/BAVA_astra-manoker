@@ -64,8 +64,8 @@ heading(doc, "Mr. Manoker - 4 wardrobes - CARPENTER LIST", 15, RGBColor(0, 0, 0)
 rules = [
     "All sizes are CUT sizes in mm (edge tape already deducted).",
     "Box: 2000 high, 500 deep. Loft above = 90 mm frame only (uprights + top/bottom rails).",
-    "Sides, top, bottom and full partitions 500 (cut 499). Inside partitions 494 (cut 493). Shelves 474 (cut 473), set back 20 mm.",
-    "Back panel 6 mm in 6 mm groove on sides, full partitions, top and bottom (size = opening + 12).",
+    "Total depth 500 = carcass 494 + 6 mm back. Sides, top, bottom and full partitions 494 (cut 493). Shelves 474 (cut 473), set back 20 mm.",
+    "Back panel 6 mm OUTER TO OUTER, 2000 high, screwed on the back edges (no groove). Joints on the partition centres (6 mm sheet is only 1220 wide).",
     "Drawers: 2 bottom drawers per bedroom, opening 173, box 150 high, 450 soft-close channel (13 mm each side). "
     "Drawer bottom groove: leave 12 mm from bottom, 8 mm wide x 10 mm deep.",
     "LED profile groove: 12 W x 8 D, 100 mm from the FRONT edge, vertical, on panel face inside the section. 10 mm wire hole through top panel.",

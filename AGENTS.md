@@ -91,7 +91,7 @@ Merino catalogue PDFs (`MerinoLam-Play-E-Catalogue-Latest.pdf`, `Merino Calplus 
   - **500 for all 4 wardrobes**: sides, top, bottom and **full-height partitions** (doors hinge on them).
   - **Inside partitions** (dressing / bangle column): 494.
   - **Shelves:** 474 (set back 20).
-- **Back panel:** 6 mm in a 6 mm groove all round; size = opening + 12. Each section has its own back, so full partitions get a groove on both faces.
+- **Back panel (changed 2026-11-11):** total depth 500 = **carcass 494 + 6 mm back**. The back is **outer to outer per box, 2000 high, screwed on the back edges** (no groove). The 6 mm sheet is 1220 wide, so it's split with the **joints on the partition centres** (e.g. 942 + 469 + 938). Side cover stays 518.
 - **Drawers:** only the **2 bottom drawers** per bedroom. Opening 173, **box 150 high**, **450 soft-close channel** (13 mm each side).
   - Drawer-bottom groove: **leave 12 mm from the bottom, 8 wide x 10 deep**.
   - Bottom = inside size + 9 per side (1 mm play).

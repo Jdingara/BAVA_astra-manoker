@@ -91,8 +91,8 @@ for k in ["GF", "1F Master", "1F Bedroom 2", "2F"]:
 
 doc.add_paragraph()
 notes = [
-    "Board: 18 mm ply for all carcass, shelves and drawers.  Back panels: 6 mm ply in a 6 mm groove all round (size includes +12 mm).",
-    "Depth: all wardrobes 500 mm (side / top / bottom). Full-height partitions = 500 (same as side panel, doors are fixed on them; 6 mm back-panel groove on both faces). Inside partitions (dressing / bangle column) = 494. Shelves = 474 (set back 20 mm).",
+    "Board: 18 mm ply for all carcass, shelves and drawers.  Back panels: 6 mm ply OUTER TO OUTER, 2000 high, screwed on the back edges (no groove); joints on partition centres.",
+    "Depth: all wardrobes 500 total = carcass 494 (side / top / bottom / full-height partitions, doors are fixed on them) + 6 mm back. Inside partitions (dressing / bangle column) = 494. Shelves = 474 (set back 20 mm).",
     "Every wardrobe is a CUPBOARD BOX 2000 mm high (an 8 ft ply sheet is only 2400 mm long).",
     "LOFT above the cupboard = 90 mm FRAME ONLY: 90 mm uprights at the ends and partitions + 90 mm top and bottom rails. No loft box, no loft back panel. Loft floor = cupboard top panel.",
     "GF Bedroom is wider than 2400 mm, so it has 2 cupboard boxes side by side and the loft rails are in 2 pieces – no piece is longer than 2400 mm.",

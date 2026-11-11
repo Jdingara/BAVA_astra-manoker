@@ -32,9 +32,9 @@ def short(part):
 def machining(g, part, note):
     n = []
     if "Side panel" in part and g == "Cupboard box":
-        n.append("6 mm back groove (inner face)")
+        n.append("no back groove (6 mm back screwed on)")
     if "full height, doors fixed" in part:
-        n.append("6 mm back groove both faces")
+        n.append("back panel joint on back edge")
     if "groove" in note and g == "Drawers" and "bottom" not in part:
         n.append("drawer-bottom groove: leave 12, 8 W x 10 D")
     if g == "Shutters" and ("Door" in part):

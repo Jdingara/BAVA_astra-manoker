@@ -48,17 +48,14 @@ for room, v in D.items():
     hs = m["sections"][0]
     chk(hs.get("hanging") and round(hs["shelves"][1] - hs["shelves"][0] - T) == 1200 and round(hs["rod_y"] - y_floor) == 1609,
         f"{room}: coat stand left section, 1200 hanging, rod 1609 from floor")
-    chk(sum(r[3] for r in R("Main back panel")) == 3, f"{room}: 3 back panels (one per section)")
     # 4 shelves & backs
-    cols = sorted({x for x, a, b in vb if a <= y_bot + T + 5 and b >= main_top - 5})
-    opens = [round(b - (a + T)) for a, b in zip(cols, cols[1:]) if b - (a + T) > 60]
-    backs = sorted(r[5] for r in R("Main back panel") for _ in range(r[3]))
-    chk(backs == sorted(o + 12 for o in opens), f"{room}: back panels {backs} = openings {opens} + 12")
-    chk(all(r[4] == 1896 for r in R("Main back panel")), f"{room}: back panel height 1896 = 1884 + 12")
+    bk = [r for r in R("Main back panel") for _ in range(r[3])]
+    chk(abs(sum(r[5] for r in bk) - W) < 0.6, f"{room}: back panels outer to outer, widths {[r[5] for r in bk]} add up to {W:.0f}")
+    chk(all(r[4] == 2000 and r[5] <= 1220 for r in bk), f"{room}: back panels 2000 high, each <= 1220 wide")
     shelves = R("Shelf"); chk(all(r[5] == inf["depth"] - 26 for r in shelves), f"{room}: shelves {inf['depth'] - 26:.0f} deep (500 - 6 back - 20 set back)")
     sh_ok = all(any(abs(r[4] - (b - a)) < 1 for y, a, b in hb) for r in shelves)
     chk(sh_ok, f"{room}: every shelf length matches the drawing")
-    chk(all(r[5] == 500 for r in R("Side panel (cupboard") + R("Partition (full") + R("Bottom panel") + R("Top panel")), f"{room}: sides/top/bottom/full partitions 500")
+    chk(all(r[5] == 494 for r in R("Side panel (cupboard") + R("Partition (full") + R("Bottom panel") + R("Top panel")), f"{room}: sides/top/bottom/full partitions 494 (+ 6 back = 500)")
     # 5 drawers
     x1, x2, n, dh, lab = oc.DRAWERS[room][0]; op = x2 - x1
     side = R("drawer side")[0]; inner = R("front/back inner")[0]; bot = R("drawer bottom")[0]

@@ -1,5 +1,5 @@
 """Cut list - 5-door design (boards.json from make_5door_boards.py; outer box from the owner's AutoCAD drawing).
-Depth 18 in (457 mm). 6 mm back panels per section. LED strip-light groove per main section."""
+Total depth 500 = 494 carcass + 6 mm back (outer to outer, screwed). LED strip-light groove per main section."""
 import json
 import math
 import os
@@ -64,6 +64,7 @@ def edge_cut(L, W, edge):
 def analyse(name, d):
     DEPTH = DEPTHS.get(name, 457.0)
     PART_D = DEPTH - BACK
+    CARC_D = DEPTH - BACK              # owner: total 500 = carcass 494 + 6 mm back screwed on the back edges (no groove)
     SHELF_D = DEPTH - BACK - 20
     hb = [tuple(b) for b in d["h"]]
     vb = [tuple(b) for b in d["v"]]
@@ -102,13 +103,13 @@ def analyse(name, d):
     for x, a, b in sorted(vb):
         L = b - a
         if L >= tall - 30:
-            add("Cupboard box", f"Side panel (cupboard, {box_h} high)", C18, 1, box_h, DEPTH, "0.5 mm, 1 long", "")
+            add("Cupboard box", f"Side panel (cupboard, {box_h} high)", C18, 1, box_h, CARC_D, "0.5 mm, 1 long", "6 mm back screwed on back edge")
             add("Loft box", "Side panel (loft)", C18, 1, L - box_h, DEPTH, "0.5 mm, 1 long")
         elif a >= main_top_y - 1:
             add("Loft box", "Loft partition / box side (back to back)", C18, 1, L, PART_D, "0.5 mm, 1 long")
         else:
-            if L >= 1800:   # full-height partition: doors hinge on it -> full depth, same as side panel; 6 mm groove both faces for back panels
-                add("Cupboard box", "Partition (full height, doors fixed)", C18, 1, L, DEPTH, "0.5 mm, 1 long", "6 mm back-panel groove on both faces")
+            if L >= 1800:   # full-height partition: doors hinge on it -> same depth as side panel; back panel joint on its back edge
+                add("Cupboard box", "Partition (full height, doors fixed)", C18, 1, L, CARC_D, "0.5 mm, 1 long", "back panel joint on its back edge (centre)")
             else:           # inside partition (dressing / bangle column) stops in front of the back panel
                 add("Cupboard box", "Partition (inside)", C18, 1, L, PART_D, "0.5 mm, 1 long", "")
     # ---- horizontal boards
@@ -116,9 +117,9 @@ def analyse(name, d):
     for y, a, b in sorted(hb):
         L = b - a
         if y <= y_bot + 1:
-            add("Cupboard box", "Bottom panel", C18, 1, L, DEPTH, "0.5 mm, 1 long")
+            add("Cupboard box", "Bottom panel", C18, 1, L, CARC_D, "0.5 mm, 1 long")
         elif abs(y - main_top_y) < 1 and L >= 0.3 * width / (2 if sx else 1):
-            add("Cupboard box", "Top panel", C18, 1, L, DEPTH, "0.5 mm, 1 long")
+            add("Cupboard box", "Top panel", C18, 1, L, CARC_D, "0.5 mm, 1 long")
         elif main_top_y < y <= mid_hi + 1 and L >= 0.3 * width / (2 if sx else 1):
             add("Loft box", "Bottom panel", C18, 1, L, DEPTH, "0.5 mm, 1 long")
         elif y >= top_lo - 1:
@@ -142,7 +143,6 @@ def analyse(name, d):
             w = l2 - r1
             if w < 60:
                 continue                          # back-to-back boards
-            add("Back panels 6 mm", f"{zname} back panel", B6, 1, (z2 - z1) + 12, w + 12, "-", "in 6 mm groove all round")
             if zname == "Main":
                 grooves += 1
                 # LED profile groove on the LEFT board of this section (its right face), vertical
@@ -160,6 +160,15 @@ def analyse(name, d):
                 sec_h = z2 - z1
                 led.append({"section": len(led) + 1, "opening": round(w), "panel": pname, "x": lx, "face": "right face (inside section)",
                             "from_front": 100, "start": round(g_from), "length": round(sec_h - g_from), "strip": round(sec_h - g_from - 20)})
+
+    # ---- 6 mm back: outer to outer per box, full box height, screwed on the back edges; joints on partition centres (sheet 1220)
+    boxes = [(x_min, sx[0] + T), (sx[1] - T, x_max)] if sx else [(x_min, x_max)]
+    mids = sorted(x + T / 2 for x, a, b in vb if 1800 <= b - a < tall - 30)
+    for bx0, bx1 in boxes:
+        cuts = [bx0] + [c for c in mids if bx0 + 5 < c < bx1 - 5] + [bx1]
+        for c0, c1 in zip(cuts, cuts[1:]):
+            add("Back panels 6 mm", "Main back panel (outer to outer)", B6, 1, box_h, round(c1 - c0, 1), "-",
+                "screw on back edges of sides / top / bottom / partitions; joint on partition centre")
 
     # ---- drawers
     n_drawers = 0
@@ -381,7 +390,7 @@ if __name__ == "__main__":
     for col, wdt in zip("ABCDEFGHI", (22, 9, 11, 13, 26, 11, 13, 14, 20)):
         ls.column_dimensions[col].width = wdt
     summary.append([])
-    summary.append(["Depth 500 mm all wardrobes (sides/top/bottom), full partitions 500, inside partitions 494, shelves 474. Back panels 6 mm in 6 mm groove (+12 on size)."])
+    summary.append(["Depth 500 total = carcass 494 (sides/top/bottom/full partitions) + 6 mm back screwed on, outer to outer, joints on partition centres. Shelves 474. No back groove."])
     summary.append([f"{GROOVE}: one vertical groove per main section - see sheet LED groove cutting."])
     summary.append(["All wardrobes: cupboard box 2000 mm high; LOFT above = 90 mm FRAME ONLY (uprights + top/bottom rails, no box, no back panel)."])
     summary.append(["GF Bedroom: wider than 2400, so 2 cupboard boxes side by side; loft rails in 2 pieces; no board over 2400."])

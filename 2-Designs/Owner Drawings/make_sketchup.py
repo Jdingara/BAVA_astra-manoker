@@ -1,7 +1,7 @@
 """Build the owner's 4 wardrobes in SketchUp from boards.json (read from his AutoCAD drawing).
 Writes a Ruby script; run it in SketchUp (Ruby console: load '<path>') or via -RubyStartup.
 Rules = same as the cut list: cupboard box 2000 high, depth 457 (18 in), partitions 451, shelves 431,
-6 mm back panels, loft = 90 mm frame only, GF = 2 boxes side by side."""
+6 mm back outer to outer (carcass 494 + 6 = 500), loft = 90 mm frame only, GF = 2 boxes side by side."""
 import json
 import os
 
@@ -53,32 +53,28 @@ def build(name, d, x_off):
     for x, a, b in sorted(vb):
         L = b - a
         if L >= tall - 30:
-            P("Side panel (cupboard)", "carcass", X(x), 0, 0, T, DEPTH, box_h)
+            P("Side panel (cupboard)", "carcass", X(x), 0, 0, T, PART_D, box_h)
             up_x.append(x)
         elif a >= main_top_y - 1:
             up_x.append(x)                                   # loft partition -> frame upright
         else:
-            P("Partition", "carcass", X(x), 0, Z(a), T, DEPTH if L >= 1800 else PART_D, L)
+            P("Partition", "carcass", X(x), 0, Z(a), T, PART_D, L)
     # horizontal boards inside the cupboard (loft boards are replaced by the frame)
     for y, a, b in sorted(hb):
         L = b - a
         if y <= y_bot + 1:
-            P("Bottom panel", "carcass", X(a), 0, Z(y), L, DEPTH, T)
+            P("Bottom panel", "carcass", X(a), 0, Z(y), L, PART_D, T)
         elif abs(y - main_top_y) < 1 and L >= 0.3 * width / (2 if sx else 1):
-            P("Top panel", "carcass", X(a), 0, Z(y), L, DEPTH, T)
+            P("Top panel", "carcass", X(a), 0, Z(y), L, PART_D, T)
         elif y > main_top_y + 1:
             continue
         elif abs(y - (META[name]["dress_y"] or -1)) < 0.5:
             P("Dressing top", "shelf", X(a), 0, Z(y), L, PART_D, T)
         else:
             P("Shelf", "shelf", X(a), 20, Z(y), L, SHELF_D, T)
-    # 6 mm back panels (cupboard sections)
-    z1, z2 = Z(y_bot) + T, Z(main_top_y)
-    cols = sorted({x for x, a, b in vb if Z(a) <= z1 + 5 and Z(b) >= z2 - 5})
-    for xa, xb in zip(cols, cols[1:]):
-        w = xb - (xa + T)
-        if w >= 60:
-            P("Back panel 6 mm", "back", X(xa + T), DEPTH - BACK, z1, w, BACK, z2 - z1)
+    # 6 mm back: outer to outer per box, full box height, screwed on the back edges (carcass 494 + 6 = 500)
+    for bx0, bx1 in ([(x_min, sx[0] + T), (sx[1] - T, x_max)] if sx else [(x_min, x_max)]):
+        P("Back panel 6 mm", "back", X(bx0), DEPTH - BACK, 0, bx1 - bx0, BACK, box_h)
     # loft: 90 mm frame only
     loft_h = tall - box_h
     merged = []
