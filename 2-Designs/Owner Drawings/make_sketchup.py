@@ -9,15 +9,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 T, BACK, FRAME = 18.0, 6.0, 90.0
 DEPTHS = {"GF": 500.0, "1F Master": 500.0, "1F Bedroom 2": 500.0, "2F": 500.0}   # owner: all wardrobes 500 deep
 
-SPLIT_X = {"GF": (3156.3, 3192.3)}
-DRAWERS = {
-    "GF": [(2341.3, 3156.3, 964.5, 173.0), (2341.3, 3156.3, 1155.5, 182.0)],
-    "1F Master": [(5669.9, 6434.9, 931.0, 173.0), (5669.9, 6434.9, 1122.0, 182.0)],
-    "1F Bedroom 2": [(10013.0, 10759.0, 873.4, 173.0), (10013.0, 10759.0, 1064.4, 182.0)],
-    "2F": [(13384.8, 14140.8, 873.4, 173.0), (13384.8, 14140.8, 1064.4, 182.0)],
-}
+boards = json.load(open(os.path.join(HERE, "boards.json")))       # 5-door layout (make_5door_boards.py)
+META = {k: v["meta"] for k, v in boards.items()}
+SPLIT_X = {k: tuple(m["split"]) for k, m in META.items() if m["split"]}
+# (x1, x2 clear, z of drawer space bottom, opening) - 2 bottom drawers in the drawer section
+DRAWERS = {k: [(s_["x"][0], s_["x"][1], m["y_bot"] + T, 173.0), (s_["x"][0], s_["x"][1], m["y_bot"] + 191.0 + T, 182.0)]
+           for k, m in META.items() for s_ in m["sections"] if s_["drawers"]}
 TITLES = {"GF": "GF BEDROOM", "1F Master": "1ST FLOOR M.BEDROOM", "1F Bedroom 2": "1ST FLOOR BEDROOM 2", "2F": "2ND FLOOR BEDROOM"}
-boards = json.load(open(os.path.join(HERE, "boards.json")))
 
 ROOMS = {}
 parts = []   # (wardrobe, part name, material, x, y, z, w(x), d(y), h(z))  y = depth from front
@@ -36,7 +34,7 @@ def build(name, d, x_off):
     y_floor = min(b[1] for b in vb)
     ys = [b[0] for b in hb]
     y_bot, y_top = min(ys), max(ys)
-    main_top_y = min(b[0] for b in hb if b[0] > y_bot + 1500 and b[2] - b[1] >= 0.6 * width)
+    main_top_y = META[name]["main_top"]
     box_h = main_top_y + T - y_floor
     X = lambda x: x - x_min + x_off
     Z = lambda y: y - y_floor
@@ -70,6 +68,8 @@ def build(name, d, x_off):
             P("Top panel", "carcass", X(a), 0, Z(y), L, DEPTH, T)
         elif y > main_top_y + 1:
             continue
+        elif abs(y - (META[name]["dress_y"] or -1)) < 0.5:
+            P("Dressing top", "shelf", X(a), 0, Z(y), L, PART_D, T)
         else:
             P("Shelf", "shelf", X(a), 20, Z(y), L, SHELF_D, T)
     # 6 mm back panels (cupboard sections)

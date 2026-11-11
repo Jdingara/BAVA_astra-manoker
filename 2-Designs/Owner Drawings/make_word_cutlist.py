@@ -99,7 +99,7 @@ notes = [
     "LED strip-light groove: one vertical groove per cupboard section, 12 mm wide × 8 mm deep, 100 mm from the front edge, on the side / partition face.",
     "Drawers: bottom 2 drawers only in every bedroom, opening 173, drawer box 150 high. 18 mm frame (sides + front/back inner) with an 8 mm wide x 10 mm deep groove: leave 12 mm from the bottom edge, groove from 12 to 20 mm; the 6 mm drawer bottom slides into the groove (size = inside + 18 mm: 10 mm groove each side, 1 mm play).",
     "Cut L / Cut W = panel-saw size (front edge minus 0.5 mm edge tape). Add saw kerf when marking out.",
-    "Shutters: 6 doors per bedroom (2 per section), 18 mm ply + laminate, full overlay; gaps 2 mm between doors, 3 mm next to side cover / strip, 2 mm cupboard-to-loft door, 1 mm bottom and top; 2 mm edge tape on 4 sides (Cut = finished - 4 mm). Drawer section: doors only above the drawers; the 2 drawers have outside fronts in shutter material.",
+    "Shutters: 5 doors per bedroom (2 + 1 + 2, centre door = dressing; GF centre door glass with 90 border), 18 mm ply + laminate, full overlay; gaps 2 mm between doors, 3 mm next to side cover / strip, 2 mm cupboard-to-loft door, 1 mm bottom and top; 2 mm edge tape on 4 sides (Cut = finished - 4 mm). Drawer section: doors only above the drawers; the 2 drawers have outside fronts in shutter material.",
 ]
 for n in notes:
     p = doc.add_paragraph(n, style="List Bullet")

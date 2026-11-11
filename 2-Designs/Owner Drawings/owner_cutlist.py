@@ -1,4 +1,4 @@
-"""Cut list from the owner's own AutoCAD wardrobe drawings (boards.json from read_owner_dwg.py).
+"""Cut list - 5-door design (boards.json from make_5door_boards.py; outer box from the owner's AutoCAD drawing).
 Depth 18 in (457 mm). 6 mm back panels per section. LED strip-light groove per main section."""
 import json
 import math
@@ -19,34 +19,36 @@ GROOVE_REF = "LED profile groove - see LED groove sheet"
 GAP_END, GAP_JOINT, GAP_EDGE = 3.0, 2.0, 1.0   # end door <-> side cover/strip | door <-> door | bottom / top
 C18, B6 = "18 mm ply", "6 mm back ply"
 
-# drawers read from the drawing dimensions: (region, x1, x2 clear opening, count, height of each drawer space)
-DRAWERS = {   # bottom drawers only (owner): opening 173, drawer box 150 high
-    "GF": [(2341.3, 3156.3, 2, 173.0, "Bottom drawers")],
-    "1F Master": [(5669.9, 6434.9, 2, 173.0, "Bottom drawers")],
-    "1F Bedroom 2": [(10013.0, 10759.0, 2, 173.0, "Bottom drawers (right section)")],
-    "2F": [(13384.8, 14140.8, 2, 173.0, "Bottom drawers (right section)")],
-}
+boards = json.load(open(os.path.join(HERE, "boards.json")))    # 5-door layout (make_5door_boards.py); 6-door in "boards (6-door).json"
+META = {k: v["meta"] for k, v in boards.items()}
+# 2 bottom drawers per bedroom (opening 173 + 182, box 150): clear width of the drawer section from the 5-door layout
+DRAWERS = {k: [(m["sections"][i]["x"][0], m["sections"][i]["x"][1], 2, 173.0,
+                "Bottom drawers (centre, under dressing)" if i == 1 else "Bottom drawers (right section)")
+               for i in range(3) if m["sections"][i]["drawers"]] for k, m in META.items()}
 DRAWER_BOX_H = 150.0
-# shutter colours (owner's picture): doors left -> right, 2 per section
-DOOR_COLOURS = {"GF": ["27173 LV Seaglass (green)", "21125 Sunburn (brown)", "27173 LV Seaglass (green)", "27173 LV Seaglass (green)", "21125 Sunburn (brown)", "27173 LV Seaglass (green)"],
-                "1F Master": ["27292 LV Mink (grey)", "27262 LV Peacock (teal)", "27292 LV Mink (grey)", "27292 LV Mink (grey)", "27292 LV Mink (grey)", "27262 LV Peacock (teal)"],
-                "1F Bedroom 2": ["21433 SF Neo Banana Leaf (green)", "21457 SF Aspen Gold (yellow)", "21433 SF Neo Banana Leaf (green)", "21433 SF Neo Banana Leaf (green)", "21457 SF Aspen Gold (yellow)", "21433 SF Neo Banana Leaf (green)"],
-                "2F": ["21462 SF Lavendura (lavender)", "21452 SF Prism Violet (violet)", "21462 SF Lavendura (lavender)", "21462 SF Lavendura (lavender)", "21452 SF Prism Violet (violet)", "21462 SF Lavendura (lavender)"]}
-LOFT_COLOURS = {"GF": DOOR_COLOURS["GF"], "1F Master": ["27292 LV Mink (grey)"] * 6, "1F Bedroom 2": ["21433 SF Neo Banana Leaf (green)"] * 6, "2F": ["21462 SF Lavendura (lavender)"] * 6}
-DRAWER_COLOUR = {"GF": "21125 Sunburn (brown)", "1F Master": "27262 LV Peacock (teal)", "1F Bedroom 2": "21457 SF Aspen Gold (yellow)", "2F": "21452 SF Prism Violet (violet)"}
-SKIRT_COLOUR = {"GF": "27173 LV Seaglass (green)", "1F Master": "27292 LV Mink (grey)", "1F Bedroom 2": "21433 SF Neo Banana Leaf (green)", "2F": "21462 SF Lavendura (lavender)"}
+# 5 doors (2 + 1 + 2), left -> right. Accent: doors 2 + 4 (GF, 1F Bed 2, 2F) / 2 + 5 (1F Master) + drawer fronts.
+# 1F Bed 2 / 2F: drawers under doors 4-5, door 4 above the drawers = accent (L-shape). Centre door 3 = main colour.
+_GF = ("DC687 Foliage Blue (Advance)", "21125 MR+ Sunburn (Merino)")
+_MM = ("27292 LV Mink (grey)", "27262 LV Peacock (teal)")
+_B2 = ("21433 SF Neo Banana Leaf (green)", "21457 SF Aspen Gold (yellow)")
+_2F = ("21462 SF Lavendura (lavender)", "21452 SF Prism Violet (violet)")
+_pat = lambda c, acc: [c[1] if i in acc else c[0] for i in range(1, 6)]
+DOOR_COLOURS = {"GF": _pat(_GF, (2, 4)), "1F Master": _pat(_MM, (2, 5)), "1F Bedroom 2": _pat(_B2, (2, 4)), "2F": _pat(_2F, (2, 4))}
+LOFT_COLOURS = {"GF": _pat(_GF, (2, 4)), "1F Master": [_MM[0]] * 5, "1F Bedroom 2": [_B2[0]] * 5, "2F": [_2F[0]] * 5}
+DRAWER_COLOUR = {"GF": _GF[1], "1F Master": _MM[1], "1F Bedroom 2": _B2[1], "2F": _2F[1]}
+SKIRT_COLOUR = {"GF": _GF[0], "1F Master": _MM[0], "1F Bedroom 2": _B2[0], "2F": _2F[0]}
 COVER_SIDE = {"GF": "left", "1F Master": "left", "1F Bedroom 2": "right", "2F": "left"}   # one side cover only
 LOFT_DOORS = {"GF": True, "1F Master": True, "1F Bedroom 2": True, "2F": True}
-# LED groove start (mm above bottom panel) in the drawer/dressing section: above the drawers / on the dressing top
-LED_START = {"GF": 373, "1F Master": 509, "1F Bedroom 2": 509, "2F": 509}
+DOORS_PER_SECTION = [2, 1, 2]
+GLASS_ROOMS, GLASS_BORDER = {"GF"}, 90.0      # owner: glass panel in the centre door only in GF (90 laminate border)
+MIRROR_H = 700.0                              # dressing mirror height (width = dressing clear - 110)
 # Every wardrobe: cupboard box up to 2000 mm, separate loft box on top (an 8 ft sheet is only 2400 long).
 # GF is wider than 2400 -> two boxes side by side (cupboard and loft), joint at these two back-to-back sides.
-SPLIT_X = {"GF": (3156.3, 3192.3)}
+SPLIT_X = {k: tuple(m["split"]) for k, m in META.items() if m["split"]}   # (left board x, right board x + 18)   # GF: 2 boxes, joint behind door 3 | door 4
 MAX_SHEET = 2400.0
 FRAME_W = 90.0                     # loft = 90 mm frame only
 TITLES = {"GF": "GF Bedroom", "1F Master": "1st Floor M.Bedroom", "1F Bedroom 2": "1st Floor Bedroom 2", "2F": "2nd Floor Bedroom"}
 
-boards = json.load(open(os.path.join(HERE, "boards.json")))
 
 
 def edge_cut(L, W, edge):
@@ -80,7 +82,7 @@ def analyse(name, d):
     ys = [b[0] for b in hb]
     y_bot, y_top = min(ys), max(ys)
     big = [b for b in hb if b[2] - b[1] >= 0.3 * width]
-    main_top_y = min(b[0] for b in hb if b[0] > y_bot + 1500 and b[2] - b[1] >= 0.6 * width)
+    main_top_y = META[name]["main_top"]               # cupboard top panel level (from make_5door_boards.py)
     top_lo = min(b[0] for b in hb if b[0] >= y_top - 40)
     mid_hi = max(b[0] for b in big if main_top_y - 1 <= b[0] <= main_top_y + 40)
     box_h = round(main_top_y + T - y_floor)          # cupboard box height (2000 in the drawings)
@@ -121,6 +123,9 @@ def analyse(name, d):
             add("Loft box", "Bottom panel", C18, 1, L, DEPTH, "0.5 mm, 1 long")
         elif y >= top_lo - 1:
             add("Loft box", "Top panel" if abs(y - top_lo) < 1 else "Top cover panel (2nd top, as drawn)", C18, 1, L, DEPTH, "0.5 mm, 1 long")
+        elif abs(y - (META[name]["dress_y"] or -1)) < 0.5:
+            add("Inside", "Dressing top (centre section)", C18, 1, L, PART_D, "0.5 mm, 1 long",
+                f"flush with front (behind door 3); top {y - y_floor:.0f} from floor; mirror + LED above")
         else:
             add("Inside", "Shelf", C18, 1, L, SHELF_D, "0.5 mm, 1 long")
 
@@ -147,7 +152,11 @@ def analyse(name, d):
                 g_from = 0.0
                 for x1, x2, n, dh, lab in DRAWERS[name]:
                     if abs(x1 - r1) < 15 and x2 <= l2 + 15:           # drawers fixed on this face -> stop groove above them
-                        g_from = float(LED_START[name])
+                        top_div = max(y for y, a, b in hb if abs(a - x1) < 1 and y < z1 + 450)
+                        g_from = top_div + T - z1
+                dy = META[name]["dress_y"]
+                if dy and r1 - 1 < META[name]["sections"][1]["x"][0] < l2:   # dressing section: groove starts on the dressing top
+                    g_from = dy + T - z1
                 sec_h = z2 - z1
                 led.append({"section": len(led) + 1, "opening": round(w), "panel": pname, "x": lx, "face": "right face (inside section)",
                             "from_front": 100, "start": round(g_from), "length": round(sec_h - g_from), "strip": round(sec_h - g_from - 20)})
@@ -198,10 +207,12 @@ def analyse(name, d):
     f_bot, f_top = y_bot, main_top_y + T                      # door covers bottom panel .. top of top panel
     hinges = 0
     door_rows = []
-    nd = 2 * (len(edges) - 1)
+    per = DOORS_PER_SECTION if len(edges) == 4 else [2] * (len(edges) - 1)
+    nd = sum(per)
     front_w = edges[-1] - edges[0]
     dw = math.floor((front_w - 2 * GAP_END - (nd - 1) * GAP_JOINT) / nd)      # all doors equal, whole mm
-    for xa, xb in zip(edges, edges[1:]):
+    glass = []
+    for (xa, xb), q in zip(zip(edges, edges[1:]), per):
         drw = [dd for dd in DRAWERS[name] if xa - 5 <= dd[0] and dd[1] <= xb + 5]
         if drw:
             x1, x2, n, dh, lab = drw[0]
@@ -209,27 +220,36 @@ def analyse(name, d):
             cuts = [f_bot] + [y + T / 2 for y in divs]
             for k_, (lo_, hi_) in enumerate(zip(cuts, cuts[1:])):
                 hgt = (hi_ - lo_) - (GAP_EDGE if k_ == 0 else GAP_JOINT / 2) - GAP_JOINT / 2
-                add("Shutters", "Drawer outside front (laminate)", SH, 1, 2 * dw + GAP_JOINT, round(hgt, 1), "2 mm, 4 sides", "fix on drawer box; handle")
+                add("Shutters", "Drawer outside front (laminate)", SH, 1, q * dw + (q - 1) * GAP_JOINT, round(hgt, 1), "2 mm, 4 sides", "fix on drawer box; handle")
             dh_ = f_top - cuts[-1] - GAP_JOINT / 2 - GAP_JOINT / 2
-            door_rows.append((2, dh_, dw, "Door above drawers"))
+            door_rows.append((q, dh_, dw, "Door above drawers"))
         else:
-            door_rows.append((2, f_top - f_bot - GAP_EDGE - GAP_JOINT / 2, dw, "Door (full height)"))
+            door_rows.append((q, f_top - f_bot - GAP_EDGE - GAP_JOINT / 2, dw, "Door (full height)"))
     col = DOOR_COLOURS.get(name)
-    for i, (q, h_, w_, lab) in enumerate(door_rows):
+    k = 0
+    for q, h_, w_, lab in door_rows:
         for j in range(q):
-            c = f" - {col[2 * i + j]}" if col else ""
-            add("Shutters", lab + c, SH, 1, round(h_, 1), round(w_, 1), "2 mm, 4 sides", "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door")
+            k += 1
+            c = f" - {col[k - 1]}" if col else ""
+            note = "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+            lab_ = lab
+            if k == 3 and name in GLASS_ROOMS:          # centre door: laminate frame with glass panel
+                gw, gh = w_ - 2 * GLASS_BORDER, h_ - 2 * GLASS_BORDER
+                glass.append((math.floor(gw + 20), math.floor(gh + 20)))
+                lab_ += " GLASS"
+                note = (f"CENTRE GLASS DOOR: CNC cut-out {gw:.0f} x {gh:.0f} after laminate + edge band ({GLASS_BORDER:.0f} border all round); "
+                        f"glass {glass[-1][0]} x {glass[-1][1]} fixed behind with beading; " + note)
+            add("Shutters", lab_ + c, SH, 1, round(h_, 1), round(w_, 1), "2 mm, 4 sides", note)
         hinges += q * (5 if h_ > 1700 else 4)
     if col:   # drawer fronts colour
         rows[:] = [r if r[1] != "Drawer outside front (laminate)" else r[:1] + [f"Drawer outside front - {DRAWER_COLOUR[name]}"] + r[2:] for r in rows]
     if LOFT_DOORS.get(name):   # loft doors: same widths as the doors below, on the 90 mm loft frame
         loft_dh = tall - (f_top - y_floor) - GAP_JOINT / 2 - GAP_EDGE
-        for i, (xa, xb) in enumerate(zip(edges, edges[1:])):
-            for j in range(2):
-                lc = LOFT_COLOURS.get(name)
-                c = f" - {lc[2 * i + j]}" if lc else ""
-                add("Shutters", "Loft door" + c, SH, 1, round(loft_dh, 1), dw, "2 mm, 4 sides", "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top")
-                hinges += 2 if loft_dh < 900 else 3
+        lc = LOFT_COLOURS.get(name)
+        for i in range(nd):
+            c = f" - {lc[i]}" if lc else ""
+            add("Shutters", "Loft door" + c, SH, 1, round(loft_dh, 1), dw, "2 mm, 4 sides", "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top")
+            hinges += 2 if loft_dh < 900 else 3
         # front skirting (base 80) - one piece per box (no piece over 2400)
         pieces = [(edges[0], (sx[0] + sx[1]) / 2), ((sx[0] + sx[1]) / 2, edges[-1])] if sx else [(edges[0], edges[-1])]
         for xa, xb in pieces:
@@ -277,7 +297,12 @@ def analyse(name, d):
                 [f"Soft-close telescopic channels {box_l} mm (pairs)", n_drawers],
                 ["Drawer handles / profile", n_drawers],
                 ["Concealed soft-close hinges (doors)", hinges],
-                ["Door handles", 6]]
+                ["Door handles", nd]]
+    m = META[name]
+    if m["dress_y"]:
+        hardware.append([f"Dressing mirror 5 mm (on back panel), {m['sections'][1]['clear'] - 110} x {MIRROR_H:.0f}", 1])
+    for gw, gh in glass:
+        hardware.append([f"Glass panel for centre door {gw} x {gh} (type to confirm) + beading", 1])
     longest = max(r[4] for r in rows)
     depth_used = DEPTH
     info = {"depth": depth_used, "channel": box_l if DRAWERS[name] else None, "longest_piece": longest, "box_h": box_h, "width": round(width), "height": round(tall), "main_clear": round(zones["Main"][1] - zones["Main"][0]),
@@ -357,7 +382,8 @@ if __name__ == "__main__":
     summary.append([f"{GROOVE}: one vertical groove per main section - see sheet LED groove cutting."])
     summary.append(["All wardrobes: cupboard box 2000 mm high; LOFT above = 90 mm FRAME ONLY (uprights + top/bottom rails, no box, no back panel)."])
     summary.append(["GF Bedroom: wider than 2400, so 2 cupboard boxes side by side; loft rails in 2 pieces; no board over 2400."])
-    summary.append(["Shutters: 6 doors per bedroom (2 per section), full overlay, 3 mm gaps. Drawer section: doors only above the drawers; drawers have outside fronts."])
+    summary.append(["Shutters: 5 doors per bedroom (2 + 1 + 2), full overlay, 2 mm between doors. Drawer section: doors only above the drawers; drawers have outside fronts."])
+    summary.append(["Centre section (door 3) = dressing: top 750 from floor (GF) / 800 (others), mirror + LED above. GF centre door has a glass panel (90 laminate border); other rooms plain door."])
     for col, wdt in zip("ABCDEFGHIJ", (24, 9, 9, 13, 13, 9, 13, 12, 12, 9)):
         summary.column_dimensions[col].width = wdt
     out = save(wb, os.path.join(HERE, "Owner Drawings - Wardrobe Cut List (500 depth).xlsx"))

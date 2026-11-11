@@ -1,4 +1,4 @@
-"""5-door design 2D drawing per bedroom from "boards (5-door).json" (run make_5door_boards.py first).
+"""5-door design 2D drawing per bedroom from boards.json (run make_5door_boards.py first).
 Left: inside front view with all measurements. Right: doors front view with laminate colours (shades approximate).
 -> "2D 5 doors - <room>.png" + "Mr. Manoker - 5 doors 2D drawing.pdf"."""
 import json
@@ -10,9 +10,10 @@ from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.patches import Rectangle
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-B = json.load(open(os.path.join(HERE, "boards (5-door).json")))
+B = json.load(open(os.path.join(HERE, "boards.json")))
 T, GLASS_BORDER, MIRROR_H = 18, 90, 700
 TITLES = {"GF": "GF BEDROOM", "1F Master": "1ST FLOOR M.BEDROOM", "1F Bedroom 2": "1ST FLOOR BEDROOM 2", "2F": "2ND FLOOR BEDROOM"}
+GLASS_ROOMS = {"GF"}                 # owner: glass in the centre door only in GF; other rooms plain door, dressing inside
 COVER_SIDE = {"GF": "left", "1F Master": "left", "1F Bedroom 2": "right", "2F": "left"}
 # (main, accent, accent doors 1-based, accent loft doors) - same pattern as the 5-door customer pictures
 COL = {"GF": ("DC687 Foliage Blue (Advance)", "21125 MR+ Sunburn (Merino)", [2, 4], [2, 4]),
@@ -113,7 +114,7 @@ def front(ax, room, d):
         lo = d_top if i in drw_doors else f0
         hgt = cup - 1 - lo
         ax.add_patch(Rectangle((x, lo), dw, hgt, fc=c, ec="#111", lw=.6))
-        if i == 3:                                            # centre glass door
+        if i == 3 and room in GLASS_ROOMS:                    # centre glass door (GF only)
             ax.add_patch(Rectangle((x + GLASS_BORDER, lo + GLASS_BORDER), dw - 2 * GLASS_BORDER, hgt - 2 * GLASS_BORDER, fc="#b9d0d6", ec="#555", lw=.7))
             ax.plot([x + GLASS_BORDER + 30, x + dw * .55], [lo + GLASS_BORDER + 60, lo + hgt - GLASS_BORDER - 60], color="white", lw=4, alpha=.6)
             ax.text(x + dw / 2, lo + hgt / 2, f"GLASS\n{dw - 2 * GLASS_BORDER:.0f} x {hgt - 2 * GLASS_BORDER:.0f}\n(90 border)", ha="center", va="center", fontsize=6)
@@ -157,10 +158,17 @@ for room, d in B.items():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(16.5, 9.6))
     inside(a1, room, d); front(a2, room, d)
     fig.suptitle(f"Mr. Manoker – {TITLES[room]} wardrobe – 5 doors (2 + 1 + 2) – 2D drawing (all mm)", fontsize=14, weight="bold")
-    fig.text(.5, .02, "Depth 500. Partitions behind the door joints. Shelves 305 clear. Dressing in the centre door (glass). "
+    fig.text(.5, .02, "Depth 500. Partitions behind the door joints. Shelves 305 clear. Dressing behind the centre door (door 3). "
+             + ("Centre door has a GLASS panel. " if room in GLASS_ROOMS else "Centre door plain laminate (no glass). ") +
              "Colours on screen are approximate (DC687 shade not verified). Astra Interiors", ha="center", fontsize=8, color="#555")
     print(save_png(fig, f"2D 5 doors - {TITLES[room].title()}.png"))
     figs.append(fig)
+    # single views for the carpenter Excel / A4 / Word pack (same names as the old 6-door pictures)
+    for fn, draw in ((f"drawing_{room}.png", inside), (f"shutters_{room}.png", front)):
+        f1, ax1 = plt.subplots(figsize=(9, 10))
+        draw(ax1, room, d)
+        ax1.set_title(f"{TITLES[room]} – 5 doors", fontsize=12, weight="bold")
+        f1.savefig(os.path.join(HERE, fn), dpi=150, bbox_inches="tight"); plt.close(f1)
 pdf = "Mr. Manoker - 5 doors 2D drawing.pdf"
 for n in (pdf, pdf.replace(".pdf", " (updated).pdf"), pdf.replace(".pdf", time.strftime(" (%H%M%S).pdf"))):
     try:

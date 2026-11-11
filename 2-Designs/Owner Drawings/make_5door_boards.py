@@ -1,4 +1,4 @@
-"""5-door design: build new board geometry from the outer box in boards.json -> "boards (5-door).json".
+"""5-door design: build new board geometry from the outer box of the 6-door drawing ("boards (6-door).json") -> boards.json.
 Doors 2 + 1 + 2; full-height partitions sit behind the door joints (doors hinge on them).
 Centre (1 door) = dressing: top at 750 (GF, 50 lower) / 800 from floor, 850 clear above, mirror + LED, shelf above.
 Side sections = shelves 305 clear. 2 bottom drawers (173 / 182 openings): GF + 1F Master in the centre section,
@@ -107,9 +107,9 @@ def build(name, d):
 
 
 if __name__ == "__main__":
-    src = json.load(open(os.path.join(HERE, "boards.json")))
+    src = json.load(open(os.path.join(HERE, "boards (6-door).json")))
     out = {k: build(k, d) for k, d in src.items()}
-    json.dump(out, open(os.path.join(HERE, "boards (5-door).json"), "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, "boards.json"), "w"), indent=1)
     for k, o in out.items():
         m = o["meta"]
         print(k, "door", m["door_w"], "end gap", m["end_gap"], "sections", [(s["clear"], len(s["shelves"])) for s in m["sections"]])

@@ -13,7 +13,7 @@ parts = [p for p in D["parts"] if p[0] == ROOM]
 DRAWER_HEX = {"GF": "#9b6638", "1F Master": "#075f7f", "1F Bedroom 2": "#f7cd0b", "2F": "#5c2568"}
 COL = {"carcass": "#ece4d2", "shelf": "#f2ebdc", "back": "#e2d9c4", "frame": "#e6dcc6",
        "drawer": DRAWER_HEX[ROOM], "drawerbox": "#e9e0cc",
-       "cover": {"GF": "#77a99b", "1F Master": "#d9cdd2", "1F Bedroom 2": "#035f33", "2F": "#a994c7"}[ROOM]}
+       "cover": {"GF": "#46707a", "1F Master": "#d9cdd2", "1F Bedroom 2": "#035f33", "2F": "#a994c7"}[ROOM]}
 MM = 0.001
 
 
@@ -36,7 +36,7 @@ sc = bpy.context.scene
 sc.render.engine = "CYCLES"
 try:
     prefs = bpy.context.preferences.addons["cycles"].preferences
-    prefs.compute_device_type = "CUDA"; prefs.get_devices()
+    prefs.compute_device_type = "METAL" if sys.platform == "darwin" else "CUDA"; prefs.get_devices()
     for d in prefs.devices: d.use = True
     sc.cycles.device = "GPU"
 except Exception as e:

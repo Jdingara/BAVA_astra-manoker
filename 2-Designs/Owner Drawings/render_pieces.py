@@ -6,7 +6,7 @@ from matplotlib.patches import Rectangle
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "owner_cutlist.json")))
-HEX = {"27173": "#77a99b", "21125": "#9b6638", "27292": "#d9cdd2", "27262": "#075f7f",
+HEX = {"DC687": "#46707a", "27173": "#77a99b", "21125": "#9b6638", "27292": "#d9cdd2", "27262": "#075f7f",
        "21433": "#035f33", "21457": "#f7cd0b", "21462": "#a994c7", "21452": "#5c2568"}
 GC = {"Cupboard box": "#ece4d2", "Loft frame 90 mm": "#dfe8f3", "Inside": "#f4eedf", "Back panels 6 mm": "#e3dccb", "Drawers": "#f3e3c8"}
 TITLE = {"GF": "GF BEDROOM", "1F Master": "1ST FLOOR M.BEDROOM", "1F Bedroom 2": "1ST FLOOR BEDROOM 2", "2F": "2ND FLOOR BEDROOM"}

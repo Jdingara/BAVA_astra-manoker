@@ -62,7 +62,8 @@ Merino catalogue PDFs (`MerinoLam-Play-E-Catalogue-Latest.pdf`, `Merino Calplus 
 | Script | Reads → writes |
 |---|---|
 | `read_owner_dwg.py` | DXF copy of the owner's DWG → board pairs (two lines 18 mm apart = one board). Its `merge()`/`pair()` are reused. |
-| `boards.json` | **Edited board geometry** per room (GF, 1F Master, 1F Bedroom 2, 2F): `h` = [y, x0, x1], `v` = [x, y0, y1] in AutoCAD mm. Hand edits were applied (see history). |
+| `make_5door_boards.py` | `boards (6-door).json` (owner's drawing, hand-edited) → **`boards.json` = 5-door layout** (`h` = [y, x0, x1], `v` = [x, y0, y1] in AutoCAD mm, plus `meta`: door width, joints, sections, dressing, GF split). Run first after any inside change. |
+| `render_5door_2d.py` | → `2D 5 doors - <room>.png`, `Mr. Manoker - 5 doors 2D drawing.pdf`, and `drawing_<room>.png` / `shutters_<room>.png` used by the carpenter files |
 | `owner_cutlist.py` | `boards.json` → `Owner Drawings - Wardrobe Cut List (500 depth).xlsx` + **`owner_cutlist.json`** (rows, mats, hardware, info). **All rules live here.** |
 | `check_all.py` | 97 automatic checks (widths, heights, gaps, shelves, backs, drawers, LED, laminates, factory = cut-list pieces). Run after every change. |
 | `make_material_list.py` | → `Owner Drawings - Plywood and Laminate List.xlsx` |
@@ -79,7 +80,7 @@ Merino catalogue PDFs (`MerinoLam-Play-E-Catalogue-Latest.pdf`, `Merino Calplus 
 | `blender_owner_model.py` | `3D - <room> - assembled (no doors).png`, `... - exploded pieces.png` |
 | `blender_customer.py` | `Customer 3D - <room> - front / 3-4 view.png` (doors closed, colours) |
 | `make_customer_pdf.py` | `Mr. Manoker - Wardrobes 3D (for customer).pdf` (6-door version) |
-| `render_5door.py`, `render_5door_inside.py` | **5-door design** pictures (front + inside) – picture only, cut list NOT yet redone |
+| `render_5door.py`, `render_5door_inside.py` | 5-door customer pictures (front + inside overview) |
 | `make_party_pdf.py`, `make_picture_pdf.py` | customer PDFs of the 5-door design (+ kitchen page). Latest sent: `Mr. Manoker - 4 Bedrooms + Kitchen FINAL.pdf` |
 
 ### 4.2 Construction rules (agreed with the owner; do not change silently)
@@ -103,7 +104,8 @@ Merino catalogue PDFs (`MerinoLam-Play-E-Catalogue-Latest.pdf`, `Merino Calplus 
   - Side cover and 100 strip: **2 mm on the front edge only**.
   - Skirting: **0.5 mm on the top edge**.
 - **Cut sizes are always whole mm, rounded DOWN** (`math.floor`), never ".5".
-- **Shutters (6-door version):**
+- **5 DOORS (current, confirmed 2026-11-11):** 2 + 1 + 2. Full partitions sit behind the 2 door joints. **Centre section = dressing** in all 4 rooms: top 750 from floor (GF) / 800 (others), 494 deep flush front, 850 clear above with mirror 700 high + LED, shelf above. Side sections: shelves 305 clear. Drawers: GF + 1F Master under the dressing (centre); 1F Bed 2 + 2F in the right section (L-shape). **Glass panel (90 border) in the centre door ONLY in GF**; other rooms plain centre door in the main colour. GF box joint (2 boards) behind the door 3|4 joint: box 1 1513, box 2 1013. Old 6-door layout kept in `boards (6-door).json`.
+- **Shutters (old 6-door version, superseded):**
   - 2 doors per section, full overlay.
   - **Gaps:** 2 mm between doors · 3 mm+ next to the side cover / strip · 2 mm between the cupboard door and the loft door · 1 mm at the bottom and top.
   - All 6 doors are equal whole-mm widths, and the leftover goes into the end gaps.
@@ -130,9 +132,8 @@ Merino catalogue PDFs (`MerinoLam-Play-E-Catalogue-Latest.pdf`, `Merino Calplus 
 - **Plywood:** 18 mm carcass 20–21, 18 mm shutters 16–17, 6 mm 8–9 (about 45–46 sheets).
 
 ### 4.4 Pending wardrobe decisions
-- The **5-door design + glass panel in the centre door** (laminate border 90 around the glass) was **only pictured**.
-  - The cut list, factory and carpenter files are still the **6-door** version.
-  - If the owner confirms 5 doors, redo `owner_cutlist.py` shutters and the inside (partitions behind the door joints 2+1+2, shelves 305 apart, no dressing table, GF 982-wide shelves need support).
+- 5-door cut list, factory, laminate and carpenter files are done (check_all: 121 checks). The A4 / Word packs are .docx only on the Mac (no Word for PDF).
+- GF side shelves are 977–982 wide: may need a centre support.
 - White laminate code.
 - Handle type: the pictures are handleless (G-profile, push-to-open or handles?).
 - Glass type (clear / frosted / tinted / mirror).

@@ -69,11 +69,13 @@ rules = [
     "Drawers: 2 bottom drawers per bedroom, opening 173, box 150 high, 450 soft-close channel (13 mm each side). "
     "Drawer bottom groove: leave 12 mm from bottom, 8 mm wide x 10 mm deep.",
     "LED profile groove: 12 W x 8 D, 100 mm from the FRONT edge, vertical, on panel face inside the section. 10 mm wire hole through top panel.",
-    "Shutters: 18 mm ply, colour laminate outside, white 0.8 mm liner (backer) inside, 2 mm edge tape 4 sides.",
+    "Shutters: 18 mm ply, colour laminate outside, WHITE laminate inside (no liner), 2 mm edge tape 4 sides.",
+    "5 DOORS (2 + 1 + 2): full partitions behind the door joints. Centre door = DRESSING: top 750 from floor (GF) / 800 (others), mirror + LED above, shelf over it.",
+    "GF centre door: GLASS panel, 90 mm laminate border all round (CNC cut-out after laminate + edge tape). Other rooms: plain centre door.",
     "GAPS: 2 mm between doors | 3 mm+ next to side cover / strip | 2 mm cupboard door to loft door | 1 mm bottom and top.",
     "Side cover (518 deep = 500 + door, full height, 2 pieces joined at 2000) on ONE side; 100 mm strip on the other side. 2 mm tape on front edge only.",
     "Skirting 80 high, 0.5 mm tape on top edge.",
-    "Carcass laminate: 27111 LV Ivory White (both faces). 6 mm: Ivory White one face.",
+    "Carcass laminate: WHITE both faces (code to confirm). 6 mm: same white one face. No liner."
 ]
 for r_ in rules:
     p = doc.add_paragraph(r_, style="List Bullet"); p.runs[0].font.size = Pt(10)
@@ -119,7 +121,7 @@ for room, v in D.items():
         if g != last:
             gc = tb.add_row().cells; m = gc[0].merge(gc[-1]); txt(m, GNAME.get(g, g), bold=True, size=9, color=GOLD); shade(m, "F7F2EB"); last = g
         n += 1
-        lam = part.rsplit(" - ", 1)[1].split(" (")[0] if g == "Shutters" and " - " in part else ("Ivory White" if not mat.startswith("6") else "Ivory White 1 side")
+        lam = part.rsplit(" - ", 1)[1].split(" (")[0] if g == "Shutters" and " - " in part else ("White" if not mat.startswith("6") else "White 1 side")
         nm = (part.rsplit(" - ", 1)[0] if g == "Shutters" and " - " in part else part).replace("Bottom drawers (right section): ", "").replace("Bottom drawers: ", "")
         cells = tb.add_row().cells
         for j, (c, val, w) in enumerate(zip(cells, [n, nm, lam, q, cL, cW, edge, where(g, part, note, room)], WID)):

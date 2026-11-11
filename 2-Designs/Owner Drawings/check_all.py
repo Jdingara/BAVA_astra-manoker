@@ -2,6 +2,7 @@ import json, glob, os
 from openpyxl import load_workbook
 import owner_cutlist as oc
 B = json.load(open("boards.json")); D = json.load(open("owner_cutlist.json"))
+oc_dress = {"GF": 750, "1F Master": 800, "1F Bedroom 2": 800, "2F": 800}   # owner: GF 50 lower
 T = 18.0
 ok = []; bad = []
 def chk(cond, msg): (ok if cond else bad).append(msg)
@@ -11,7 +12,7 @@ for room, v in D.items():
     y_floor = min(b[1] for b in vb); tall_top = max(b[2] for b in vb)
     x_min = min(b[0] for b in vb); x_max = max(b[0] + T for b in vb); W = x_max - x_min
     y_bot = min(b[0] for b in hb)
-    main_top = min(b[0] for b in hb if b[0] > y_bot + 1500 and b[2] - b[1] >= 0.6 * W)
+    main_top = B[room]["meta"]["main_top"]
     f_top = main_top + T
     R = lambda key: [r for r in rows if key in r[1]]
     # 1 cut sizes whole, sheet limits
@@ -27,12 +28,24 @@ for room, v in D.items():
     chk(abs(sum(r[4] for r in cv) - (tall_top - y_floor)) < 0.6 and all(r[5] == 518 and r[7] == 516 for r in cv), f"{room}: side cover lower+upper = full height {tall_top - y_floor:.0f}, depth 518")
     chk(abs(sum(r[4] for r in st) - (tall_top - y_floor)) < 0.6 and all(r[5] == 100 for r in st), f"{room}: 100 strip = full height")
     # 3 widths: doors + gaps = front width
-    doors_w = sum(r[3] for r in R("Door (full height)") + R("Door above drawers")) / 2  # 6 doors -> 3 sections of 2
     n_doors = sum(r[3] for r in R("Door (full height)") + R("Door above drawers"))
-    chk(n_doors == 6, f"{room}: 6 cupboard doors")
-    chk(sum(r[3] for r in R("Loft door")) == 6, f"{room}: 6 loft doors")
+    chk(n_doors == 5, f"{room}: 5 cupboard doors (2 + 1 + 2)")
+    chk(sum(r[3] for r in R("Loft door")) == 5, f"{room}: 5 loft doors")
     dw = R("Door (full height)")[0][5]
-    chk(0 <= W - (6 * dw + 2 * 3 + 5 * 2) < 6, f"{room}: 6 doors x {dw} + 2 x 3 end + 5 x 2 joints = {6 * dw + 16:.0f} <= front {W:.0f} (extra {W - 6 * dw - 16:.0f} mm goes to the end gaps)")
+    chk(0 <= W - (5 * dw + 2 * 3 + 4 * 2) < 5, f"{room}: 5 doors x {dw} + 2 x 3 end + 4 x 2 joints = {5 * dw + 14:.0f} <= front {W:.0f} (extra {W - 5 * dw - 14:.0f} mm goes to the end gaps)")
+    m = B[room]["meta"]
+    eg = m["end_gap"]
+    for k_, jx in enumerate(m["joints"], 1):                     # a full partition must be behind each door joint
+        chk(any(x - 0.5 <= jx <= x + T + 0.5 or (m["split"] and m["split"][0] - 0.5 <= jx <= m["split"][1] + 0.5)
+                for x, a, b in vb if b - a >= 1800), f"{room}: partition behind door joint {k_} (x {jx})")
+    # 5-door: dressing in centre, glass only GF
+    dt = R("Dressing top")
+    chk(len(dt) == 1 and dt[0][3] == 1 and abs(dt[0][4] - m["sections"][1]["clear"]) < 1 and dt[0][5] == inf["depth"] - 6,
+        f"{room}: 1 dressing top in centre section ({m['sections'][1]['clear']} x {inf['depth'] - 6:.0f})")
+    chk(round(m["dress_y"] - y_floor) == oc_dress[room], f"{room}: dressing top {m['dress_y'] - y_floor:.0f} from floor")
+    gl = [r for r in rows if "GLASS" in r[1]]
+    chk((len(gl) == 1) == (room in oc.GLASS_ROOMS), f"{room}: glass centre door {'yes' if room in oc.GLASS_ROOMS else 'no'}")
+    chk(sum(r[3] for r in R("Main back panel")) == 3, f"{room}: 3 back panels (one per section)")
     # 4 shelves & backs
     cols = sorted({x for x, a, b in vb if a <= y_bot + T + 5 and b >= main_top - 5})
     opens = [round(b - (a + T)) for a, b in zip(cols, cols[1:]) if b - (a + T) > 60]

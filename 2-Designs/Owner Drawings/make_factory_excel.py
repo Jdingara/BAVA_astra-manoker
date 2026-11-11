@@ -6,12 +6,12 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "owner_cutlist.json")))
 ROOM = {"GF": "GF Bedroom", "1F Master": "1F M.Bedroom", "1F Bedroom 2": "1F Bedroom 2", "2F": "2F Bedroom"}
-OFF = "27111 LV Ivory White"
+OFF = "WHITE (code to confirm)"   # owner: no liner, one white laminate inside; code not fixed yet
 
 def board(g, part, mat):
     if g == "Shutters":
         col = part.rsplit(" - ", 1)[1].split(" (")[0]
-        return f"18 mm ply - {col} / backer"
+        return f"18 mm ply - {col} / white inside"
     if mat.startswith("6 mm"):
         return f"6 mm ply - {OFF} one side"
     return f"18 mm ply - {OFF} both sides"
@@ -27,7 +27,7 @@ def edges(edge, L, W):
 
 def short(part):
     p = part.rsplit(" - ", 1)[0] if " - " in part and any(c.isdigit() for c in part.rsplit(" - ", 1)[1][:5]) else part
-    return p.replace("Bottom drawers (right section): ", "Drawer ").replace("Bottom drawers: ", "Drawer ")
+    return p.replace("Bottom drawers (right section): ", "Drawer ").replace("Bottom drawers (centre, under dressing): ", "Drawer ").replace("Bottom drawers: ", "Drawer ")
 
 def machining(g, part, note):
     n = []
@@ -73,7 +73,7 @@ for c in ss[ss.max_row]: c.font = Font(bold=True)
 ss.column_dimensions["A"].width = 52
 for col in "BCD": ss.column_dimensions[col].width = 16
 for b in order:
-    name = b.replace("18 mm ply - ", "18 ").replace("6 mm ply - ", "6 ").replace(" / backer", "").replace(" both sides", " 2S").replace(" one side", " 1S")[:31]
+    name = b.replace("18 mm ply - ", "18 ").replace("6 mm ply - ", "6 ").replace(" / white inside", "").replace(" both sides", " 2S").replace(" one side", " 1S")[:31]
     ws = wb.create_sheet(name.replace("/", "-"))
     ws.append([f"BOARD: {b}"]); ws["A1"].font = Font(bold=True, size=12)
     ws.append(hdr)

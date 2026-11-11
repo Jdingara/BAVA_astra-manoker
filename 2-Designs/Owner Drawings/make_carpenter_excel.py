@@ -10,8 +10,8 @@ from openpyxl.worksheet.pagebreak import Break
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "owner_cutlist.json")))
 TITLE = {"GF": "GF BEDROOM", "1F Master": "1ST FLOOR M.BEDROOM", "1F Bedroom 2": "1ST FLOOR BEDROOM 2", "2F": "2ND FLOOR BEDROOM"}
-GNAME = {"Cupboard box": "CARCASS (18 mm, Ivory White)", "Loft frame 90 mm": "LOFT FRAME 90 mm", "Inside": "SHELVES",
-         "Back panels 6 mm": "BACK PANELS 6 mm", "Drawers": "DRAWER BOX", "Shutters": "SHUTTERS / COVER / SKIRTING (colour laminate + backer)"}
+GNAME = {"Cupboard box": "CARCASS (18 mm, white both faces)", "Loft frame 90 mm": "LOFT FRAME 90 mm", "Inside": "SHELVES + DRESSING TOP",
+         "Back panels 6 mm": "BACK PANELS 6 mm", "Drawers": "DRAWER BOX", "Shutters": "SHUTTERS / COVER / SKIRTING (colour laminate + white inside)"}
 dark = PatternFill("solid", fgColor="1F1A17"); band = PatternFill("solid", fgColor="EFE6DA"); thin = Side(style="thin", color="999999")
 
 
@@ -28,6 +28,8 @@ def where(g, part, note, room):
     if "drawer side" in part or "front/back inner" in part: return "groove for bottom: leave 12, 8 W x 10 D"
     if "drawer bottom" in part: return "slides in the 10 mm groove"
     if "Drawer outside front" in part: return "screw to drawer box front; handle"
+    if "GLASS" in part: return "CENTRE door 3: glass panel, 90 border (CNC cut-out after laminate); " + ("4 hinges" if "above drawers" in part else "5 hinges")
+    if "Dressing top" in part: return "centre section, flush with front; mirror + LED above"
     if "Door above drawers" in part: return "doors above the drawers; 4 hinges"
     if "Door (full height)" in part: return "5 hinges each"
     if "Loft door" in part: return "on loft frame; same width as door below"
@@ -82,7 +84,7 @@ def build(ws, rooms, title):
                 for c in ws[ws.max_row]: c.font = Font(bold=True, size=9)
                 last = g
             n += 1
-            lam = part.rsplit(" - ", 1)[1].split(" (")[0] if g == "Shutters" and " - " in part else ("Ivory White" if not mat.startswith("6") else "Ivory White 1 side")
+            lam = part.rsplit(" - ", 1)[1].split(" (")[0] if g == "Shutters" and " - " in part else ("White" if not mat.startswith("6") else "White 1 side")
             nm = part.rsplit(" - ", 1)[0] if g == "Shutters" and " - " in part else part
             nm = nm.replace("Bottom drawers (right section): ", "").replace("Bottom drawers: ", "")
             ws.append([n, nm, lam, q, cL, cW, edge, where(g, part, note, room)])

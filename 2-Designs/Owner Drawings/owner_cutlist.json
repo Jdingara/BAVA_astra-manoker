@@ -30,9 +30,9 @@
     "Bottom panel",
     "18 mm ply",
     1,
-    1648.0,
+    1477.0,
     500.0,
-    1648,
+    1477,
     499,
     "0.5 mm, 1 long",
     ""
@@ -42,22 +42,10 @@
     "Top panel",
     "18 mm ply",
     1,
-    1648.0,
+    1477.0,
     500.0,
-    1648,
+    1477,
     499,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
-    "Cupboard box",
-    "Partition (inside)",
-    "18 mm ply",
-    1,
-    1444.0,
-    494.0,
-    1444,
-    493,
     "0.5 mm, 1 long",
     ""
    ],
@@ -66,9 +54,9 @@
     "Bottom panel",
     "18 mm ply",
     1,
-    806.0,
+    977.0,
     500.0,
-    806,
+    977,
     499,
     "0.5 mm, 1 long",
     ""
@@ -78,9 +66,9 @@
     "Top panel",
     "18 mm ply",
     1,
-    806.0,
+    977.0,
     500.0,
-    806,
+    977,
     499,
     "0.5 mm, 1 long",
     ""
@@ -90,9 +78,9 @@
     "Top rail",
     "18 mm ply",
     1,
-    1648.0,
+    1477.0,
     90.0,
-    1648,
+    1477,
     89,
     "0.5 mm, 1 long",
     "fix to ceiling"
@@ -102,9 +90,33 @@
     "Bottom rail (front, on cupboard top)",
     "18 mm ply",
     1,
-    1648.0,
+    1477.0,
     90.0,
-    1648,
+    1477,
+    89,
+    "0.5 mm, 1 long",
+    ""
+   ],
+   [
+    "Loft frame 90 mm",
+    "Top rail",
+    "18 mm ply",
+    1,
+    977.0,
+    90.0,
+    977,
+    89,
+    "0.5 mm, 1 long",
+    "fix to ceiling"
+   ],
+   [
+    "Loft frame 90 mm",
+    "Bottom rail (front, on cupboard top)",
+    "18 mm ply",
+    1,
+    977.0,
+    90.0,
+    977,
     89,
     "0.5 mm, 1 long",
     ""
@@ -122,37 +134,13 @@
     "loft frame only - no box, no back panel"
    ],
    [
-    "Loft frame 90 mm",
-    "Top rail",
-    "18 mm ply",
-    1,
-    806.0,
-    90.0,
-    806,
-    89,
-    "0.5 mm, 1 long",
-    "fix to ceiling"
-   ],
-   [
-    "Loft frame 90 mm",
-    "Bottom rail (front, on cupboard top)",
-    "18 mm ply",
-    1,
-    806.0,
-    90.0,
-    806,
-    89,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
     "Inside",
     "Shelf",
     "18 mm ply",
-    4,
-    815.0,
+    5,
+    982.0,
     474.0,
-    815,
+    982,
     473,
     "0.5 mm, 1 long",
     ""
@@ -162,33 +150,33 @@
     "Shelf",
     "18 mm ply",
     5,
-    806.0,
+    977.0,
     474.0,
-    806,
+    977,
     473,
     "0.5 mm, 1 long",
     ""
    ],
    [
     "Inside",
-    "Shelf",
+    "Dressing top (centre section)",
     "18 mm ply",
     1,
-    600.0,
-    474.0,
-    600,
-    473,
+    477.0,
+    494.0,
+    477,
+    493,
     "0.5 mm, 1 long",
-    ""
+    "flush with front (behind door 3); top 750 from floor; mirror + LED above"
    ],
    [
     "Inside",
     "Shelf",
     "18 mm ply",
     3,
-    197.0,
+    477.0,
     474.0,
-    197,
+    477,
     473,
     "0.5 mm, 1 long",
     ""
@@ -197,11 +185,11 @@
     "Back panels 6 mm",
     "Main back panel",
     "6 mm back ply",
-    2,
+    1,
     1896.0,
-    827.0,
+    994.0,
     1896,
-    827,
+    994,
     "-",
     "in 6 mm groove all round"
    ],
@@ -211,27 +199,27 @@
     "6 mm back ply",
     1,
     1896.0,
-    818.0,
+    989.0,
     1896,
-    818,
+    989,
+    "-",
+    "in 6 mm groove all round"
+   ],
+   [
+    "Back panels 6 mm",
+    "Main back panel",
+    "6 mm back ply",
+    1,
+    1896.0,
+    489.0,
+    1896,
+    489,
     "-",
     "in 6 mm groove all round"
    ],
    [
     "Drawers",
-    "Bottom drawers: drawer front/back inner",
-    "18 mm ply",
-    4,
-    753.0,
-    150.0,
-    753,
-    149,
-    "0.5 mm, 1 long",
-    "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
-   ],
-   [
-    "Drawers",
-    "Bottom drawers: drawer side",
+    "Bottom drawers (centre, under dressing): drawer side",
     "18 mm ply",
     4,
     450,
@@ -243,156 +231,168 @@
    ],
    [
     "Drawers",
-    "Bottom drawers: drawer bottom 6 mm (in groove)",
+    "Bottom drawers (centre, under dressing): drawer bottom 6 mm (in groove)",
     "6 mm back ply",
     2,
     432.0,
-    771.0,
+    433.0,
     432,
-    771,
+    433,
     "-",
     "inside size + 9 mm each side (10 mm groove, 1 mm play)"
    ],
    [
-    "Shutters",
-    "Side cover panel - lower (floor to 2000) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    1,
-    2000.0,
-    518.0,
-    2000,
-    516,
-    "2 mm, 1 long",
-    "LEFT end only, outside of side panel; 518 deep = box 500 + door 18; joint in line with door gap"
-   ],
-   [
-    "Shutters",
-    "Wall-side strip 100 - lower (floor to 2000) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    1,
-    2000.0,
-    100.0,
-    2000,
-    98,
-    "2 mm, 1 long",
-    "RIGHT end, outside of side panel at the front (flush with door front); joint in line with door gap"
-   ],
-   [
-    "Shutters",
-    "Door (full height) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    1918.0,
-    418,
-    1914,
-    414,
-    "2 mm, 4 sides",
-    "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
-   ],
-   [
-    "Shutters",
-    "Door (full height) - 21125 Sunburn (brown)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    1918.0,
-    418,
-    1914,
-    414,
-    "2 mm, 4 sides",
-    "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
-   ],
-   [
-    "Shutters",
-    "Skirting (front, base 80) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    1,
-    1684.0,
-    80.0,
-    1684,
-    79,
-    "0.5 mm, 1 long",
-    "full base height 80 (doors start 1.5 above); 0.5 mm tape on top edge only"
-   ],
-   [
-    "Shutters",
-    "Door above drawers - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    1518.0,
-    418,
-    1514,
-    414,
-    "2 mm, 4 sides",
-    "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
-   ],
-   [
-    "Shutters",
-    "Side cover panel - upper (loft) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    1,
-    857.0,
-    518.0,
-    857,
-    516,
-    "2 mm, 1 long",
-    "LEFT end only, outside of side panel; 518 deep = box 500 + door 18; joint in line with door gap"
-   ],
-   [
-    "Shutters",
-    "Wall-side strip 100 - upper (loft) - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
-    1,
-    857.0,
-    100.0,
-    857,
-    98,
-    "2 mm, 1 long",
-    "RIGHT end, outside of side panel at the front (flush with door front); joint in line with door gap"
-   ],
-   [
-    "Shutters",
-    "Loft door - 27173 LV Seaglass (green)",
-    "18 mm ply + Merino laminate (shutter)",
+    "Drawers",
+    "Bottom drawers (centre, under dressing): drawer front/back inner",
+    "18 mm ply",
     4,
-    855.0,
-    418,
-    851,
-    414,
-    "2 mm, 4 sides",
-    "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
+    415.0,
+    150.0,
+    415,
+    149,
+    "0.5 mm, 1 long",
+    "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
    ],
    [
     "Shutters",
-    "Loft door - 21125 Sunburn (brown)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    855.0,
-    418,
-    851,
-    414,
-    "2 mm, 4 sides",
-    "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
-   ],
-   [
-    "Shutters",
-    "Skirting (front, base 80) - 27173 LV Seaglass (green)",
+    "Side cover panel - lower (floor to 2000) - DC687 Foliage Blue (Advance)",
     "18 mm ply + Merino laminate (shutter)",
     1,
-    842.0,
+    2000.0,
+    518.0,
+    2000,
+    516,
+    "2 mm, 1 long",
+    "LEFT end only, outside of side panel; 518 deep = box 500 + door 18; joint in line with door gap"
+   ],
+   [
+    "Shutters",
+    "Wall-side strip 100 - lower (floor to 2000) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    2000.0,
+    100.0,
+    2000,
+    98,
+    "2 mm, 1 long",
+    "RIGHT end, outside of side panel at the front (flush with door front); joint in line with door gap"
+   ],
+   [
+    "Shutters",
+    "Door (full height) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    2,
+    1918.0,
+    502,
+    1914,
+    498,
+    "2 mm, 4 sides",
+    "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+   ],
+   [
+    "Shutters",
+    "Door (full height) - 21125 MR+ Sunburn (Merino)",
+    "18 mm ply + Merino laminate (shutter)",
+    2,
+    1918.0,
+    502,
+    1914,
+    498,
+    "2 mm, 4 sides",
+    "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+   ],
+   [
+    "Shutters",
+    "Door above drawers GLASS - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    1518.0,
+    502,
+    1514,
+    498,
+    "2 mm, 4 sides",
+    "CENTRE GLASS DOOR: CNC cut-out 322 x 1338 after laminate + edge band (90 border all round); glass 342 x 1358 fixed behind with beading; concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+   ],
+   [
+    "Shutters",
+    "Skirting (front, base 80) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    1513.0,
     80.0,
-    842,
+    1513,
     79,
     "0.5 mm, 1 long",
     "full base height 80 (doors start 1.5 above); 0.5 mm tape on top edge only"
    ],
    [
     "Shutters",
-    "Drawer outside front - 21125 Sunburn (brown)",
+    "Skirting (front, base 80) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    1013.0,
+    80.0,
+    1013,
+    79,
+    "0.5 mm, 1 long",
+    "full base height 80 (doors start 1.5 above); 0.5 mm tape on top edge only"
+   ],
+   [
+    "Shutters",
+    "Side cover panel - upper (loft) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    857.0,
+    518.0,
+    857,
+    516,
+    "2 mm, 1 long",
+    "LEFT end only, outside of side panel; 518 deep = box 500 + door 18; joint in line with door gap"
+   ],
+   [
+    "Shutters",
+    "Wall-side strip 100 - upper (loft) - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    1,
+    857.0,
+    100.0,
+    857,
+    98,
+    "2 mm, 1 long",
+    "RIGHT end, outside of side panel at the front (flush with door front); joint in line with door gap"
+   ],
+   [
+    "Shutters",
+    "Loft door - DC687 Foliage Blue (Advance)",
+    "18 mm ply + Merino laminate (shutter)",
+    3,
+    855.0,
+    502,
+    851,
+    498,
+    "2 mm, 4 sides",
+    "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
+   ],
+   [
+    "Shutters",
+    "Loft door - 21125 MR+ Sunburn (Merino)",
     "18 mm ply + Merino laminate (shutter)",
     2,
-    838.0,
+    855.0,
+    502,
+    851,
+    498,
+    "2 mm, 4 sides",
+    "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
+   ],
+   [
+    "Shutters",
+    "Drawer outside front - 21125 MR+ Sunburn (Merino)",
+    "18 mm ply + Merino laminate (shutter)",
+    2,
+    502.0,
     198.0,
-    834,
+    498,
     194,
     "2 mm, 4 sides",
     "fix on drawer box; handle"
@@ -401,17 +401,17 @@
   "mats": [
    [
     "18 mm ply",
-    146.4,
+    153.1,
     6
    ],
    [
     "6 mm back ply",
-    57.6,
-    3
+    54.5,
+    2
    ],
    [
     "18 mm ply + Merino laminate (shutter)",
-    96.0,
+    96.1,
     4
    ],
    [
@@ -421,14 +421,14 @@
    ],
    [
     "Edge tape 2 mm (shutters, 4 sides)",
-    "57 m",
+    "51 m",
     ""
    ]
   ],
   "hardware": [
    [
     "LED strip light + aluminium profile (in grooves)",
-    "3 pcs, 5.22 m total"
+    "3 pcs, 4.92 m total"
    ],
    [
     "LED driver + door sensor switch",
@@ -444,11 +444,19 @@
    ],
    [
     "Concealed soft-close hinges (doors)",
-    40
+    34
    ],
    [
     "Door handles",
-    6
+    5
+   ],
+   [
+    "Dressing mirror 5 mm (on back panel), 367 x 700",
+    1
+   ],
+   [
+    "Glass panel for centre door 342 x 1358 (type to confirm) + beading",
+    1
    ]
   ],
   "info": {
@@ -461,11 +469,11 @@
    "main_clear": 1884,
    "loft_clear": 821,
    "grooves": 3,
-   "led_m": 5.22,
+   "led_m": 4.92,
    "led": [
     {
      "section": 1,
-     "opening": 815,
+     "opening": 982,
      "panel": "Side panel",
      "x": 1490.3,
      "face": "right face (inside section)",
@@ -476,20 +484,20 @@
     },
     {
      "section": 2,
-     "opening": 815,
+     "opening": 477,
      "panel": "Partition",
-     "x": 2323.3,
+     "x": 2490.3,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 373,
-     "length": 1511,
-     "strip": 1491
+     "start": 670,
+     "length": 1214,
+     "strip": 1194
     },
     {
      "section": 3,
-     "opening": 806,
+     "opening": 977,
      "panel": "Side panel",
-     "x": 3174.3,
+     "x": 3003.3,
      "face": "right face (inside section)",
      "from_front": 100,
      "start": 0,
@@ -550,18 +558,6 @@
     "6 mm back-panel groove on both faces"
    ],
    [
-    "Cupboard box",
-    "Partition (inside)",
-    "18 mm ply",
-    1,
-    1493.0,
-    494.0,
-    1493,
-    493,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
     "Loft frame 90 mm",
     "Top rail",
     "18 mm ply",
@@ -601,10 +597,10 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    2,
-    765.0,
+    5,
+    915.0,
     474.0,
-    765,
+    915,
     473,
     "0.5 mm, 1 long",
     ""
@@ -613,34 +609,34 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    6,
-    756.0,
+    5,
+    911.0,
     474.0,
-    756,
+    911,
     473,
     "0.5 mm, 1 long",
     ""
    ],
    [
     "Inside",
-    "Shelf",
+    "Dressing top (centre section)",
     "18 mm ply",
-    2,
-    600.0,
-    474.0,
-    600,
-    473,
+    1,
+    451.0,
+    494.0,
+    451,
+    493,
     "0.5 mm, 1 long",
-    ""
+    "flush with front (behind door 3); top 800 from floor; mirror + LED above"
    ],
    [
     "Inside",
     "Shelf",
     "18 mm ply",
     3,
-    147.0,
+    451.0,
     474.0,
-    147,
+    451,
     473,
     "0.5 mm, 1 long",
     ""
@@ -651,9 +647,9 @@
     "6 mm back ply",
     1,
     1896.0,
-    777.0,
+    927.0,
     1896,
-    777,
+    927,
     "-",
     "in 6 mm groove all round"
    ],
@@ -661,29 +657,29 @@
     "Back panels 6 mm",
     "Main back panel",
     "6 mm back ply",
-    2,
+    1,
     1896.0,
-    768.0,
+    923.0,
     1896,
-    768,
+    923,
+    "-",
+    "in 6 mm groove all round"
+   ],
+   [
+    "Back panels 6 mm",
+    "Main back panel",
+    "6 mm back ply",
+    1,
+    1896.0,
+    463.0,
+    1896,
+    463,
     "-",
     "in 6 mm groove all round"
    ],
    [
     "Drawers",
-    "Bottom drawers: drawer front/back inner",
-    "18 mm ply",
-    4,
-    703.0,
-    150.0,
-    703,
-    149,
-    "0.5 mm, 1 long",
-    "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
-   ],
-   [
-    "Drawers",
-    "Bottom drawers: drawer side",
+    "Bottom drawers (centre, under dressing): drawer side",
     "18 mm ply",
     4,
     450,
@@ -695,15 +691,27 @@
    ],
    [
     "Drawers",
-    "Bottom drawers: drawer bottom 6 mm (in groove)",
+    "Bottom drawers (centre, under dressing): drawer bottom 6 mm (in groove)",
     "6 mm back ply",
     2,
     432.0,
-    721.0,
+    407.0,
     432,
-    721,
+    407,
     "-",
     "inside size + 9 mm each side (10 mm groove, 1 mm play)"
+   ],
+   [
+    "Drawers",
+    "Bottom drawers (centre, under dressing): drawer front/back inner",
+    "18 mm ply",
+    4,
+    389.0,
+    150.0,
+    389,
+    149,
+    "0.5 mm, 1 long",
+    "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
    ],
    [
     "Shutters",
@@ -747,9 +755,9 @@
     "18 mm ply + Merino laminate (shutter)",
     2,
     1918.0,
-    388,
+    467,
     1914,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -759,9 +767,9 @@
     "18 mm ply + Merino laminate (shutter)",
     2,
     1918.0,
-    388,
+    467,
     1914,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -769,11 +777,11 @@
     "Shutters",
     "Door above drawers - 27292 LV Mink (grey)",
     "18 mm ply + Merino laminate (shutter)",
-    2,
+    1,
     1518.0,
-    388,
+    467,
     1514,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -805,11 +813,11 @@
     "Shutters",
     "Loft door - 27292 LV Mink (grey)",
     "18 mm ply + Merino laminate (shutter)",
-    6,
+    5,
     903.0,
-    388,
+    467,
     899,
-    384,
+    463,
     "2 mm, 4 sides",
     "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
    ],
@@ -818,9 +826,9 @@
     "Drawer outside front - 27262 LV Peacock (teal)",
     "18 mm ply + Merino laminate (shutter)",
     2,
-    778.0,
+    467.0,
     198.0,
-    774,
+    463,
     194,
     "2 mm, 4 sides",
     "fix on drawer box; handle"
@@ -829,34 +837,34 @@
   "mats": [
    [
     "18 mm ply",
-    129.6,
+    136.2,
     5
    ],
    [
     "6 mm back ply",
-    53.9,
+    51.0,
     2
    ],
    [
     "18 mm ply + Merino laminate (shutter)",
-    92.0,
+    92.2,
     4
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "41 m",
+    "42 m",
     ""
    ],
    [
     "Edge tape 2 mm (shutters, 4 sides)",
-    "57 m",
+    "50 m",
     ""
    ]
   ],
   "hardware": [
    [
     "LED strip light + aluminium profile (in grooves)",
-    "3 pcs, 5.08 m total"
+    "3 pcs, 4.87 m total"
    ],
    [
     "LED driver + door sensor switch",
@@ -872,11 +880,15 @@
    ],
    [
     "Concealed soft-close hinges (doors)",
-    46
+    39
    ],
    [
     "Door handles",
-    6
+    5
+   ],
+   [
+    "Dressing mirror 5 mm (on back panel), 341 x 700",
+    1
    ]
   ],
   "info": {
@@ -889,11 +901,11 @@
    "main_clear": 1884,
    "loft_clear": 851,
    "grooves": 3,
-   "led_m": 5.08,
+   "led_m": 4.87,
    "led": [
     {
      "section": 1,
-     "opening": 756,
+     "opening": 911,
      "panel": "Side panel",
      "x": 4877.9,
      "face": "right face (inside section)",
@@ -904,20 +916,20 @@
     },
     {
      "section": 2,
-     "opening": 765,
+     "opening": 451,
      "panel": "Partition",
-     "x": 5651.9,
+     "x": 5806.9,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 509,
-     "length": 1375,
-     "strip": 1355
+     "start": 720,
+     "length": 1164,
+     "strip": 1144
     },
     {
      "section": 3,
-     "opening": 756,
+     "opening": 915,
      "panel": "Partition",
-     "x": 6434.9,
+     "x": 6275.9,
      "face": "right face (inside section)",
      "from_front": 100,
      "start": 0,
@@ -978,18 +990,6 @@
     "6 mm back-panel groove on both faces"
    ],
    [
-    "Cupboard box",
-    "Partition (inside)",
-    "18 mm ply",
-    1,
-    1493.0,
-    494.0,
-    1493,
-    493,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
     "Loft frame 90 mm",
     "Top rail",
     "18 mm ply",
@@ -1029,10 +1029,10 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
-    755.0,
+    6,
+    903.0,
     474.0,
-    755,
+    903,
     473,
     "0.5 mm, 1 long",
     ""
@@ -1041,34 +1041,34 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    3,
-    746.0,
+    5,
+    899.0,
     474.0,
-    746,
+    899,
     473,
     "0.5 mm, 1 long",
     ""
+   ],
+   [
+    "Inside",
+    "Dressing top (centre section)",
+    "18 mm ply",
+    1,
+    445.0,
+    494.0,
+    445,
+    493,
+    "0.5 mm, 1 long",
+    "flush with front (behind door 3); top 800 from floor; mirror + LED above"
    ],
    [
     "Inside",
     "Shelf",
     "18 mm ply",
     2,
-    581.0,
+    445.0,
     474.0,
-    581,
-    473,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
-    "Inside",
-    "Shelf",
-    "18 mm ply",
-    3,
-    147.0,
-    474.0,
-    147,
+    445,
     473,
     "0.5 mm, 1 long",
     ""
@@ -1079,9 +1079,9 @@
     "6 mm back ply",
     1,
     1896.0,
-    767.0,
+    915.0,
     1896,
-    767,
+    915,
     "-",
     "in 6 mm groove all round"
    ],
@@ -1089,11 +1089,23 @@
     "Back panels 6 mm",
     "Main back panel",
     "6 mm back ply",
-    2,
+    1,
     1896.0,
-    758.0,
+    911.0,
     1896,
-    758,
+    911,
+    "-",
+    "in 6 mm groove all round"
+   ],
+   [
+    "Back panels 6 mm",
+    "Main back panel",
+    "6 mm back ply",
+    1,
+    1896.0,
+    457.0,
+    1896,
+    457,
     "-",
     "in 6 mm groove all round"
    ],
@@ -1102,9 +1114,9 @@
     "Bottom drawers (right section): drawer front/back inner",
     "18 mm ply",
     4,
-    684.0,
+    841.0,
     150.0,
-    684,
+    841,
     149,
     "0.5 mm, 1 long",
     "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
@@ -1127,9 +1139,9 @@
     "6 mm back ply",
     2,
     432.0,
-    702.0,
+    859.0,
     432,
-    702,
+    859,
     "-",
     "inside size + 9 mm each side (10 mm groove, 1 mm play)"
    ],
@@ -1173,11 +1185,11 @@
     "Shutters",
     "Door (full height) - 21433 SF Neo Banana Leaf (green)",
     "18 mm ply + Merino laminate (shutter)",
-    3,
+    2,
     1918.0,
-    383,
+    461,
     1914,
-    379,
+    457,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1187,9 +1199,9 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1918.0,
-    383,
+    461,
     1914,
-    379,
+    457,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1199,9 +1211,9 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1518.0,
-    383,
+    461,
     1514,
-    379,
+    457,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1211,11 +1223,23 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1518.0,
-    383,
+    461,
     1514,
-    379,
+    457,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+   ],
+   [
+    "Shutters",
+    "Drawer outside front - 21457 SF Aspen Gold (yellow)",
+    "18 mm ply + Merino laminate (shutter)",
+    2,
+    924.0,
+    198.0,
+    920,
+    194,
+    "2 mm, 4 sides",
+    "fix on drawer box; handle"
    ],
    [
     "Shutters",
@@ -1245,58 +1269,46 @@
     "Shutters",
     "Loft door - 21433 SF Neo Banana Leaf (green)",
     "18 mm ply + Merino laminate (shutter)",
-    6,
+    5,
     893.0,
-    383,
+    461,
     889,
-    379,
+    457,
     "2 mm, 4 sides",
     "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
-   ],
-   [
-    "Shutters",
-    "Drawer outside front - 21457 SF Aspen Gold (yellow)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    768.0,
-    198.0,
-    764,
-    194,
-    "2 mm, 4 sides",
-    "fix on drawer box; handle"
    ]
   ],
   "mats": [
    [
     "18 mm ply",
-    128.4,
-    5
+    140.1,
+    6
    ],
    [
     "6 mm back ply",
-    53.1,
+    54.6,
     2
    ],
    [
     "18 mm ply + Merino laminate (shutter)",
-    90.8,
+    91.0,
     4
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "41 m",
+    "44 m",
     ""
    ],
    [
     "Edge tape 2 mm (shutters, 4 sides)",
-    "57 m",
+    "51 m",
     ""
    ]
   ],
   "hardware": [
    [
     "LED strip light + aluminium profile (in grooves)",
-    "3 pcs, 5.08 m total"
+    "3 pcs, 4.48 m total"
    ],
    [
     "LED driver + door sensor switch",
@@ -1312,11 +1324,15 @@
    ],
    [
     "Concealed soft-close hinges (doors)",
-    40
+    33
    ],
    [
     "Door handles",
-    6
+    5
+   ],
+   [
+    "Dressing mirror 5 mm (on back panel), 335 x 700",
+    1
    ]
   ],
   "info": {
@@ -1329,11 +1345,11 @@
    "main_clear": 1884,
    "loft_clear": 841,
    "grooves": 3,
-   "led_m": 5.08,
+   "led_m": 4.48,
    "led": [
     {
      "section": 1,
-     "opening": 746,
+     "opening": 899,
      "panel": "Side panel",
      "x": 8458.0,
      "face": "right face (inside section)",
@@ -1344,25 +1360,25 @@
     },
     {
      "section": 2,
-     "opening": 755,
+     "opening": 445,
      "panel": "Partition",
-     "x": 9222.0,
+     "x": 9375.0,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 0,
-     "length": 1884,
-     "strip": 1864
+     "start": 720,
+     "length": 1164,
+     "strip": 1144
     },
     {
      "section": 3,
-     "opening": 746,
+     "opening": 903,
      "panel": "Partition",
-     "x": 9995.0,
+     "x": 9838.0,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 509,
-     "length": 1375,
-     "strip": 1355
+     "start": 391,
+     "length": 1493,
+     "strip": 1473
     }
    ]
   }
@@ -1418,18 +1434,6 @@
     "6 mm back-panel groove on both faces"
    ],
    [
-    "Cupboard box",
-    "Partition (inside)",
-    "18 mm ply",
-    1,
-    1493.0,
-    494.0,
-    1493,
-    493,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
     "Loft frame 90 mm",
     "Top rail",
     "18 mm ply",
@@ -1469,10 +1473,10 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
-    765.0,
+    6,
+    915.0,
     474.0,
-    765,
+    915,
     473,
     "0.5 mm, 1 long",
     ""
@@ -1481,34 +1485,34 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    3,
-    756.0,
+    5,
+    911.0,
     474.0,
-    756,
+    911,
     473,
     "0.5 mm, 1 long",
     ""
+   ],
+   [
+    "Inside",
+    "Dressing top (centre section)",
+    "18 mm ply",
+    1,
+    451.0,
+    494.0,
+    451,
+    493,
+    "0.5 mm, 1 long",
+    "flush with front (behind door 3); top 800 from floor; mirror + LED above"
    ],
    [
     "Inside",
     "Shelf",
     "18 mm ply",
     2,
-    591.0,
+    451.0,
     474.0,
-    591,
-    473,
-    "0.5 mm, 1 long",
-    ""
-   ],
-   [
-    "Inside",
-    "Shelf",
-    "18 mm ply",
-    3,
-    147.0,
-    474.0,
-    147,
+    451,
     473,
     "0.5 mm, 1 long",
     ""
@@ -1519,9 +1523,9 @@
     "6 mm back ply",
     1,
     1896.0,
-    777.0,
+    927.0,
     1896,
-    777,
+    927,
     "-",
     "in 6 mm groove all round"
    ],
@@ -1529,11 +1533,23 @@
     "Back panels 6 mm",
     "Main back panel",
     "6 mm back ply",
-    2,
+    1,
     1896.0,
-    768.0,
+    923.0,
     1896,
-    768,
+    923,
+    "-",
+    "in 6 mm groove all round"
+   ],
+   [
+    "Back panels 6 mm",
+    "Main back panel",
+    "6 mm back ply",
+    1,
+    1896.0,
+    463.0,
+    1896,
+    463,
     "-",
     "in 6 mm groove all round"
    ],
@@ -1542,9 +1558,9 @@
     "Bottom drawers (right section): drawer front/back inner",
     "18 mm ply",
     4,
-    694.0,
+    853.0,
     150.0,
-    694,
+    853,
     149,
     "0.5 mm, 1 long",
     "groove 8 mm wide x 10 deep: leave 12 mm from bottom edge, groove 12-20 mm (6 mm drawer bottom slides in)"
@@ -1567,9 +1583,9 @@
     "6 mm back ply",
     2,
     432.0,
-    712.0,
+    871.0,
     432,
-    712,
+    871,
     "-",
     "inside size + 9 mm each side (10 mm groove, 1 mm play)"
    ],
@@ -1613,11 +1629,11 @@
     "Shutters",
     "Door (full height) - 21462 SF Lavendura (lavender)",
     "18 mm ply + Merino laminate (shutter)",
-    3,
+    2,
     1918.0,
-    388,
+    467,
     1914,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1627,9 +1643,9 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1918.0,
-    388,
+    467,
     1914,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1639,9 +1655,9 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1518.0,
-    388,
+    467,
     1514,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
    ],
@@ -1651,11 +1667,23 @@
     "18 mm ply + Merino laminate (shutter)",
     1,
     1518.0,
-    388,
+    467,
     1514,
-    384,
+    463,
     "2 mm, 4 sides",
     "concealed hinges; gaps: 2 mm between doors, 3 mm at end, 1 mm bottom, 2 mm to loft door"
+   ],
+   [
+    "Shutters",
+    "Drawer outside front - 21452 SF Prism Violet (violet)",
+    "18 mm ply + Merino laminate (shutter)",
+    2,
+    936.0,
+    198.0,
+    932,
+    194,
+    "2 mm, 4 sides",
+    "fix on drawer box; handle"
    ],
    [
     "Shutters",
@@ -1685,58 +1713,46 @@
     "Shutters",
     "Loft door - 21462 SF Lavendura (lavender)",
     "18 mm ply + Merino laminate (shutter)",
-    6,
+    5,
     823.0,
-    388,
+    467,
     819,
-    384,
+    463,
     "2 mm, 4 sides",
     "on loft frame; same width as doors below; 2 mm to cupboard door, 1 mm at top"
-   ],
-   [
-    "Shutters",
-    "Drawer outside front - 21452 SF Prism Violet (violet)",
-    "18 mm ply + Merino laminate (shutter)",
-    2,
-    778.0,
-    198.0,
-    774,
-    194,
-    "2 mm, 4 sides",
-    "fix on drawer box; handle"
    ]
   ],
   "mats": [
    [
     "18 mm ply",
-    129.3,
-    5
+    141.2,
+    6
    ],
    [
     "6 mm back ply",
-    53.8,
+    55.3,
     2
    ],
    [
     "18 mm ply + Merino laminate (shutter)",
-    89.5,
+    89.7,
     4
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "41 m",
+    "44 m",
     ""
    ],
    [
     "Edge tape 2 mm (shutters, 4 sides)",
-    "56 m",
+    "50 m",
     ""
    ]
   ],
   "hardware": [
    [
     "LED strip light + aluminium profile (in grooves)",
-    "3 pcs, 5.08 m total"
+    "3 pcs, 4.48 m total"
    ],
    [
     "LED driver + door sensor switch",
@@ -1752,11 +1768,15 @@
    ],
    [
     "Concealed soft-close hinges (doors)",
-    40
+    33
    ],
    [
     "Door handles",
-    6
+    5
+   ],
+   [
+    "Dressing mirror 5 mm (on back panel), 341 x 700",
+    1
    ]
   ],
   "info": {
@@ -1769,11 +1789,11 @@
    "main_clear": 1884,
    "loft_clear": 771,
    "grooves": 3,
-   "led_m": 5.08,
+   "led_m": 4.48,
    "led": [
     {
      "section": 1,
-     "opening": 756,
+     "opening": 911,
      "panel": "Side panel",
      "x": 11809.8,
      "face": "right face (inside section)",
@@ -1784,25 +1804,25 @@
     },
     {
      "section": 2,
-     "opening": 765,
+     "opening": 451,
      "panel": "Partition",
-     "x": 12583.8,
+     "x": 12738.8,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 0,
-     "length": 1884,
-     "strip": 1864
+     "start": 720,
+     "length": 1164,
+     "strip": 1144
     },
     {
      "section": 3,
-     "opening": 756,
+     "opening": 915,
      "panel": "Partition",
-     "x": 13366.8,
+     "x": 13207.8,
      "face": "right face (inside section)",
      "from_front": 100,
-     "start": 509,
-     "length": 1375,
-     "strip": 1355
+     "start": 391,
+     "length": 1493,
+     "strip": 1473
     }
    ]
   }
