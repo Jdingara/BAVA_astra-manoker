@@ -49,6 +49,7 @@ sc.render.use_freestyle = True
 sc.render.line_thickness = 1.1
 M = {k: mat(k, v) for k, v in COL.items()}
 M["led"] = mat("led", "#ffd27a", emit=3.0)
+M["rod"] = mat("rod", "#9aa0a6", rough=0.25)
 M["floor"] = mat("floor", "#b9b2a6", rough=0.4); M["wall"] = mat("wall", "#c9c6c0")
 edge = mat("edge", "#b9ab8e")
 

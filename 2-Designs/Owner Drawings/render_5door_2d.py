@@ -66,6 +66,15 @@ def inside(ax, room, d):
             for k, (lo, hi) in enumerate(zip(lev[:2], tops[:2])):
                 ax.add_patch(Rectangle((xa + 8, lo + 6), w - 70, hi - lo - 12, fc=DRW_C, ec="#7a5a30", lw=.6))
                 ax.text(xa + (w - 45) / 2, (lo + hi) / 2, f"drawer {k + 1}", ha="center", va="center", fontsize=6.5)
+        if s.get("hanging"):                                  # coat stand: rod + a few hangers
+            ry = s["rod_y"]
+            ax.plot([xa + 10, xb - 10], [ry, ry], color="#666", lw=3.5, solid_capstyle="round")
+            for k in range(5):
+                hx = xa + 90 + k * (w - 200) / 4
+                ax.plot([hx, hx], [ry, ry - 40], color="#888", lw=.8)
+                ax.plot([hx - 70, hx, hx + 70, hx - 70], [ry - 110, ry - 40, ry - 110, ry - 110], color="#888", lw=.8)
+                ax.add_patch(Rectangle((hx - 75, ry - 110 - 900 + k % 2 * 250), 150, 900 - k % 2 * 250, fc="#e9eef5", ec="#aab", lw=.5))
+            ax.text(xa + (w - 45) / 2, ry - 1150, f"COAT STAND\n{s['shelves'][1] - s['shelves'][0] - T:.0f} clear hanging\nrod {ry - Y0:.0f} from floor", ha="center", va="center", fontsize=7, weight="bold", color="#444")
         if s["dressing"]:
             zt = m["dress_y"] + T
             ax.add_patch(Rectangle((xa + 30, zt + 100), w - 110, MIRROR_H, fc=MIR, ec="#557", lw=.7))
@@ -75,7 +84,7 @@ def inside(ax, room, d):
             ax.text(xa + (w - 35) / 2, zt + 100 + MIRROR_H + 8, "LED", ha="center", fontsize=6, color="#a07800")
             ax.text(xa + (w - 35) / 2, m["dress_y"] - 15, f"DRESSING TOP\n{m['dress_y'] - Y0:.0f} from floor", ha="center", va="top", fontsize=6.5, weight="bold", color="#6b4423")
             dv(ax, xa - 40 if False else X0 - 60, Y0, m["dress_y"], f"{m['dress_y'] - Y0:.0f} dressing top", fs=6.5, color="#6b4423")
-        ax.text(xa + w / 2, Y0 - 70, "DRESSING" if s["dressing"] else ("SHELVES + 2 DRAWERS" if s["drawers"] else "SHELVES"),
+        ax.text(xa + w / 2, Y0 - 70, "DRESSING" if s["dressing"] else ("SHELVES + 2 DRAWERS" if s["drawers"] else ("COAT STAND" if s.get("hanging") else "SHELVES")),
                 ha="center", va="top", fontsize=7, weight="bold", color="#6b4423" if s["dressing"] else "#444")
         dh(ax, xa, xb, Y0 - 230, f"{s['clear']} clear", fs=7.5)
     # overall dims

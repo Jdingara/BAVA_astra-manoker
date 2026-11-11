@@ -71,6 +71,7 @@ rules = [
     "LED profile groove: 12 W x 8 D, 100 mm from the FRONT edge, vertical, on panel face inside the section. 10 mm wire hole through top panel.",
     "Shutters: 18 mm ply, colour laminate outside, WHITE laminate inside (no liner), 2 mm edge tape 4 sides.",
     "5 DOORS (2 + 1 + 2): full partitions behind the door joints. Centre door = DRESSING: top 750 from floor (GF) / 800 (others), mirror + LED above, shelf over it.",
+    "LEFT section = COAT STAND (all rooms): bottom shelf 441 from floor, top shelf 1659, SS oval rod 1609 from floor, 1200 clear hanging.",
     "GF centre door: GLASS panel, 90 mm laminate border all round (CNC cut-out after laminate + edge tape). Other rooms: plain centre door.",
     "GAPS: 2 mm between doors | 3 mm+ next to side cover / strip | 2 mm cupboard door to loft door | 1 mm bottom and top.",
     "Side cover (518 deep = 500 + door, full height, 2 pieces joined at 2000) on ONE side; 100 mm strip on the other side. 2 mm tape on front edge only.",

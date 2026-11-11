@@ -45,6 +45,9 @@ for room, v in D.items():
     chk(round(m["dress_y"] - y_floor) == oc_dress[room], f"{room}: dressing top {m['dress_y'] - y_floor:.0f} from floor")
     gl = [r for r in rows if "GLASS" in r[1]]
     chk((len(gl) == 1) == (room in oc.GLASS_ROOMS), f"{room}: glass centre door {'yes' if room in oc.GLASS_ROOMS else 'no'}")
+    hs = m["sections"][0]
+    chk(hs.get("hanging") and round(hs["shelves"][1] - hs["shelves"][0] - T) == 1200 and round(hs["rod_y"] - y_floor) == 1609,
+        f"{room}: coat stand left section, 1200 hanging, rod 1609 from floor")
     chk(sum(r[3] for r in R("Main back panel")) == 3, f"{room}: 3 back panels (one per section)")
     # 4 shelves & backs
     cols = sorted({x for x, a, b in vb if a <= y_bot + T + 5 and b >= main_top - 5})

@@ -137,7 +137,7 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
+    2,
     982.0,
     474.0,
     982,
@@ -401,8 +401,8 @@
   "mats": [
    [
     "18 mm ply",
-    153.1,
-    6
+    138.1,
+    5
    ],
    [
     "6 mm back ply",
@@ -416,7 +416,7 @@
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "45 m",
+    "42 m",
     ""
    ],
    [
@@ -452,6 +452,10 @@
    ],
    [
     "Dressing mirror 5 mm (on back panel), 367 x 700",
+    1
+   ],
+   [
+    "Coat stand: oval SS hanging rod 980 long + 2 end brackets (rod 1609 from floor, 1200 hanging)",
     1
    ],
    [
@@ -609,7 +613,7 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
+    2,
     911.0,
     474.0,
     911,
@@ -837,7 +841,7 @@
   "mats": [
    [
     "18 mm ply",
-    136.2,
+    122.2,
     5
    ],
    [
@@ -852,7 +856,7 @@
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "42 m",
+    "39 m",
     ""
    ],
    [
@@ -888,6 +892,10 @@
    ],
    [
     "Dressing mirror 5 mm (on back panel), 341 x 700",
+    1
+   ],
+   [
+    "Coat stand: oval SS hanging rod 909 long + 2 end brackets (rod 1609 from floor, 1200 hanging)",
     1
    ]
   ],
@@ -1041,7 +1049,7 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
+    2,
     899.0,
     474.0,
     899,
@@ -1281,8 +1289,8 @@
   "mats": [
    [
     "18 mm ply",
-    140.1,
-    6
+    126.3,
+    5
    ],
    [
     "6 mm back ply",
@@ -1296,7 +1304,7 @@
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "44 m",
+    "41 m",
     ""
    ],
    [
@@ -1332,6 +1340,10 @@
    ],
    [
     "Dressing mirror 5 mm (on back panel), 335 x 700",
+    1
+   ],
+   [
+    "Coat stand: oval SS hanging rod 897 long + 2 end brackets (rod 1609 from floor, 1200 hanging)",
     1
    ]
   ],
@@ -1485,7 +1497,7 @@
     "Inside",
     "Shelf",
     "18 mm ply",
-    5,
+    2,
     911.0,
     474.0,
     911,
@@ -1725,8 +1737,8 @@
   "mats": [
    [
     "18 mm ply",
-    141.2,
-    6
+    127.3,
+    5
    ],
    [
     "6 mm back ply",
@@ -1740,7 +1752,7 @@
    ],
    [
     "Edge tape 0.5 mm (front edges)",
-    "44 m",
+    "41 m",
     ""
    ],
    [
@@ -1776,6 +1788,10 @@
    ],
    [
     "Dressing mirror 5 mm (on back panel), 341 x 700",
+    1
+   ],
+   [
+    "Coat stand: oval SS hanging rod 909 long + 2 end brackets (rod 1609 from floor, 1200 hanging)",
     1
    ]
   ],

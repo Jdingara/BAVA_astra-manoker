@@ -91,6 +91,10 @@ def build(name, d, x_off):
     for a, b in pieces:
         P("Loft top rail 90", "frame", X(a), 0, box_h + loft_h - T, b - a, FRAME, T)
         P("Loft bottom rail 90", "frame", X(a), 0, box_h, b - a, FRAME, T)
+    # coat stand rod (25 dia, shown as a 25 x 15 bar), centre of depth
+    for s_ in META[name]["sections"]:
+        if s_.get("hanging"):
+            P("Hanging rod", "rod", X(s_["x"][0]), DEPTH / 2 - 12, Z(s_["rod_y"]) - 15, s_["x"][1] - s_["x"][0], 25.0, 15.0)
     # drawers (box + front)
     for x1, x2, zb, dh in DRAWERS[name]:
         z = Z(zb)

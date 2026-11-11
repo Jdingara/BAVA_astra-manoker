@@ -23,7 +23,7 @@ def where(g, part, note, room):
     if "Frame upright" in part: return "loft frame - at ends and partitions"
     if "Top rail" in part: return "loft frame top, fix to ceiling"
     if "Bottom rail" in part: return "loft frame bottom, on cupboard top"
-    if part == "Shelf": return "set back 20 mm from front"
+    if part == "Shelf": return "set back 20 mm from front (left section: coat stand shelves at 441 + 1659 from floor, rod at 1609)"
     if "back panel" in part: return "slides in 6 mm groove (sides / partitions / top / bottom)"
     if "drawer side" in part or "front/back inner" in part: return "groove for bottom: leave 12, 8 W x 10 D"
     if "drawer bottom" in part: return "slides in the 10 mm groove"

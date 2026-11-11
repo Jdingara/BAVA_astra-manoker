@@ -301,6 +301,9 @@ def analyse(name, d):
     m = META[name]
     if m["dress_y"]:
         hardware.append([f"Dressing mirror 5 mm (on back panel), {m['sections'][1]['clear'] - 110} x {MIRROR_H:.0f}", 1])
+    for s_ in m["sections"]:
+        if s_.get("hanging"):
+            hardware.append([f"Coat stand: oval SS hanging rod {s_['clear'] - 2} long + 2 end brackets (rod {s_['rod_y'] - y_floor:.0f} from floor, 1200 hanging)", 1])
     for gw, gh in glass:
         hardware.append([f"Glass panel for centre door {gw} x {gh} (type to confirm) + beading", 1])
     longest = max(r[4] for r in rows)

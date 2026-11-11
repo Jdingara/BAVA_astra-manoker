@@ -1,7 +1,7 @@
 """5-door design: build new board geometry from the outer box of the 6-door drawing ("boards (6-door).json") -> boards.json.
 Doors 2 + 1 + 2; full-height partitions sit behind the door joints (doors hinge on them).
 Centre (1 door) = dressing: top at 750 (GF, 50 lower) / 800 from floor, 850 clear above, mirror + LED, shelf above.
-Side sections = shelves 305 clear. 2 bottom drawers (173 / 182 openings): GF + 1F Master in the centre section,
+Left section = coat stand (rod, 1200 hanging, shelf above + below). Right section = shelves 305 clear. 2 bottom drawers (173 / 182 openings): GF + 1F Master in the centre section,
 1F Bedroom 2 + 2F in the right section (L-shape).
 GF is wider than 2400 -> 2 boxes; the box joint (2 boards back to back) goes behind the door 3 | door 4 joint.
 Loft = 90 frame: uprights behind the same 2 door joints."""
@@ -18,6 +18,7 @@ DRESS_OPEN = 850.0                   # clear space above the dressing top
 DRAWER_SEC = {"GF": 1, "1F Master": 1, "1F Bedroom 2": 2, "2F": 2}                  # 0 left, 1 centre, 2 right
 DRAWER_DIV = (191.0, 391.0)          # drawer divider boards above y_bot (openings 173 + 182, as before)
 SPLIT = {"GF"}                       # 2 boxes side by side
+HANG_SEC, HANG_CLEAR, ROD_DROP = 0, 1200.0, 50.0   # owner: coat stand in the LEFT section, all rooms: top shelf 305 under top, rod 50 below it, 1200 clear hanging, 1 shelf below
 
 
 def r1(v):
@@ -90,6 +91,12 @@ def build(name, d):
             z = dress + T + DRESS_OPEN
             sh.append(z)
             z += T
+        rod = None
+        if i == HANG_SEC and not drawers:                   # coat stand
+            top_sh = z1 - SP - T
+            sh += [top_sh - HANG_CLEAR - T, top_sh]
+            rod = top_sh - ROD_DROP
+            z = z1                                          # no more shelves
         while z + SP + T <= z1 - TOP_SPACE:
             z += SP
             sh.append(z)
@@ -97,7 +104,8 @@ def build(name, d):
         for y in sh:
             h.append([r1(y), r1(xa), r1(xb)])
         secs.append({"x": [r1(xa), r1(xb)], "clear": round(xb - xa), "shelves": [r1(y) for y in sh],
-                     "drawers": drawers, "dressing": i == 1, "doors": 1 if i == 1 else 2})
+                     "drawers": drawers, "dressing": i == 1, "doors": 1 if i == 1 else 2,
+                     "hanging": rod is not None, "rod_y": r1(rod) if rod else None})
     h.sort()
     v.sort()
     meta = {"door_w": dw, "end_gap": round(end, 1), "joints": [r1(j1), r1(j2)], "split": [s0, s1] if s0 else None,
